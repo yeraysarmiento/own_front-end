@@ -1,22 +1,30 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="app">
+    <router-view />
   </div>
-  <router-view />
 </template>
 
+<script>
+import "@fontsource/sintony";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  name: "app",
+});
+</script>
+
 <style lang="scss">
-#nav {
-  padding: 30px;
+@import "./assets/styles/_variables.scss";
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+body {
+  font-family: "Sintony";
+  background-color: $background;
+  color: black;
 }
 </style>
