@@ -10,3 +10,5 @@ export default defineComponent({
   components: {},
 });
 </script>
+
+<style lang="scss"></style>

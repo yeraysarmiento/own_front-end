@@ -5,14 +5,18 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
+    "test-dev": "vue-cli-service test:unit --watchAll --coverage",
+    "test": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "prepare": "husky install"
   },
   "dependencies": {
+    "@fontsource/lora": "^4.5.1",
+    "@fontsource/sintony": "^4.5.0",
     "core-js": "^3.6.5",
     "husky": "^7.0.4",
     "vue": "^3.0.0",
+    "@vue/test-utils": "^2.0.0-0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },
@@ -30,7 +34,6 @@
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/eslint-config-typescript": "^7.0.0",
-    "@vue/test-utils": "^2.0.0-0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.20.2",

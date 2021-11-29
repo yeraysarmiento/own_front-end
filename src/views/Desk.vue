@@ -1,14 +1,17 @@
 <template>
-  <div class="navigator"></div>
+  <div class="desk"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Nav",
-  props: {},
+  name: "Desk",
+  components: {},
+  data() {
+    return {};
+  },
 });
 </script>
 
-<style scoped lang="scss"></style>
+<style lang="scss"></style>

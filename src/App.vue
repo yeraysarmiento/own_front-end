@@ -1,22 +1,42 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="app">
+    <OwnHeader />
+    <router-view />
   </div>
-  <router-view />
 </template>
 
+<script>
+import "@fontsource/sintony";
+import "@fontsource/lora";
+
+import { defineComponent } from "vue";
+import OwnHeader from "./components/OwnHeader/OwnHeader.vue";
+
+export default defineComponent({
+  name: "app",
+  components: {
+    OwnHeader,
+  },
+});
+</script>
+
 <style lang="scss">
-#nav {
-  padding: 30px;
+@import "./assets/styles/_variables.scss";
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Sintony";
+  background-color: $main-color;
+  color: black;
 }
 </style>
