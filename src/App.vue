@@ -1,6 +1,6 @@
 <template>
   <div class="app">
-    <OwnMenu />
+    <OwnHeader />
     <router-view />
   </div>
 </template>
@@ -10,12 +10,12 @@ import "@fontsource/sintony";
 import "@fontsource/lora";
 
 import { defineComponent } from "vue";
-import OwnMenu from "./components/OwnMenu/OwnMenu.vue";
+import OwnHeader from "./components/OwnHeader/OwnHeader.vue";
 
 export default defineComponent({
   name: "app",
   components: {
-    OwnMenu,
+    OwnHeader,
   },
 });
 </script>

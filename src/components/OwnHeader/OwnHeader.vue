@@ -18,7 +18,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "OwnMenu",
+  name: "OwnHeader",
   props: {},
   data() {
     return {
@@ -98,7 +98,7 @@ export default defineComponent({
   right: 100vw;
   bottom: 0;
   flex-direction: column;
-  transition: left 0.3, right 0.3;
+  transition: left 0.5s, right 0.5s;
 
   &.nav--open {
     left: 0;
