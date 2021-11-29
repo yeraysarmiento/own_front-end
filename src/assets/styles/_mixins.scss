@@ -71,11 +71,19 @@
     border-radius: 25px;
     border: 1px dashed black;
     padding-left: 20px;
+
+    &.wrong {
+      border: 1px solid red;
+    }
   }
 
   & label {
     font-size: 18px;
     padding: 20px 0 10px 15px;
+
+    &.wrong {
+      color: red;
+    }
   }
 
   .button {

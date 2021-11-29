@@ -6,21 +6,30 @@
       <input id="username" v-model="username" placeholder="Mario Gonzalez" />
       <label for="email" type="email">Username:</label>
       <input id="email" v-model="email" placeholder="mario@minidefuet.com" />
-      <label for="password">Password:</label>
+      <label for="password" :class="isWrong ? 'wrong' : ''">Password:</label>
       <input
         id="password"
         type="password"
         v-model="password"
         placeholder="**********"
+        :class="isWrong ? 'wrong' : ''"
       />
-      <label for="password">Repeat password:</label>
+      <label for="password" :class="isWrong ? 'wrong' : ''"
+        >Repeat password:</label
+      >
       <input
         id="password"
         type="password"
         v-model="password"
         placeholder="**********"
+        :class="isWrong ? 'wrong' : ''"
       />
-      <input class="button" type="submit" value="Register" />
+      <input
+        class="button"
+        type="submit"
+        value="Register"
+        disabled="isDisabled"
+      />
     </form>
     <p class="signup">I already have an account</p>
     <div class="go-back">_Go back</div>
@@ -33,6 +42,12 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "Register",
   components: {},
+  data() {
+    return {
+      isWrong: true,
+      isDisabled: true,
+    };
+  },
 });
 </script>
 
