@@ -68,7 +68,7 @@ export default defineComponent({
 
   &__element {
     border: 1px solid black;
-    transition: transform 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
     &--first {
       .burger--open & {
