@@ -47,9 +47,10 @@ export default defineComponent({
 .own-login {
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 100%;
   margin: 0 auto;
   margin-top: 50%;
+  max-width: 250px;
 }
 
 .login-title {

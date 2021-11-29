@@ -38,11 +38,11 @@ export default defineComponent({
 
 .header {
   position: fixed;
-  top: 0;
   align-items: center;
+  justify-content: space-between;
+  top: 0;
   width: 100vw;
   display: flex;
-  justify-content: space-between;
   padding: 5px 30px 5px 30px;
   height: 80px;
 }

@@ -34,4 +34,8 @@ body {
   background-color: $main-color;
   color: black;
 }
+
+.container {
+  padding: 0 30px;
+}
 </style>
