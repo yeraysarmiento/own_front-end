@@ -99,6 +99,7 @@ export default defineComponent({
     position: absolute;
     right: 30px;
     padding: 0;
+    min-width: 250px;
   }
 }
 </style>
