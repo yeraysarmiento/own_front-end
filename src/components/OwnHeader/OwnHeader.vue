@@ -18,7 +18,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" scoped>
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -38,6 +38,7 @@ export default defineComponent({
 
 .header {
   position: fixed;
+  top: 0;
   align-items: center;
   width: 100vw;
   display: flex;

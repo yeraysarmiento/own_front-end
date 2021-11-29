@@ -1,6 +1,6 @@
 <template>
-  <div class="app">
-    <OwnHeader />
+  <OwnHeader />
+  <div class="container">
     <router-view />
   </div>
 </template>
@@ -29,14 +29,13 @@ export default defineComponent({
   box-sizing: border-box;
 }
 
-h1 {
-  margin: 0;
-  padding: 0;
-}
-
 body {
   font-family: "Sintony";
   background-color: $main-color;
   color: black;
+}
+
+.container {
+  margin-top: 100px;
 }
 </style>
