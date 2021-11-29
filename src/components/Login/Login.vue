@@ -50,6 +50,7 @@ export default defineComponent({
   flex-direction: column;
   width: 100%;
   margin: 150px 0;
+  padding: 0 30px;
 }
 
 .login-title {
@@ -78,9 +79,10 @@ export default defineComponent({
 
 @media (min-width: $mobile) {
   .own-login {
-    max-width: 250px;
+    max-width: 300px;
     position: absolute;
     right: 30px;
+    padding: 0;
   }
 }
 </style>
