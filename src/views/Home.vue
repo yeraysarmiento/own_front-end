@@ -1,5 +1,7 @@
 <template>
-  <div class="home"></div>
+  <div class="home">
+    <section class="slogan">Ready<br />to <br />own?</section>
+  </div>
 </template>
 
 <script lang="ts">
@@ -11,4 +13,25 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "@/assets/styles/_mixins.scss";
+
+.home {
+  height: 100vh;
+  background-image: url("./../../public/img/background-own.png");
+  background-size: cover;
+  background-repeat: none;
+  background-position-x: -550px;
+  display: flex;
+  align-items: end;
+}
+
+.slogan {
+  font-size: 35px;
+  margin: 30px;
+  color: white;
+  width: 100vw;
+  border-bottom: 1px solid white;
+  padding-bottom: 25px;
+}
+</style>

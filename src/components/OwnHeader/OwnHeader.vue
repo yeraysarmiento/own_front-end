@@ -6,7 +6,11 @@
       <li class="nav__element nav__element--register">Register</li>
       <li class="nav__element nav__element--login">Login</li>
     </ul>
-    <div class="burger" @click="isClicked = !isClicked" :class="isClicked ? 'burger--open' : ''">
+    <div
+      class="burger"
+      @click="isClicked = !isClicked"
+      :class="isClicked ? 'burger--open' : ''"
+    >
       <div class="burger__element burger__element--first"></div>
       <div class="burger__element burger__element--middle"></div>
       <div class="burger__element burger__element--last"></div>
@@ -14,7 +18,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" scoped>
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -34,6 +38,7 @@ export default defineComponent({
 
 .header {
   position: fixed;
+  top: 0;
   align-items: center;
   width: 100vw;
   display: flex;
