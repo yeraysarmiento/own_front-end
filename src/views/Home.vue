@@ -20,8 +20,8 @@ export default defineComponent({
   height: 100vh;
   overflow: hidden;
   background-image: url("./../../public/img/background-own.png");
+  object-fit: cover;
   background-size: cover;
-  background-repeat: no-repeat;
   background-position-x: -550px;
   display: flex;
   align-items: end;
@@ -34,5 +34,11 @@ export default defineComponent({
   width: 100vw;
   border-bottom: 1px solid white;
   padding-bottom: 25px;
+}
+
+@media (min-width: $mobile) {
+  .home {
+    background-position-x: 0;
+  }
 }
 </style>

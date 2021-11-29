@@ -6,6 +6,10 @@ import NotFound from "../views/NotFound.vue";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
+    redirect: "/home",
+  },
+  {
+    path: "/home",
     name: "Home",
     component: Home,
   },

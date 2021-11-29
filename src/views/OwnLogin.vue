@@ -1,6 +1,5 @@
 <template>
   <Login />
-  <div class="go-back">_Go back</div>
 </template>
 
 <script lang="ts" scoped>
@@ -13,11 +12,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
-@import "../assets/styles/_mixins.scss";
-
-.go-back {
-  @include lora-text;
-  margin-top: 75px;
-}
-</style>
+<style lang="scss"></style>
