@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 import OwnLogin from "../views/OwnLogin.vue";
+import NotFound from "../views/NotFound.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -13,6 +14,11 @@ const routes: Array<RouteRecordRaw> = [
     name: "OwnLogin",
     component: OwnLogin,
   },
+  {
+    path: "/:catchAll(.*)",
+    component: NotFound,
+  },
+
   // {
   //   path: "/desk",
   //   name: "Desk",
