@@ -18,9 +18,10 @@ export default defineComponent({
 
 .home {
   height: 100vh;
+  overflow: hidden;
   background-image: url("./../../public/img/background-own.png");
   background-size: cover;
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-position-x: -550px;
   display: flex;
   align-items: end;

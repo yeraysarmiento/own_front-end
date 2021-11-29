@@ -38,12 +38,13 @@ export default defineComponent({
 
 .header {
   position: fixed;
-  top: 0;
   align-items: center;
+  justify-content: space-between;
+  top: 0;
   width: 100vw;
   display: flex;
-  justify-content: space-between;
   padding: 5px 30px 5px 30px;
+  height: 80px;
 }
 
 .main-logo {
@@ -67,7 +68,7 @@ export default defineComponent({
 
   &__element {
     border: 1px solid black;
-    transition: transform 300ms cubic-bezier(0.445, 0.05, 0.55, 0.95);
+    transition: transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
     &--first {
       .burger--open & {
