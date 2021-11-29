@@ -34,8 +34,4 @@ body {
   background-color: $main-color;
   color: black;
 }
-
-.container {
-  margin-top: 100px;
-}
 </style>

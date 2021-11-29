@@ -44,6 +44,7 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   padding: 5px 30px 5px 30px;
+  height: 80px;
 }
 
 .main-logo {
