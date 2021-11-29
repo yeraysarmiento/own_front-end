@@ -6,6 +6,8 @@
 
 <script>
 import "@fontsource/sintony";
+import "@fontsource/lora";
+
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -22,9 +24,14 @@ export default defineComponent({
   box-sizing: border-box;
 }
 
+h1 {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: "Sintony";
-  background-color: $background;
+  background-color: $main-color;
   color: black;
 }
 </style>

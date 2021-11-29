@@ -1,10 +1,11 @@
 <template>
   <div class="desk">
     <div class="header">
-      <img class="logo" src="../../public/img/amallective_logo.png" width="100" height="100" />
+      <h1 class="main-logo" :class="isClicked ? 'main-logo--open' : ''">own.</h1>
+      <!-- <img class="logo-board" src="../../public/img/amallective_logo.png" width="100" height="100" /> -->
       <ul class="nav" :class="isClicked ? 'nav--open' : ''">
-        <li class="nav__element">Register</li>
-        <li class="nav__element nav__element--highlight">Login</li>
+        <li class="nav__element nav__element--register">Register</li>
+        <li class="nav__element nav__element--login">Login</li>
       </ul>
       <div class="burger" @click="isClicked = !isClicked" :class="isClicked ? 'burger--open' : ''">
         <div class="burger__element burger__element--first"></div>
@@ -30,11 +31,20 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import "../assets/styles/_variables.scss";
+@import "../assets/styles/_mixins.scss";
+
 .header {
   position: fixed;
-  display: flex;
+  align-items: center;
   width: 100vw;
+  display: flex;
   justify-content: space-between;
+  padding: 5px 30px 5px 30px;
+}
+
+.main-logo {
+  @include main-logo;
 }
 
 .logo {
@@ -50,9 +60,6 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  position: fixed;
-  right: 15px;
-  top: 15px;
   z-index: 1;
 
   &__element {
@@ -82,6 +89,8 @@ export default defineComponent({
 }
 
 .nav {
+  @include nav;
+  @include flex-center;
   padding: 0;
   background-color: black;
   color: #fff;
@@ -90,15 +99,26 @@ export default defineComponent({
   left: -100vw;
   right: 100vw;
   bottom: 0;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   transition: left 0.3, right 0.3;
 
   &.nav--open {
     left: 0;
     right: 0;
+  }
+
+  &__element {
+    @include flex-center;
+
+    &.nav__element--register {
+      @include button;
+      background-color: black;
+      color: white;
+    }
+
+    &.nav__element--login {
+      @include button;
+    }
   }
 }
 </style>
