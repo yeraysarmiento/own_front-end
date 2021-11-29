@@ -35,7 +35,7 @@ body {
   color: black;
 }
 
-.container {
-  padding: 0 30px;
-}
+// .container {
+//   padding: 0 30px;
+// }
 </style>

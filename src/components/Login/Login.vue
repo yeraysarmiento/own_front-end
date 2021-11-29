@@ -14,6 +14,7 @@
       <input class="button" type="submit" value="Submit" />
     </form>
     <p class="signup">Not an owner yet? Sign up!</p>
+    <div class="go-back">_Go back</div>
   </div>
 </template>
 
@@ -40,7 +41,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../../assets/styles/_variables.scss";
 @import "../../assets/styles/_mixins.scss";
 
@@ -48,8 +49,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 0 auto;
-  margin-top: 50%;
+  margin: 150px 0;
 }
 
 .login-title {
@@ -71,9 +71,16 @@ export default defineComponent({
   cursor: pointer;
 }
 
+.go-back {
+  @include lora-text;
+  margin-top: 75px;
+}
+
 @media (min-width: $mobile) {
   .own-login {
     max-width: 250px;
+    position: absolute;
+    right: 30px;
   }
 }
 </style>
