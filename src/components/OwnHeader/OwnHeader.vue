@@ -6,7 +6,11 @@
       <li class="nav__element nav__element--register">Register</li>
       <li class="nav__element nav__element--login">Login</li>
     </ul>
-    <div class="burger" @click="isClicked = !isClicked" :class="isClicked ? 'burger--open' : ''">
+    <div
+      class="burger"
+      @click="isClicked = !isClicked"
+      :class="isClicked ? 'burger--open' : ''"
+    >
       <div class="burger__element burger__element--first"></div>
       <div class="burger__element burger__element--middle"></div>
       <div class="burger__element burger__element--last"></div>
