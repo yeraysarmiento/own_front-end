@@ -17,6 +17,8 @@
   font-size: 45px;
   font-weight: 400;
   font-style: italic;
+  position: relative;
+  z-index: 1;
 
   &.main-logo--open {
     color: $main-color;
@@ -46,6 +48,10 @@
   color: black;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px;
 
+  &:active {
+    box-shadow: none;
+  }
+
   &:hover {
     text-decoration: underline;
   }
@@ -61,6 +67,7 @@
   justify-content: center;
   padding-top: 25px;
   margin-bottom: 25px;
+  position: relative;
 
   & input {
     @include lora-text;
@@ -69,8 +76,6 @@
     border-radius: 25px;
     border: 1px dashed black;
     padding-left: 20px;
-    position: relative;
-    z-index: -1;
 
     &.wrong {
       border: 1px solid red;
@@ -92,13 +97,18 @@
     align-self: end;
     margin-top: 50px;
     text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px;
+    cursor: pointer;
+
+    &:active {
+      box-shadow: none;
+    }
   }
 
   ::placeholder {
     @include lora-text;
     font-size: 15px;
     opacity: 0.5;
-    z-index: -1;
   }
 
   :focus {
