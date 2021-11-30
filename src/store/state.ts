@@ -1,5 +1,5 @@
 const state = {
-  user: [],
+  currentUser: [],
   boards: [],
   papers: [],
 };

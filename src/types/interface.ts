@@ -44,3 +44,8 @@ export interface Board {
   social: Social;
   papers: string[];
 }
+// export interface State {
+//   currentUser: User;
+//   boards: Board;
+//   papers: Paper;
+// }
