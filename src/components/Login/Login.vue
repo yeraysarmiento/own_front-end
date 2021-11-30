@@ -30,7 +30,7 @@
         :disabled="isDisabled"
         :class="isDisabled ? 'disabled' : ''"
       >
-        Submit
+        {{ isWrong ? "Try again!" : "Submit" }}
       </button>
     </form>
     <router-link to="/register">
@@ -45,6 +45,7 @@
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
 import { mapActions, mapGetters } from "vuex";
+import { UserLogin } from "@/types/interface";
 
 export default defineComponent({
   name: "Login",
@@ -63,18 +64,22 @@ export default defineComponent({
   methods: {
     ...mapActions(["loginUser"]),
     checkForm() {
-      console.log("hola");
       if (this.username.length > 5 && this.password.length > 5) {
         this.isDisabled = false;
       }
     },
-    onSubmit() {
+    async onSubmit() {
       if (this.username !== "" && this.password !== "") {
-        const userData = {
+        console.log("hola");
+        const userData: UserLogin = {
           username: this.username,
           password: this.password,
         };
-        this.loginUser(userData);
+        try {
+          await this.loginUser(userData);
+        } catch (error) {
+          this.isWrong = true;
+        }
       }
     },
   },

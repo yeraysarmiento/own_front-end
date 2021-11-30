@@ -1,9 +1,7 @@
 const state = {
-  currentUser: localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user") || "")
-    : "",
+  user: [],
   boards: [],
-  posts: [],
+  papers: [],
 };
 
 export default state;
