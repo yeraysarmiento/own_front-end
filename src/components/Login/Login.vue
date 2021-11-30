@@ -26,8 +26,12 @@
         disabled="isDisabled"
       />
     </form>
-    <p class="signup">Not an owner yet? Sign up!</p>
-    <div class="go-back">_Go back</div>
+    <router-link to="/register">
+      <p class="signup">Not an owner yet? Sign up!</p>
+    </router-link>
+    <router-link to="/home">
+      <div class="go-back">_Go back</div>
+    </router-link>
   </div>
 </template>
 

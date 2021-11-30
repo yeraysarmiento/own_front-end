@@ -1,21 +1,28 @@
-import { shallowMount } from "@vue/test-utils";
+import { mount } from "@vue/test-utils";
 import OwnHeader from "@/components/OwnHeader/OwnHeader.vue";
+import router from "@/router";
 
 describe("Given an OwnMenu component", () => {
   describe("When it is rendered", () => {
     test("Then it should render a heading with 'own.' text", () => {
       const title = "own.";
-      const wrapper = shallowMount(OwnHeader);
+      const wrapper = mount(OwnHeader, {
+        global: {
+          plugins: [router],
+        },
+      });
 
       expect(wrapper.text()).toContain(title);
     });
     test("Then it should render 2 li elements with 'Login' & 'Register", () => {
-      const loginText = "Login";
-      const registerText = "Register";
-      const wrapper = shallowMount(OwnHeader);
+      const registerText =
+        '<li class="nav__element nav__element--register">Register</li>';
+      const loginText =
+        '<li class="nav__element nav__element--login">Login</li>';
+      const wrapper = mount(OwnHeader);
 
-      expect(wrapper.find("ul li:nth-of-type(2)").text()).toBe(loginText);
-      expect(wrapper.find("ul li:nth-of-type(1)").text()).toBe(registerText);
+      expect(wrapper.html()).toContain(loginText);
+      expect(wrapper.html()).toContain(registerText);
     });
   });
 });
