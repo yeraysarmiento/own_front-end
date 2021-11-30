@@ -66,6 +66,8 @@ export default defineComponent({
     checkForm() {
       if (this.username.length > 5 && this.password.length > 5) {
         this.isDisabled = false;
+      } else {
+        this.isDisabled = true;
       }
     },
     async onSubmit() {

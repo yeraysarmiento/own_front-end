@@ -66,18 +66,22 @@ export default defineComponent({
   },
   computed: {},
   methods: {
-    checkPasswords() {
+    checkForm() {
       if (this.password !== this.repeatPassword) {
         this.isWrong = true;
+      } else {
+        this.isWrong = false;
       }
 
       if (
         this.username !== "" &&
-        this.password !== "" &&
+        this.email !== "" &&
         this.password !== "" &&
         this.repeatPassword !== ""
       ) {
         this.isDisabled = false;
+      } else {
+        this.isDisabled = true;
       }
     },
     async onSubmit() {
