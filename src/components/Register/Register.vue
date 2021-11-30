@@ -4,7 +4,7 @@
     <form class="register-form" @submit.prevent="onSubmit" autocomplete="off">
       <label for="username" type="text">Username:</label>
       <input id="username" v-model="username" placeholder="Mario Gonzalez" />
-      <label for="email" type="email">Username:</label>
+      <label for="email" type="email">Email:</label>
       <input id="email" v-model="email" placeholder="mario@minidefuet.com" />
       <label for="password" :class="isWrong ? 'wrong' : ''">Password:</label>
       <input

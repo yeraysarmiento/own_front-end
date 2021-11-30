@@ -77,6 +77,7 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
+  z-index: 1;
 
   &__element {
     border: 1px solid black;
@@ -117,6 +118,7 @@ export default defineComponent({
   bottom: 0;
   flex-direction: column;
   transition: left 0.5s, right 0.5s;
+  z-index: -1;
 
   &.nav--open {
     left: 0;

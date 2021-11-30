@@ -17,9 +17,6 @@
   font-size: 45px;
   font-weight: 400;
   font-style: italic;
-  z-index: 10;
-  color: red;
-  z-index: 2;
 
   &.main-logo--open {
     color: $main-color;
@@ -32,7 +29,6 @@
   font-weight: lighter;
   list-style: none;
   font-size: 22px;
-  z-index: 1;
 }
 
 @mixin button {
@@ -73,6 +69,8 @@
     border-radius: 25px;
     border: 1px dashed black;
     padding-left: 20px;
+    position: relative;
+    z-index: -1;
 
     &.wrong {
       border: 1px solid red;
@@ -100,7 +98,7 @@
     @include lora-text;
     font-size: 15px;
     opacity: 0.5;
-    z-index: -5;
+    z-index: -1;
   }
 
   :focus {
