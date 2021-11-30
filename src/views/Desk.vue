@@ -8,7 +8,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
   name: "Desk",
@@ -21,7 +21,14 @@ export default defineComponent({
       username: "",
     };
   },
-  methods: {},
+  methods: {
+    ...mapActions(["getToken"]),
+  },
+  mounted() {
+    if (localStorage.getItem("user")) {
+      this.getToken();
+    }
+  },
 });
 </script>
 
