@@ -44,7 +44,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 import { UserLogin } from "@/types/interface";
 
 export default defineComponent({
@@ -58,14 +58,13 @@ export default defineComponent({
       isWrong: false,
     };
   },
-  computed: {
-    ...mapGetters(["checkLogin"]),
-  },
   methods: {
     ...mapActions(["loginUser"]),
     checkForm() {
       if (this.username.length > 5 && this.password.length > 5) {
         this.isDisabled = false;
+      } else {
+        this.isDisabled = true;
       }
     },
     async onSubmit() {
@@ -76,6 +75,7 @@ export default defineComponent({
         };
         try {
           await this.loginUser(userData);
+          this.isWrong = false;
         } catch (error) {
           this.isWrong = true;
         }

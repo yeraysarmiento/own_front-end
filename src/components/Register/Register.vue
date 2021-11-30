@@ -1,11 +1,23 @@
 <template>
   <div class="own-register">
     <h2 class="register-title">REGISTER</h2>
-    <form class="register-form" @submit.prevent="onSubmit" autocomplete="off">
+    <form
+      class="register-form"
+      @submit.prevent="onSubmit"
+      autocomplete="off"
+      @change="checkForm"
+    >
       <label for="username" type="text">Username:</label>
       <input id="username" v-model="username" placeholder="Mario Gonzalez" />
-      <label for="email" type="email">Email:</label>
-      <input id="email" v-model="email" placeholder="mario@minidefuet.com" />
+      <label for="email" type="email" :class="isWrongEmail ? 'wrong' : ''"
+        >Email:</label
+      >
+      <input
+        id="email"
+        v-model="email"
+        placeholder="mario@minidefuet.com"
+        :class="isWrongEmail ? 'wrong' : ''"
+      />
       <label for="password" :class="isWrong ? 'wrong' : ''">Password:</label>
       <input
         id="password"
@@ -18,18 +30,20 @@
         >Repeat password:</label
       >
       <input
-        id="password"
+        id="repeatPassword"
         type="password"
-        v-model="password"
+        v-model="repeatPassword"
         placeholder="**********"
         :class="isWrong ? 'wrong' : ''"
       />
-      <input
+      <button
         class="button"
         type="submit"
-        value="Register"
-        disabled="isDisabled"
-      />
+        :disabled="isDisabled"
+        :class="isDisabled ? 'disabled' : ''"
+      >
+        Register
+      </button>
     </form>
     <router-link to="/login">
       <p class="signup">I already have an account</p>
@@ -42,15 +56,67 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
+import { UserRegister } from "@/types/interface";
 
 export default defineComponent({
   name: "Register",
   components: {},
   data() {
     return {
-      isWrong: true,
+      username: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      isWrong: false,
       isDisabled: true,
+      isWrongEmail: false,
     };
+  },
+  computed: {},
+  methods: {
+    ...mapActions(["registerUser"]),
+    checkForm() {
+      if (
+        this.username !== "" &&
+        this.email !== "" &&
+        this.password !== "" &&
+        this.repeatPassword !== ""
+      ) {
+        if (this.password !== this.repeatPassword) {
+          this.isWrong = true;
+        } else {
+          if (!this.validEmail(this.email)) {
+            this.isWrongEmail = true;
+          }
+          this.isWrong = false;
+          this.isDisabled = false;
+        }
+      } else {
+        this.isDisabled = true;
+      }
+    },
+    validEmail(email: string) {
+      const regexValidation = RegExp(
+        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      );
+      return regexValidation.test(email);
+    },
+    async onSubmit() {
+      if (this.username !== "" && this.password !== "") {
+        const userData: UserRegister = {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+        };
+        try {
+          await this.registerUser(userData);
+          this.$router.push("/login");
+        } catch (error) {
+          this.isWrong = true;
+        }
+      }
+    },
   },
 });
 </script>

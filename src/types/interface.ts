@@ -2,7 +2,7 @@ export interface User {
   username: string;
   email: string;
   password: string;
-  boards: string[];
+  boards: Array<string>;
 }
 
 export interface UserRegister {
@@ -25,7 +25,7 @@ export interface Paper {
   location: string;
   photograph: string;
   text: string;
-  images: string[];
+  images: Array<string>;
   deleted: boolean;
 }
 
@@ -42,10 +42,10 @@ export interface Board {
   logo: string;
   category: string;
   social: Social;
-  papers: string[];
+  papers: Array<string>;
 }
-// export interface State {
-//   currentUser: User;
-//   boards: Board;
-//   papers: Paper;
-// }
+export interface State {
+  currentUser: User;
+  boards: Array<Board> | [];
+  papers: Array<Paper> | [];
+}

@@ -59,6 +59,7 @@ export default defineComponent({
   padding: 5px 30px 5px 30px;
   height: 80px;
   z-index: 1;
+  background-color: $main-color;
 }
 
 .main-logo {
