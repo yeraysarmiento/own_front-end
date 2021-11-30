@@ -27,6 +27,8 @@ export default defineComponent({
   mounted() {
     if (localStorage.getItem("user")) {
       this.getToken();
+    } else {
+      this.$router.push("/login");
     }
   },
 });

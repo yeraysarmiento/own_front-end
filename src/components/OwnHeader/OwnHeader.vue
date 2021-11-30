@@ -16,7 +16,16 @@
         <li class="nav__element nav__element--register">Register</li>
       </router-link>
       <router-link to="/login">
-        <li class="nav__element nav__element--login">Login</li>
+        <li class="nav__element nav__element--login" v-if="!isAuthenticated">
+          Login
+        </li>
+        <li
+          class="nav__element nav__element--logout"
+          @click="logoutUser"
+          v-else
+        >
+          Logout
+        </li>
       </router-link>
     </ul>
     <div
@@ -33,6 +42,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
+import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
   name: "OwnHeader",
@@ -41,6 +51,10 @@ export default defineComponent({
     return {
       isClicked: false,
     };
+  },
+  methods: {
+    ...mapState(["isAuthenticated"]),
+    ...mapActions(["logoutUser"]),
   },
 });
 </script>
@@ -138,6 +152,12 @@ export default defineComponent({
     &.nav__element--login {
       @include button;
       font-size: 18px;
+    }
+
+    &.nav__element--logout {
+      @include button;
+      font-size: 18px;
+      background-color: $delete-color;
     }
   }
 }

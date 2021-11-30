@@ -9,6 +9,7 @@ const mutations = {
   },
   logoutUser(state: any): void {
     state.isAuthenticated = false;
+    state.currentUser = {};
   },
 };
 

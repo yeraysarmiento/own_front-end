@@ -12,13 +12,13 @@ const actions = {
     const { data: allData } = await axios.get(`${urlOWN}user`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+
     const userData = {
       id: allData.id,
       username: allData.username,
       email: allData.email,
       boards: allData.boards,
     };
-    localStorage.setItem("user", JSON.stringify(token));
     commit("loadUser", userData);
     commit("loginUser");
   },
@@ -33,7 +33,12 @@ const actions = {
     user: UserLogin
   ): Promise<void> {
     const { data: token } = await axios.post(`${urlOWN}user/login/`, user);
+    localStorage.setItem("user", JSON.stringify(token.user));
     dispatch("getProfile", token);
+  },
+
+  logoutUser({ commit }: ActionContext<State, State>) {
+    commit("logoutUser");
   },
 
   async registerUser(
