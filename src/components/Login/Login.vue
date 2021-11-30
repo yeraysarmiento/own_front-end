@@ -89,7 +89,6 @@ export default defineComponent({
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
-  z-index: -1;
 }
 
 .go-back {
