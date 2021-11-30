@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ActionContext } from "vuex";
 import { State, UserLogin, UserRegister } from "@/types/interface";
+import router from "@/router";
 
 const urlOWN = process.env.VUE_APP_OWN_SERVER;
 
@@ -38,19 +39,25 @@ const actions = {
   },
 
   logoutUser({ commit }: ActionContext<State, State>) {
+    router.push("/home");
+    localStorage.removeItem("user");
     commit("logoutUser");
   },
 
   async registerUser(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    { commit }: ActionContext<State, State>,
+    { commit, dispatch }: ActionContext<State, State>,
     user: UserRegister
   ): Promise<void> {
     const { data: userData } = await axios.post(
       `${urlOWN}user/register/`,
       user
     );
-    localStorage.setItem("user", JSON.stringify(userData));
+    const userLogin = {
+      username: user.username,
+      password: user.password,
+    };
+    dispatch("loginUser", userLogin);
   },
 };
 

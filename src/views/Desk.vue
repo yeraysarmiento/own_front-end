@@ -3,6 +3,9 @@
     <h2 class="desk__title" @click="getUsername">
       Welcome <span class="desk__username">{{ currentUser.username }}</span>
     </h2>
+    <ul class="desk__gallery">
+      <li class="desk__board"></li>
+    </ul>
   </div>
 </template>
 
@@ -36,6 +39,7 @@ export default defineComponent({
 
 <style lang="scss">
 @import "../assets/styles/_mixins.scss";
+@import "../assets/styles/_variables.scss";
 
 .desk {
   display: flex;

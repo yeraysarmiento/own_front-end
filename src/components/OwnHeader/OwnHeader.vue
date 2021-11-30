@@ -141,17 +141,17 @@ export default defineComponent({
       @include button;
       background-color: black;
       color: white;
-      font-size: px;
+      font-size: 20px;
     }
 
     &.nav__element--login {
       @include button;
-      font-size: 18px;
+      font-size: 20px;
     }
 
     &.nav__element--logout {
       @include button;
-      font-size: 18px;
+      font-size: 20px;
       background-color: $delete-color;
     }
   }
