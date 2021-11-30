@@ -35,6 +35,10 @@ body {
   color: black;
 }
 
+a {
+  text-decoration: none;
+}
+
 // .container {
 //   padding: 0 30px;
 // }

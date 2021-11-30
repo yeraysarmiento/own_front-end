@@ -62,18 +62,13 @@ export default defineComponent({
 
 .main-logo {
   @include main-logo;
-
-  &:visited {
-    text-decoration: none;
-    color: black;
-  }
 }
 
-.logo {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-}
+// .logo {
+//   position: fixed;
+//   top: 15px;
+//   left: 15px;
+// }
 
 .burger {
   height: 25px;
@@ -82,7 +77,6 @@ export default defineComponent({
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
-  z-index: 1;
 
   &__element {
     border: 1px solid black;
