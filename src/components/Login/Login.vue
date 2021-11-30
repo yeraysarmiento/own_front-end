@@ -76,6 +76,7 @@ export default defineComponent({
         };
         try {
           await this.loginUser(userData);
+          this.isWrong = false;
         } catch (error) {
           this.isWrong = true;
         }

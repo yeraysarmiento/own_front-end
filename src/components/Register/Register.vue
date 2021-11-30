@@ -1,7 +1,12 @@
 <template>
   <div class="own-register">
     <h2 class="register-title">REGISTER</h2>
-    <form class="register-form" @submit.prevent="onSubmit" autocomplete="off">
+    <form
+      class="register-form"
+      @submit.prevent="onSubmit"
+      autocomplete="off"
+      @change="checkForm"
+    >
       <label for="username" type="text">Username:</label>
       <input id="username" v-model="username" placeholder="Mario Gonzalez" />
       <label for="email" type="email">Email:</label>
@@ -18,18 +23,20 @@
         >Repeat password:</label
       >
       <input
-        id="password"
+        id="repeatPassword"
         type="password"
-        v-model="password"
+        v-model="repeatPassword"
         placeholder="**********"
         :class="isWrong ? 'wrong' : ''"
       />
-      <input
+      <button
         class="button"
         type="submit"
-        value="Register"
-        disabled="isDisabled"
-      />
+        :disabled="isDisabled"
+        :class="isDisabled ? 'disabled' : ''"
+      >
+        {{ isWrong ? "Try again!" : "Submit" }}
+      </button>
     </form>
     <router-link to="/login">
       <p class="signup">I already have an account</p>
@@ -42,15 +49,51 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
+import { UserRegister } from "@/types/interface";
 
 export default defineComponent({
   name: "Register",
   components: {},
   data() {
     return {
-      isWrong: true,
+      username: "",
+      email: "",
+      password: "",
+      repeatPassword: "",
+      isWrong: false,
       isDisabled: true,
     };
+  },
+  computed: {},
+  methods: {
+    checkPasswords() {
+      if (this.password !== this.repeatPassword) {
+        this.isWrong = true;
+      }
+
+      if (
+        this.username !== "" &&
+        this.password !== "" &&
+        this.password !== "" &&
+        this.repeatPassword !== ""
+      ) {
+        this.isDisabled = false;
+      }
+    },
+    async onSubmit() {
+      if (this.username !== "" && this.password !== "") {
+        const userData: UserRegister = {
+          username: this.username,
+          email: this.email,
+          password: this.password,
+        };
+        try {
+          // await this.registerUser(userData);
+        } catch (error) {
+          this.isWrong = true;
+        }
+      }
+    },
   },
 });
 </script>

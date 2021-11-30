@@ -52,9 +52,14 @@
     box-shadow: none;
   }
 
+  &:focus {
+    border: none;
+  }
+
   &.disabled {
     box-shadow: none;
     text-decoration: none;
+    cursor: inherit;
   }
 }
 
