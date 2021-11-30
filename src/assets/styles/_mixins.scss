@@ -1,5 +1,13 @@
 @import "./_variables.scss";
 
+@mixin own-title {
+  font-family: "Helvetica Neue";
+  font-size: 25px;
+  font-weight: bold;
+  font-style: italic;
+  padding-bottom: 20px;
+}
+
 @mixin lora-text {
   font-family: "Lora";
   font-size: 16px;

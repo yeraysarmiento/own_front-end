@@ -30,7 +30,6 @@ export default defineComponent({
 }
 
 body {
-  font-family: "Sintony";
   background-color: $main-color;
 }
 
@@ -41,8 +40,4 @@ a {
     color: inherit;
   }
 }
-
-// .container {
-//   padding: 0 30px;
-// }
 </style>

@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import OwnLogin from "../views/OwnLogin.vue";
 import OwnRegister from "../views/OwnRegister.vue";
 import NotFound from "../views/NotFound.vue";
+import Desk from "../views/Desk.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -23,6 +24,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/register",
     name: "OwnRegister",
     component: OwnRegister,
+  },
+  {
+    path: "/desk",
+    name: "Desk",
+    component: Desk,
   },
   {
     path: "/:catchAll(.*)",
