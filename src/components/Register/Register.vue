@@ -97,10 +97,10 @@ export default defineComponent({
       }
     },
     validEmail(email: any) {
-      const re =
+      const regexValidation =
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      console.log(re.test(email));
-      return re.test(email);
+      console.log(regexValidation.test(email));
+      return regexValidation.test(email);
     },
     async onSubmit() {
       if (this.username !== "" && this.password !== "") {

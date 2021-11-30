@@ -44,7 +44,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 import { UserLogin } from "@/types/interface";
 
 export default defineComponent({
