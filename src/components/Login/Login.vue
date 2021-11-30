@@ -70,7 +70,6 @@ export default defineComponent({
     },
     async onSubmit() {
       if (this.username !== "" && this.password !== "") {
-        console.log("hola");
         const userData: UserLogin = {
           username: this.username,
           password: this.password,
