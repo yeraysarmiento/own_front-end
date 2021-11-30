@@ -69,6 +69,8 @@
     border-radius: 25px;
     border: 1px dashed black;
     padding-left: 20px;
+    position: relative;
+    z-index: -1;
 
     &.wrong {
       border: 1px solid red;
