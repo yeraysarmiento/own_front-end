@@ -9,8 +9,15 @@
     >
       <label for="username" type="text">Username:</label>
       <input id="username" v-model="username" placeholder="Mario Gonzalez" />
-      <label for="email" type="email">Email:</label>
-      <input id="email" v-model="email" placeholder="mario@minidefuet.com" />
+      <label for="email" type="email" :class="isWrongEmail ? 'wrong' : ''"
+        >Email:</label
+      >
+      <input
+        id="email"
+        v-model="email"
+        placeholder="mario@minidefuet.com"
+        :class="isWrongEmail ? 'wrong' : ''"
+      />
       <label for="password" :class="isWrong ? 'wrong' : ''">Password:</label>
       <input
         id="password"
@@ -35,7 +42,7 @@
         :disabled="isDisabled"
         :class="isDisabled ? 'disabled' : ''"
       >
-        {{ isWrong ? "Try again!" : "Submit" }}
+        Register
       </button>
     </form>
     <router-link to="/login">
@@ -49,6 +56,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 import { UserRegister } from "@/types/interface";
 
 export default defineComponent({
@@ -62,27 +70,37 @@ export default defineComponent({
       repeatPassword: "",
       isWrong: false,
       isDisabled: true,
+      isWrongEmail: false,
     };
   },
   computed: {},
   methods: {
+    ...mapActions(["registerUser"]),
     checkForm() {
-      if (this.password !== this.repeatPassword) {
-        this.isWrong = true;
-      } else {
-        this.isWrong = false;
-      }
-
       if (
         this.username !== "" &&
         this.email !== "" &&
         this.password !== "" &&
         this.repeatPassword !== ""
       ) {
-        this.isDisabled = false;
+        if (this.password !== this.repeatPassword) {
+          this.isWrong = true;
+        } else {
+          if (!this.validEmail(this.email)) {
+            this.isWrongEmail = true;
+          }
+          this.isWrong = false;
+          this.isDisabled = false;
+        }
       } else {
         this.isDisabled = true;
       }
+    },
+    validEmail(email: any) {
+      const re =
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      console.log(re.test(email));
+      return re.test(email);
     },
     async onSubmit() {
       if (this.username !== "" && this.password !== "") {
@@ -92,7 +110,8 @@ export default defineComponent({
           password: this.password,
         };
         try {
-          // await this.registerUser(userData);
+          await this.registerUser(userData);
+          this.$router.push("/login");
         } catch (error) {
           this.isWrong = true;
         }

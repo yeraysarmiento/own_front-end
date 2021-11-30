@@ -1,7 +1,9 @@
+import { State } from "@/types/interface";
+
 const state = {
-  currentUser: [],
+  currentUser: {},
   boards: [],
   papers: [],
 };
 
-export default state;
+export default state as unknown as State;

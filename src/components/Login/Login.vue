@@ -58,9 +58,6 @@ export default defineComponent({
       isWrong: false,
     };
   },
-  computed: {
-    ...mapGetters(["checkLogin"]),
-  },
   methods: {
     ...mapActions(["loginUser"]),
     checkForm() {
