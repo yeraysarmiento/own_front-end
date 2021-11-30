@@ -45,7 +45,7 @@ export interface Board {
   papers: Array<string>;
 }
 export interface State {
-  currentUser: User | any;
+  currentUser: User;
   boards: Array<Board> | [];
   papers: Array<Paper> | [];
 }
