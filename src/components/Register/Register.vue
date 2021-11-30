@@ -31,8 +31,12 @@
         disabled="isDisabled"
       />
     </form>
-    <p class="signup">I already have an account</p>
-    <div class="go-back">_Go back</div>
+    <router-link to="/login">
+      <p class="signup">I already have an account</p>
+    </router-link>
+    <router-link to="/home">
+      <div class="go-back">_Go back</div>
+    </router-link>
   </div>
 </template>
 

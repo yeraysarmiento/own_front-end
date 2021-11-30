@@ -1,10 +1,23 @@
 <template>
   <div class="header">
-    <h1 class="main-logo" :class="isClicked ? 'main-logo--open' : ''">own.</h1>
+    <router-link to="/home">
+      <h1 class="main-logo" :class="isClicked ? 'main-logo--open' : ''">
+        own.
+      </h1></router-link
+    >
+
     <!-- <img class="logo-board" src="../../public/img/amallective_logo.png" width="100" height="100" /> -->
-    <ul class="nav" :class="isClicked ? 'nav--open' : ''">
-      <li class="nav__element nav__element--register">Register</li>
-      <li class="nav__element nav__element--login">Login</li>
+    <ul
+      class="nav"
+      @click="isClicked = !isClicked"
+      :class="isClicked ? 'nav--open' : ''"
+    >
+      <router-link to="/register">
+        <li class="nav__element nav__element--register">Register</li>
+      </router-link>
+      <router-link to="/login">
+        <li class="nav__element nav__element--login">Login</li>
+      </router-link>
     </ul>
     <div
       class="burger"
@@ -49,6 +62,11 @@ export default defineComponent({
 
 .main-logo {
   @include main-logo;
+
+  &:visited {
+    text-decoration: none;
+    color: black;
+  }
 }
 
 .logo {
