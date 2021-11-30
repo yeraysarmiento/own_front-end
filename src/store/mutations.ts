@@ -1,7 +1,7 @@
-import { User } from "@/types/interface";
+import { State, User } from "@/types/interface";
 
 const mutations = {
-  loadUser(state: any, payload: User): void {
+  loadUser(state: State, payload: User): void {
     state.currentUser = payload;
   },
 };

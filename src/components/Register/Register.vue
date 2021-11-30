@@ -96,11 +96,10 @@ export default defineComponent({
         this.isDisabled = true;
       }
     },
-    validEmail(email: any) {
-      const regexValidation =
-        // eslint-disable-next-line no-useless-escape
-        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      console.log(regexValidation.test(email));
+    validEmail(email: string) {
+      const regexValidation = RegExp(
+        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      );
       return regexValidation.test(email);
     },
     async onSubmit() {
