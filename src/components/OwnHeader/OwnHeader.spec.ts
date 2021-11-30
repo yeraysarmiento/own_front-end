@@ -1,6 +1,7 @@
 import { mount } from "@vue/test-utils";
 import OwnHeader from "@/components/OwnHeader/OwnHeader.vue";
 import router from "@/router";
+import state from "../../../tests/mockedState";
 
 describe("Given an OwnMenu component", () => {
   describe("When it is rendered", () => {
@@ -9,6 +10,11 @@ describe("Given an OwnMenu component", () => {
       const wrapper = mount(OwnHeader, {
         global: {
           plugins: [router],
+          mocks: {
+            $store: {
+              state,
+            },
+          },
         },
       });
 
@@ -21,7 +27,16 @@ describe("Given an OwnMenu component", () => {
       //   '<li class="nav__element nav__element--login">Login</li>';
       const logoutText =
         '<li class="nav__element nav__element--logout"> Logout </li>';
-      const wrapper = mount(OwnHeader);
+      const wrapper = mount(OwnHeader, {
+        global: {
+          plugins: [router],
+          mocks: {
+            $store: {
+              state,
+            },
+          },
+        },
+      });
 
       expect(wrapper.html()).toContain(logoutText);
       expect(wrapper.html()).toContain(registerText);

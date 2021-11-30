@@ -1,51 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638263639877" clover="3.2.0">
-  <project timestamp="1638263639877" name="All files">
-    <metrics statements="28" coveredstatements="25" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1" elements="32" coveredelements="26" complexity="0" loc="28" ncloc="28" packages="5" files="8" classes="8"/>
-    <package name="components.Login">
-      <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+<coverage generated="1638302826619" clover="3.2.0">
+  <project timestamp="1638302826619" name="All files">
+    <metrics statements="64" coveredstatements="34" conditionals="24" coveredconditionals="0" methods="10" coveredmethods="1" elements="98" coveredelements="35" complexity="0" loc="64" ncloc="64" packages="6" files="10" classes="10"/>
+    <package name="src.components.Login">
+      <metrics statements="13" coveredstatements="3" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
       <file name="Login.vue" path="/Users/yeray/Desktop/own/src/components/Login/Login.vue">
-        <metrics statements="4" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="41" count="1" type="stmt"/>
-        <line num="45" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.OwnHeader">
-      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="OwnHeader.vue" path="/Users/yeray/Desktop/own/src/components/OwnHeader/OwnHeader.vue">
-        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-        <line num="35" count="1" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
-      </file>
-    </package>
-    <package name="components.Register">
-      <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="Register.vue" path="/Users/yeray/Desktop/own/src/components/Register/Register.vue">
-        <metrics statements="3" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-        <line num="44" count="1" type="stmt"/>
+        <metrics statements="13" coveredstatements="3" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="46" count="1" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="64" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="71" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="81" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="router">
-      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+    <package name="src.components.OwnHeader">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="OwnHeader.vue" path="/Users/yeray/Desktop/own/src/components/OwnHeader/OwnHeader.vue">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="44" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.Register">
+      <metrics statements="19" coveredstatements="3" conditionals="14" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="Register.vue" path="/Users/yeray/Desktop/own/src/components/Register/Register.vue">
+        <metrics statements="19" coveredstatements="3" conditionals="14" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="80" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="103" count="0" type="stmt"/>
+        <line num="106" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="113" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="116" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.router">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="/Users/yeray/Desktop/own/src/router/index.ts">
-        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="39" count="1" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
       </file>
     </package>
-    <package name="views">
-      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+    <package name="src.views">
+      <metrics statements="17" coveredstatements="13" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="Desk.vue" path="/Users/yeray/Desktop/own/src/views/Desk.vue">
+        <metrics statements="7" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+      </file>
       <file name="Home.vue" path="/Users/yeray/Desktop/own/src/views/Home.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="8" count="1" type="stmt"/>
@@ -67,6 +104,14 @@
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="mockedState.ts" path="/Users/yeray/Desktop/own/tests/mockedState.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
       </file>
     </package>
   </project>
