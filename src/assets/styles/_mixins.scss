@@ -52,8 +52,9 @@
     box-shadow: none;
   }
 
-  &:hover {
-    text-decoration: underline;
+  &.disabled {
+    box-shadow: none;
+    text-decoration: none;
   }
 }
 
@@ -97,12 +98,8 @@
     align-self: end;
     margin-top: 50px;
     text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
     cursor: pointer;
-
-    &:active {
-      box-shadow: none;
-    }
   }
 
   ::placeholder {
