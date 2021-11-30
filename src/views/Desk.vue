@@ -3,24 +3,16 @@
     <h2 class="desk__title" @click="getUsername">
       Welcome <span class="desk__username">{{ currentUser.username }}</span>
     </h2>
-    <p class="desk__count" v-if="currentUser.boards?.length === 0">
+    <p class="desk__count" v-if="boards?.length === 0">
       Create your first board!
     </p>
-    <p class="desk__count" v-else-if="currentUser.boards?.length === 1">
+    <p class="desk__count" v-else-if="boards?.length === 1">
       You have 1 board.
     </p>
-    <p class="desk__count" v-else>
-      You have {{ currentUser.boards?.length }} boards.
-    </p>
+    <p class="desk__count" v-else>You have {{ boards?.length }} boards.</p>
     <ul class="gallery">
-      <li
-        class="gallery__board"
-        v-for="board in currentUser[boards]"
-        :key="board.id"
-      >
-        +
-      </li>
-      <li class="gallery__board">+</li>
+      <li class="gallery__board" v-for="board in boards" :key="board.id"></li>
+      <li class="gallery__board" v-if="boards.length < 3">+</li>
     </ul>
   </div>
 </template>
@@ -38,7 +30,7 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapState(["currentUser"]),
+    ...mapState(["currentUser", "boards"]),
   },
   methods: {
     ...mapActions(["getToken"]),
@@ -96,6 +88,7 @@ export default defineComponent({
   overflow: scroll;
 
   &__board {
+    @include flex-center;
     list-style: none;
     width: 100%;
     height: 208px;
@@ -103,7 +96,15 @@ export default defineComponent({
     border-radius: 15px;
     font-size: 75px;
     cursor: pointer;
-    @include flex-center;
+
+    &:hover {
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    &:active {
+      box-shadow: none;
+      box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+    }
   }
 }
 </style>
