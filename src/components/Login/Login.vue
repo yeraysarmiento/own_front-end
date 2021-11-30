@@ -2,16 +2,29 @@
   <div class="own-login">
     <h2 class="login-title">LOGIN</h2>
     <form class="login-form" @submit.prevent="onSubmit" autocomplete="off">
-      <label for="username" type="text">Username:</label>
-      <input id="username" v-model="username" placeholder="Mario Gonzalez" />
-      <label for="password">Password:</label>
+      <label for="username" type="text" :class="isWrong ? 'wrong' : ''"
+        >Username:</label
+      >
+      <input
+        id="username"
+        v-model="username"
+        placeholder="Mario Gonzalez"
+        :class="isWrong ? 'wrong' : ''"
+      />
+      <label for="password" :class="isWrong ? 'wrong' : ''">Password:</label>
       <input
         id="password"
         type="password"
         v-model="password"
         placeholder="**********"
+        :class="isWrong ? 'wrong' : ''"
       />
-      <input class="button" type="submit" value="Submit" />
+      <input
+        class="button"
+        type="submit"
+        value="Submit"
+        disabled="isDisabled"
+      />
     </form>
     <p class="signup">Not an owner yet? Sign up!</p>
     <div class="go-back">_Go back</div>
@@ -28,6 +41,8 @@ export default defineComponent({
     return {
       username: "",
       password: "",
+      isDisabled: true,
+      isWrong: true,
     };
   },
   methods: {
@@ -50,6 +65,7 @@ export default defineComponent({
   flex-direction: column;
   width: 100%;
   margin: 150px 0;
+  padding: 0 30px;
 }
 
 .login-title {
@@ -69,6 +85,7 @@ export default defineComponent({
   text-decoration: underline;
   text-underline-offset: 2px;
   cursor: pointer;
+  z-index: -1;
 }
 
 .go-back {
@@ -78,9 +95,11 @@ export default defineComponent({
 
 @media (min-width: $mobile) {
   .own-login {
-    max-width: 250px;
+    max-width: 300px;
     position: absolute;
     right: 30px;
+    padding: 0;
+    min-width: 250px;
   }
 }
 </style>

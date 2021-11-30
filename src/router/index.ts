@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "../views/Home.vue";
 import OwnLogin from "../views/OwnLogin.vue";
+import OwnRegister from "../views/OwnRegister.vue";
 import NotFound from "../views/NotFound.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -17,6 +18,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/login",
     name: "OwnLogin",
     component: OwnLogin,
+  },
+  {
+    path: "/register",
+    name: "OwnRegister",
+    component: OwnRegister,
   },
   {
     path: "/:catchAll(.*)",
