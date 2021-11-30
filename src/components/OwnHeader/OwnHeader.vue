@@ -14,6 +14,9 @@
       <router-link to="/register">
         <li class="nav__element nav__element--register">Register</li>
       </router-link>
+      <li class="nav__element nav__element--login" v-if="isAuthenticated">
+        <router-link to="/desk">My desk</router-link>
+      </li>
       <li class="nav__element nav__element--login" v-if="!isAuthenticated">
         <router-link to="/login">Login </router-link>
       </li>

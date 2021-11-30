@@ -1,4 +1,4 @@
-import { State, User } from "@/types/interface";
+import { Board, State, User } from "@/types/interface";
 
 const mutations = {
   loadUser(state: State, payload: User): void {
@@ -10,6 +10,9 @@ const mutations = {
   logoutUser(state: any): void {
     state.isAuthenticated = false;
     state.currentUser = {};
+  },
+  loadBoards(state: any, payload: Array<Board>): void {
+    state.boards = payload;
   },
 };
 

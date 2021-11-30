@@ -1,8 +1,9 @@
 import { State } from "@/types/interface";
 
 const state = {
+  boards: [],
   currentUser: {},
-  board: [],
+  currentBoard: {},
   isAuthenticated: false,
 };
 

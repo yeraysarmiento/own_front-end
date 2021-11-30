@@ -48,4 +48,5 @@ export interface State {
   isAuthenticated: boolean | any;
   currentUser: User;
   board: Board | [];
+  boards: Array<Board>;
 }

@@ -22,6 +22,7 @@ const actions = {
     };
     commit("loadUser", userData);
     commit("loginUser");
+    commit("loadBoards", userData.boards);
   },
 
   getToken({ dispatch }: ActionContext<State, State>) {
