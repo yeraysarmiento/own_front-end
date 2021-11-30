@@ -111,7 +111,7 @@ export default defineComponent({
         };
         try {
           await this.registerUser(userData);
-          this.$router.push("/login");
+          this.$router.push("/desk");
         } catch (error) {
           this.isWrong = true;
         }
@@ -134,11 +134,7 @@ export default defineComponent({
 }
 
 .register-title {
-  font-family: "Helvetica Neue";
-  font-size: 25px;
-  font-weight: bold;
-  font-style: italic;
-  padding-bottom: 20px;
+  @include own-title;
 }
 
 .register-form {

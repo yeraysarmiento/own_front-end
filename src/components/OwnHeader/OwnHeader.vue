@@ -132,10 +132,12 @@ export default defineComponent({
       @include button;
       background-color: black;
       color: white;
+      font-size: px;
     }
 
     &.nav__element--login {
       @include button;
+      font-size: 18px;
     }
   }
 }

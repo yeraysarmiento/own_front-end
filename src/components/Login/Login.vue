@@ -75,6 +75,7 @@ export default defineComponent({
         };
         try {
           await this.loginUser(userData);
+          this.$router.push("/desk");
           this.isWrong = false;
         } catch (error) {
           this.isWrong = true;
@@ -98,11 +99,7 @@ export default defineComponent({
 }
 
 .login-title {
-  font-family: "Helvetica Neue";
-  font-size: 25px;
-  font-weight: bold;
-  font-style: italic;
-  padding-bottom: 20px;
+  @include own-title;
 }
 
 .login-form {
