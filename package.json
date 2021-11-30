@@ -13,10 +13,11 @@
   "dependencies": {
     "@fontsource/lora": "^4.5.1",
     "@fontsource/sintony": "^4.5.0",
+    "@vue/test-utils": "^2.0.0-0",
+    "axios": "^0.24.0",
     "core-js": "^3.6.5",
     "husky": "^7.0.4",
     "vue": "^3.0.0",
-    "@vue/test-utils": "^2.0.0-0",
     "vue-router": "^4.0.0-0",
     "vuex": "^4.0.0-0"
   },

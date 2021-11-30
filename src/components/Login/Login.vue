@@ -1,7 +1,12 @@
 <template>
   <div class="own-login">
     <h2 class="login-title">LOGIN</h2>
-    <form class="login-form" @submit.prevent="onSubmit" autocomplete="off">
+    <form
+      class="login-form"
+      @submit.prevent="onSubmit"
+      autocomplete="off"
+      @change="checkForm"
+    >
       <label for="username" type="text" :class="isWrong ? 'wrong' : ''"
         >Username:</label
       >
@@ -19,12 +24,14 @@
         placeholder="**********"
         :class="isWrong ? 'wrong' : ''"
       />
-      <input
+      <button
         class="button"
         type="submit"
-        value="Submit"
-        disabled="isDisabled"
-      />
+        :disabled="isDisabled"
+        :class="isDisabled ? 'disabled' : ''"
+      >
+        {{ isWrong ? "Try again!" : "Submit" }}
+      </button>
     </form>
     <router-link to="/register">
       <p class="signup">Not an owner yet? Sign up!</p>
@@ -37,6 +44,8 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
+import { mapActions, mapGetters } from "vuex";
+import { UserLogin } from "@/types/interface";
 
 export default defineComponent({
   name: "Login",
@@ -46,15 +55,31 @@ export default defineComponent({
       username: "",
       password: "",
       isDisabled: true,
-      isWrong: true,
+      isWrong: false,
     };
   },
+  computed: {
+    ...mapGetters(["checkLogin"]),
+  },
   methods: {
-    onSubmit() {
-      const userLogin = {
-        username: this.username,
-        password: this.password,
-      };
+    ...mapActions(["loginUser"]),
+    checkForm() {
+      if (this.username.length > 5 && this.password.length > 5) {
+        this.isDisabled = false;
+      }
+    },
+    async onSubmit() {
+      if (this.username !== "" && this.password !== "") {
+        const userData: UserLogin = {
+          username: this.username,
+          password: this.password,
+        };
+        try {
+          await this.loginUser(userData);
+        } catch (error) {
+          this.isWrong = true;
+        }
+      }
     },
   },
 });
