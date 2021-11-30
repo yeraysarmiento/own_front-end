@@ -5,7 +5,6 @@
         own.
       </h1></router-link
     >
-
     <!-- <img class="logo-board" src="../../public/img/amallective_logo.png" width="100" height="100" /> -->
     <ul
       class="nav"
@@ -15,18 +14,12 @@
       <router-link to="/register">
         <li class="nav__element nav__element--register">Register</li>
       </router-link>
-      <router-link to="/login">
-        <li class="nav__element nav__element--login" v-if="!isAuthenticated">
-          Login
-        </li>
-        <li
-          class="nav__element nav__element--logout"
-          @click="logoutUser"
-          v-else
-        >
-          Logout
-        </li>
-      </router-link>
+      <li class="nav__element nav__element--login" v-if="!isAuthenticated">
+        <router-link to="/login">Login </router-link>
+      </li>
+      <li class="nav__element nav__element--logout" @click="logoutUser" v-else>
+        Logout
+      </li>
     </ul>
     <div
       class="burger"
@@ -52,8 +45,10 @@ export default defineComponent({
       isClicked: false,
     };
   },
-  methods: {
+  computed: {
     ...mapState(["isAuthenticated"]),
+  },
+  methods: {
     ...mapActions(["logoutUser"]),
   },
 });

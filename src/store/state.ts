@@ -2,8 +2,7 @@ import { State } from "@/types/interface";
 
 const state = {
   currentUser: {},
-  boards: [],
-  papers: [],
+  board: [],
   isAuthenticated: false,
 };
 
