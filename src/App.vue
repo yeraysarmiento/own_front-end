@@ -10,12 +10,21 @@ import "@fontsource/sintony";
 import "@fontsource/lora";
 
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 import OwnHeader from "./components/OwnHeader/OwnHeader.vue";
 
 export default defineComponent({
   name: "app",
+  methods: {
+    ...mapActions(["getTokenAction"]),
+  },
   components: {
     OwnHeader,
+  },
+  mounted() {
+    if (localStorage.getItem("user")) {
+      this.getTokenAction();
+    }
   },
 });
 </script>
