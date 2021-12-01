@@ -4,6 +4,7 @@ import OwnLogin from "../views/OwnLogin.vue";
 import OwnRegister from "../views/OwnRegister.vue";
 import NotFound from "../views/NotFound.vue";
 import Desk from "../views/Desk.vue";
+import CreateBoard from "../views/CreateBoard.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -31,15 +32,13 @@ const routes: Array<RouteRecordRaw> = [
     component: Desk,
   },
   {
+    path: "/desk/new",
+    component: CreateBoard,
+  },
+  {
     path: "/:catchAll(.*)",
     component: NotFound,
   },
-
-  // {
-  //   path: "/desk",
-  //   name: "Desk",
-  //   component: () => import("../views/Desk.vue"),
-  // },
 ];
 
 const router = createRouter({
