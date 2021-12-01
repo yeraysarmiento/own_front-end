@@ -5,6 +5,8 @@
       class="board__image"
       v-bind:src="board.logo"
       alt="Logo of {{board.name}}"
+      width="125"
+      height="125"
     />
   </li>
 </template>
@@ -45,7 +47,7 @@ export default defineComponent({
   }
 
   &__image {
-    background-size: contain;
+    object-fit: contain;
     background-position: center;
   }
 

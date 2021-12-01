@@ -9,7 +9,7 @@
     <p class="desk__count" v-else-if="boards?.length === 1">
       You have 1 board.
     </p>
-    <p class="desk__count" v-else>You have {{ boards?.length }} boards.</p>
+    <p class="desk__count" v-else>You have {{ boards?.length }}/5 boards.</p>
     <BoardGallery :boards="boards" />
   </div>
 </template>

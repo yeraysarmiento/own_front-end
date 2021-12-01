@@ -20,6 +20,7 @@ const actions = {
       email: allData.email,
       boards: allData.boards,
     };
+
     commit("loadUser", userData);
     commit("loginUser");
     commit("loadBoards", userData.boards);

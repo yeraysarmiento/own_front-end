@@ -1,7 +1,7 @@
 <template>
   <ul class="board-gallery">
     <Board v-for="board in boards" v-bind:key="board.id" :board="board" />
-    <Board v-if="boards.length < 3" :isNew="true" />
+    <Board v-if="boards.length < 5" :isNew="true" />
   </ul>
 </template>
 
@@ -30,5 +30,6 @@ export default defineComponent({
   height: 100%;
   margin-bottom: 50px;
   overflow: scroll;
+  row-gap: 20px;
 }
 </style>

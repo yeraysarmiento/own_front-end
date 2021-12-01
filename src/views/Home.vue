@@ -19,7 +19,7 @@ export default defineComponent({
 .home {
   height: 100vh;
   overflow: hidden;
-  background-image: url("./../../public/img/background-own.png");
+  // background-image: url("./../../public/img/background-own.png");
   object-fit: cover;
   background-size: cover;
   background-position-x: -550px;
@@ -29,8 +29,9 @@ export default defineComponent({
 
 .slogan {
   font-size: 35px;
+  font-family: "Roboto";
   margin: 30px;
-  color: white;
+  color: black;
   width: 100vw;
   border-bottom: 1px solid white;
   padding-bottom: 25px;
