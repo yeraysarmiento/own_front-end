@@ -20,7 +20,11 @@
       <li class="nav__element nav__element--login" v-if="!isAuthenticated">
         <router-link to="/login">Login </router-link>
       </li>
-      <li class="nav__element nav__element--logout" @click="logoutUser" v-else>
+      <li
+        class="nav__element nav__element--logout"
+        :@click="logoutUserAction"
+        v-else
+      >
         Logout
       </li>
     </ul>
@@ -52,7 +56,7 @@ export default defineComponent({
     ...mapState(["isAuthenticated"]),
   },
   methods: {
-    ...mapActions(["logoutUser"]),
+    ...mapActions(["logoutUserAction"]),
   },
 });
 </script>

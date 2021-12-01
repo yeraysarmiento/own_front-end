@@ -31,11 +31,11 @@ export default defineComponent({
     ...mapState(["currentUser", "boards"]),
   },
   methods: {
-    ...mapActions(["getToken"]),
+    ...mapActions(["getTokenAction"]),
   },
   mounted() {
     if (localStorage.getItem("user")) {
-      this.getToken();
+      this.getTokenAction();
     } else {
       this.$router.push("/login");
     }

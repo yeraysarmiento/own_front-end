@@ -59,7 +59,7 @@ export default defineComponent({
     };
   },
   methods: {
-    ...mapActions(["loginUser"]),
+    ...mapActions(["loginUserAction"]),
     checkForm() {
       if (this.username.length > 5 && this.password.length > 5) {
         this.isDisabled = false;
@@ -74,7 +74,7 @@ export default defineComponent({
           password: this.password,
         };
         try {
-          await this.loginUser(userData);
+          await this.loginUserAction(userData);
           this.$router.push("/desk");
           this.isWrong = false;
         } catch (error) {
