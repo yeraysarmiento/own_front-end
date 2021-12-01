@@ -11,12 +11,16 @@
         <label for="logo">Logo:</label>
         <ImagePreview />
       </div>
+
       <label for="website" type="text">Website name:</label>
       <p>www.own.com/</p>
+
       <input id="website" v-model="website" placeholder="Amallective" />
-      <label for="email" type="email">Contact email:</label>
+      <label for="email" type="file">Contact email:</label>
+
       <input id="email" v-model="email" placeholder="info@amallective.com" />
       <label for="area">Area:</label>
+
       <select id="area" name="area">
         <option value="Choose an area">Choose an area</option>
         <option value="Design">Design</option>
@@ -24,30 +28,35 @@
         <option value="Architecture">Architecture</option>
         <option value="Other">Other</option>
       </select>
+
       <label for="instagram" type="text">Instagram</label>
       <input
         id="instagram"
         v-model="instagram"
         placeholder="instagram.com/amallective"
       />
+
       <label for="twitter" type="text">Twitter</label>
       <input
         id="twitter"
         v-model="twitter"
         placeholder="twitter.com/amallective"
       />
+
       <label for="facebook" type="text">Facebook</label>
       <input
         id="facebook"
         v-model="facebook"
         placeholder="facebook.com/amallective"
       />
+
       <label for="description" type="text">Write about your website:</label>
       <textarea
         id="description"
         v-model="description"
         placeholder="What is your website about?"
       />
+
       <button
         class="button"
         type="submit"
@@ -105,7 +114,7 @@ export default defineComponent({
 .logo-container {
   flex-direction: column;
   width: 100%;
-  height: 150px;
+  height: 165px;
   position: relative;
 
   & label {

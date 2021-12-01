@@ -36,8 +36,8 @@ export default defineComponent({
       const file = input.files;
       if (file && file[0]) {
         const reader = new FileReader();
-        reader.onload = (e) => {
-          this.previewImage = e.target.result;
+        reader.onload = (event) => {
+          this.previewImage = event.target.result;
         };
         reader.readAsDataURL(file[0]);
         this.$emit("input", file[0]);
