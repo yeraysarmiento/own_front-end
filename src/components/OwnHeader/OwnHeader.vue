@@ -22,7 +22,7 @@
       </li>
       <li
         class="nav__element nav__element--logout"
-        :@click="logoutUserAction"
+        @click="logoutUserAction"
         v-else
       >
         Logout

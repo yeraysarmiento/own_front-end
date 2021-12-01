@@ -14,6 +14,9 @@ const mutations = {
   loadBoards(state: any, payload: Array<Board>): void {
     state.boards = payload;
   },
+  addBoard(state: any, payload: Array<Board>): void {
+    state.boards = [...state.boards, payload];
+  },
 };
 
 export default mutations;

@@ -59,7 +59,7 @@ export default defineComponent({
     };
   },
   methods: {
-    ...mapActions(["loginUserAction"]),
+    ...mapActions(["loginUserAction", "getTokenAction"]),
     checkForm() {
       if (this.username.length > 5 && this.password.length > 5) {
         this.isDisabled = false;
@@ -82,6 +82,9 @@ export default defineComponent({
         }
       }
     },
+  },
+  mounted() {
+    this.getTokenAction();
   },
 });
 </script>

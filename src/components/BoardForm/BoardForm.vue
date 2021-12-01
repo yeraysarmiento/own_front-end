@@ -80,6 +80,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 import ImagePreview from "../ImagePreview.vue";
 import { Logo } from "@/types/interface";
 
@@ -101,9 +102,9 @@ export default defineComponent({
   },
   computed: {},
   methods: {
+    ...mapActions(["createBoardAction"]),
     onImage(image: Logo) {
       [this.logo] = image.srcElement.files;
-      console.log(this.logo);
     },
     checkForm() {
       if (
@@ -131,12 +132,29 @@ export default defineComponent({
         facebook: this.facebook,
       };
 
-      const userData = new FormData();
-      userData.append("name", this.name);
-      userData.append("email", this.email);
-      userData.append("category", this.category);
-      userData.append("logo", this.logo);
-      userData.append("social", social);
+      const a = {
+        name: this.name,
+        about: this.about,
+        email: this.email,
+        category: this.category,
+        social: {
+          instagram: this.instagram,
+          twitter: this.twitter,
+          facebook: this.facebook,
+        },
+      };
+
+      const boardData = new FormData();
+      boardData.append("name", this.name);
+      boardData.append("email", this.email);
+      boardData.append("category", this.category);
+      boardData.append("logo", this.logo);
+      boardData.append("about", this.about);
+      boardData.append("social[twitter]", this.twitter);
+      boardData.append("social[instagram]", this.instagram);
+      boardData.append("social[facebook]", this.facebook);
+
+      this.createBoardAction(boardData);
     },
   },
 });
