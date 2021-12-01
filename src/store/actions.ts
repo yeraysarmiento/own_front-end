@@ -26,12 +26,13 @@ const actions = {
     commit("loadBoards", userData.boards);
   },
 
-  getToken({ dispatch }: ActionContext<State, State>) {
+  getToken({ dispatch }: ActionContext<State, State>): void {
     const token = JSON.parse(localStorage.getItem("user") || "");
     dispatch("getProfile", token);
   },
 
   async loginUser(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     { commit, dispatch }: ActionContext<State, State>,
     user: UserLogin
   ): Promise<void> {
@@ -40,7 +41,7 @@ const actions = {
     dispatch("getProfile", token);
   },
 
-  logoutUser({ commit }: ActionContext<State, State>) {
+  logoutUser({ commit }: ActionContext<State, State>): void {
     router.push("/home");
     localStorage.removeItem("user");
     commit("logoutUser");
@@ -51,10 +52,7 @@ const actions = {
     { commit, dispatch }: ActionContext<State, State>,
     user: UserRegister
   ): Promise<void> {
-    const { data: userData } = await axios.post(
-      `${urlOWN}user/register/`,
-      user
-    );
+    await axios.post(`${urlOWN}user/register/`, user);
     const userLogin = {
       username: user.username,
       password: user.password,

@@ -15,7 +15,6 @@
     />
   </div>
 </template>
-
 <script>
 import { defineComponent } from "vue";
 
@@ -23,8 +22,7 @@ export default defineComponent({
   name: "ImagePreview",
   data() {
     return {
-      previewImage:
-        "https://iconape.com/wp-content/files/la/10528/png/upload.png",
+      previewImage: "https://i.ibb.co/nmc2F8q/logo-upload.jpg",
     };
   },
   methods: {

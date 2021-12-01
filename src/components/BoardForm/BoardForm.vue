@@ -1,6 +1,7 @@
 <template>
   <div class="own-register">
     <h2 class="register-title">NEW BOARD</h2>
+
     <form
       class="register-form"
       @submit.prevent="onSubmit"
@@ -8,21 +9,21 @@
       @change="checkForm"
     >
       <div class="logo-container">
-        <label for="logo">Logo:</label>
+        <label for="logo">*Logo:</label>
         <ImagePreview />
-        <p class="logo-container__limit">Up to 3mb</p>
+        <p class="logo-container__limit">Up to 1mb</p>
       </div>
 
-      <label for="website" type="text">Website name:</label>
+      <label for="website" type="text">*Website name:</label>
       <div class="website-container">
         <p>www.own.com/</p>
         <input id="website" v-model="website" placeholder="Amallective" />
       </div>
 
-      <label for="email" type="file">Contact email:</label>
+      <label for="email" type="file">*Contact email:</label>
       <input id="email" v-model="email" placeholder="info@amallective.com" />
 
-      <label for="area">Area:</label>
+      <label for="area">*Area:</label>
       <select id="area" name="area">
         <option value="Choose an area">Choose an area</option>
         <option value="Design">Design</option>
@@ -52,7 +53,7 @@
         placeholder="facebook.com/amallective"
       />
 
-      <label for="description" type="text">Write about your website:</label>
+      <label for="description" type="text">*Write about your website:</label>
       <textarea
         id="description"
         v-model="description"
@@ -68,6 +69,7 @@
       >
         Create board
       </button>
+      <p class="required">*Required fields</p>
     </form>
     <router-link to="/home">
       <div class="go-back">_Go back</div>
@@ -147,5 +149,10 @@ export default defineComponent({
   & input {
     margin-left: 15px;
   }
+}
+
+.required {
+  margin-bottom: 5px;
+  color: darkgrey;
 }
 </style>
