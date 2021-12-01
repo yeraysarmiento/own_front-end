@@ -29,6 +29,12 @@ export default defineComponent({
   box-sizing: border-box;
 }
 
+.container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
 body {
   background-color: $main-color;
 }

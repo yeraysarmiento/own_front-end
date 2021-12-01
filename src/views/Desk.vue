@@ -3,23 +3,32 @@
     <h2 class="desk__title" @click="getUsername">
       Welcome <span class="desk__username">{{ currentUser.username }}</span>
     </h2>
+    <p class="desk__count" v-if="boards?.length === 0">
+      Create your first board!
+    </p>
+    <p class="desk__count" v-else-if="boards?.length === 1">
+      You have 1 board.
+    </p>
+    <p class="desk__count" v-else>You have {{ boards?.length }} boards.</p>
+    <BoardGallery :boards="boards" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
+import BoardGallery from "../components/BoardGallery/BoardGallery.vue";
 
 export default defineComponent({
   name: "Desk",
-  components: {},
-  computed: {
-    ...mapState(["currentUser"]),
-  },
+  components: { BoardGallery },
   data() {
     return {
       username: "",
     };
+  },
+  computed: {
+    ...mapState(["currentUser", "boards"]),
   },
   methods: {
     ...mapActions(["getToken"]),
@@ -36,21 +45,30 @@ export default defineComponent({
 
 <style lang="scss">
 @import "../assets/styles/_mixins.scss";
+@import "../assets/styles/_variables.scss";
 
 .desk {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 150px 0;
+  height: 100%;
   padding: 0 30px;
 
   &__title {
     @include own-title;
+    margin: 150px 0 25px 0;
+    text-align: center;
   }
 
   &__username {
     text-decoration: underline;
     text-underline-offset: 6px;
+  }
+
+  &__count {
+    text-align: center;
+    margin-bottom: 25px;
+    @include lora-text;
   }
 }
 </style>

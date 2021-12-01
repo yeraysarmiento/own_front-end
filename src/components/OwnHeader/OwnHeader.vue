@@ -14,6 +14,9 @@
       <router-link to="/register">
         <li class="nav__element nav__element--register">Register</li>
       </router-link>
+      <li class="nav__element nav__element--login" v-if="isAuthenticated">
+        <router-link to="/desk">My desk</router-link>
+      </li>
       <li class="nav__element nav__element--login" v-if="!isAuthenticated">
         <router-link to="/login">Login </router-link>
       </li>
@@ -141,17 +144,17 @@ export default defineComponent({
       @include button;
       background-color: black;
       color: white;
-      font-size: px;
+      font-size: 20px;
     }
 
     &.nav__element--login {
       @include button;
-      font-size: 18px;
+      font-size: 20px;
     }
 
     &.nav__element--logout {
       @include button;
-      font-size: 18px;
+      font-size: 20px;
       background-color: $delete-color;
     }
   }

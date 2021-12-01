@@ -56,6 +56,10 @@
   color: black;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px;
 
+  &:hover {
+    text-decoration: underline;
+  }
+
   &:active {
     box-shadow: none;
   }
