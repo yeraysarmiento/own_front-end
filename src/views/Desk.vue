@@ -10,20 +10,18 @@
       You have 1 board.
     </p>
     <p class="desk__count" v-else>You have {{ boards?.length }} boards.</p>
-    <ul class="gallery">
-      <li class="gallery__board" v-for="board in boards" :key="board.id"></li>
-      <li class="gallery__board" v-if="boards.length < 3">+</li>
-    </ul>
+    <BoardGallery :boards="boards" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
+import BoardGallery from "../components/BoardGallery/BoardGallery.vue";
 
 export default defineComponent({
   name: "Desk",
-  components: {},
+  components: { BoardGallery },
   data() {
     return {
       username: "",
@@ -71,40 +69,6 @@ export default defineComponent({
     text-align: center;
     margin-bottom: 25px;
     @include lora-text;
-  }
-}
-
-.gallery {
-  display: grid;
-  width: 250px;
-  overflow-x: scroll;
-  margin: 0 auto;
-  border: 1px dashed black;
-  border-radius: 25px;
-  padding: 20px;
-  row-gap: 25px;
-  height: 100%;
-  margin-bottom: 50px;
-  overflow: scroll;
-
-  &__board {
-    @include flex-center;
-    list-style: none;
-    width: 100%;
-    height: 208px;
-    background: $button-color;
-    border-radius: 15px;
-    font-size: 75px;
-    cursor: pointer;
-
-    &:hover {
-      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-    }
-
-    &:active {
-      box-shadow: none;
-      box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
-    }
   }
 }
 </style>
