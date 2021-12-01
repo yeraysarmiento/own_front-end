@@ -10,21 +10,21 @@
     >
       <div class="logo-container">
         <label for="logo">*Logo:</label>
-        <ImagePreview />
+        <ImagePreview v-on:input="onImage" />
         <p class="logo-container__limit">Up to 1mb</p>
       </div>
 
-      <label for="website" type="text">*Website name:</label>
+      <label for="name" type="text">*Website name:</label>
       <div class="website-container">
         <p>www.own.com/</p>
-        <input id="website" v-model="website" placeholder="Amallective" />
+        <input id="name" v-model="name" placeholder="Amallective" />
       </div>
 
-      <label for="email" type="file">*Contact email:</label>
+      <label for="email" type="file">Contact email:</label>
       <input id="email" v-model="email" placeholder="info@amallective.com" />
 
-      <label for="area">*Area:</label>
-      <select id="area" name="area">
+      <label for="category">*Category:</label>
+      <select id="category" name="category" v-model="category" required>
         <option value="Choose an area">Choose an area</option>
         <option value="Design">Design</option>
         <option value="Business">Business</option>
@@ -53,12 +53,13 @@
         placeholder="facebook.com/amallective"
       />
 
-      <label for="description" type="text">*Write about your website:</label>
+      <label for="about" type="text">*Write about your website:</label>
       <textarea
-        id="description"
-        v-model="description"
+        id="about"
+        v-model="about"
         rows="10"
         placeholder="What is your website about?"
+        required
       />
 
       <button
@@ -80,6 +81,7 @@
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
 import ImagePreview from "../ImagePreview.vue";
+import { Logo } from "@/types/interface";
 
 export default defineComponent({
   name: "BoardForm",
@@ -87,26 +89,53 @@ export default defineComponent({
   data() {
     return {
       name: "",
-      contactEmail: "",
-      password: "",
+      email: "",
+      category: "",
+      instagram: "",
+      twitter: "",
+      facebook: "",
+      about: "",
       isDisabled: true,
-      previewImage: null,
+      logo: {} as Logo,
     };
   },
   computed: {},
   methods: {
-    previewFile() {
-      const input: HTMLInputElement = this.$refs.fileInput as HTMLInputElement;
-      const file = input.files;
-      if (file && file[0]) {
-        const reader = new FileReader();
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        reader.onload = (event: any) => {
-          this.previewImage = event.target.result;
-        };
-        reader.readAsDataURL(file[0]);
-        this.$emit("input", file[0]);
+    onImage(image: Logo) {
+      [this.logo] = image.srcElement.files;
+    },
+    checkForm() {
+      if (
+        this.name.length > 3 &&
+        this.name.length < 15 &&
+        this.category !== "" &&
+        this.about.length > 15 &&
+        this.about.length < 225 &&
+        this.logo &&
+        this.category !== "Choose an area"
+      ) {
+        this.isDisabled = false;
       }
+    },
+    validEmail(email: string) {
+      const regexValidation = RegExp(
+        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+      );
+      return regexValidation.test(email);
+    },
+    async onSubmit() {
+      const social: any = {
+        instagram: this.instagram,
+        twitter: this.twitter,
+        facebook: this.facebook,
+      };
+
+      const userData = new FormData();
+      userData.append("name", this.name);
+      userData.append("email", this.email);
+      userData.append("category", this.category);
+      userData.append("logo", this.logo);
+      userData.append("social", social);
     },
   },
 });
