@@ -10,17 +10,19 @@
       <div class="logo-container">
         <label for="logo">Logo:</label>
         <ImagePreview />
+        <p class="logo-container__limit">Up to 3mb</p>
       </div>
 
       <label for="website" type="text">Website name:</label>
-      <p>www.own.com/</p>
+      <div class="website-container">
+        <p>www.own.com/</p>
+        <input id="website" v-model="website" placeholder="Amallective" />
+      </div>
 
-      <input id="website" v-model="website" placeholder="Amallective" />
       <label for="email" type="file">Contact email:</label>
-
       <input id="email" v-model="email" placeholder="info@amallective.com" />
-      <label for="area">Area:</label>
 
+      <label for="area">Area:</label>
       <select id="area" name="area">
         <option value="Choose an area">Choose an area</option>
         <option value="Design">Design</option>
@@ -54,6 +56,7 @@
       <textarea
         id="description"
         v-model="description"
+        rows="10"
         placeholder="What is your website about?"
       />
 
@@ -121,9 +124,28 @@ export default defineComponent({
     text-align: left;
     align-self: start;
   }
+
+  &__limit {
+    color: darkgrey;
+    margin: 15px;
+  }
 }
 
 .image-preview__input {
   display: none;
+}
+
+.register-form {
+  @include form;
+}
+
+.website-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  & input {
+    margin-left: 15px;
+  }
 }
 </style>

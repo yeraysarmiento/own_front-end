@@ -87,6 +87,17 @@
   margin-bottom: 25px;
   position: relative;
 
+  & textarea {
+    @include lora-text;
+    resize: none;
+    overflow-y: auto;
+    width: 100%;
+    border-radius: 25px;
+    border: 1px dashed black;
+    padding: 15px;
+    background: none;
+  }
+
   & select {
     @include lora-text;
     width: 100%;
@@ -108,6 +119,7 @@
     border-radius: 25px;
     border: 1px dashed black;
     padding-left: 20px;
+    background: none;
 
     &.wrong {
       border: 1px solid red;
