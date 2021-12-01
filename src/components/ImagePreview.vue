@@ -1,11 +1,12 @@
 <template>
   <div class="image-preview">
-    <div
-      class="image-preview__element"
-      :style="{ 'background-image': `url(${previewImage})` }"
-      @click="selectImage"
-    ></div>
-
+    <div class="image-preview__container">
+      <div
+        class="image-preview__element"
+        :style="{ 'background-image': `url(${previewImage})` }"
+        @click="selectImage"
+      ></div>
+    </div>
     <input
       class="image-preview__input"
       ref="fileInput"
@@ -52,13 +53,24 @@ export default defineComponent({
 .image-preview {
   width: 100%;
 
-  &__element {
-    @include flex-center;
+  &__container {
+    padding: 10px;
     width: 150px;
     height: 150px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px dashed black;
+    border-radius: 25px;
     cursor: pointer;
+  }
+
+  &__element {
+    @include flex-center;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
     background-size: cover;
-    background-size: 100px;
     background-repeat: no-repeat;
     background-position: center center;
   }

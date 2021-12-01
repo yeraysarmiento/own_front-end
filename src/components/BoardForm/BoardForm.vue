@@ -114,15 +114,7 @@ export default defineComponent({
   }
 }
 
-.image-preview {
-  &__element {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  &__input {
-    display: none;
-  }
+.image-preview__input {
+  display: none;
 }
 </style>
