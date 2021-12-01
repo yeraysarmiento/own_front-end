@@ -7,8 +7,10 @@
       autocomplete="off"
       @change="checkForm"
     >
-      <label for="logo">Logo:</label>
-      <input id="logo" v-on="logo" type="file" />
+      <div class="logo-container">
+        <label for="logo">Logo:</label>
+        <ImagePreview />
+      </div>
       <label for="website" type="text">Website name:</label>
       <p>www.own.com/</p>
       <input id="website" v-model="website" placeholder="Amallective" />
@@ -63,24 +65,64 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
+import ImagePreview from "../ImagePreview.vue";
 
 export default defineComponent({
   name: "BoardForm",
-  components: {},
+  components: { ImagePreview },
   data() {
     return {
       name: "",
       contactEmail: "",
       password: "",
       isDisabled: true,
+      previewImage: null,
     };
   },
   computed: {},
-  methods: {},
+  methods: {
+    previewFile() {
+      const input: HTMLInputElement = this.$refs.fileInput as HTMLInputElement;
+      const file = input.files;
+      if (file && file[0]) {
+        const reader = new FileReader();
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        reader.onload = (event: any) => {
+          this.previewImage = event.target.result;
+        };
+        reader.readAsDataURL(file[0]);
+        this.$emit("input", file[0]);
+      }
+    },
+  },
 });
 </script>
 
 <style lang="scss">
 @import "../../assets/styles/_variables.scss";
 @import "../../assets/styles/_mixins.scss";
+
+.logo-container {
+  flex-direction: column;
+  width: 100%;
+  height: 150px;
+  position: relative;
+
+  & label {
+    text-align: left;
+    align-self: start;
+  }
+}
+
+.image-preview {
+  &__element {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__input {
+    display: none;
+  }
+}
 </style>
