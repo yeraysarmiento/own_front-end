@@ -103,6 +103,7 @@ export default defineComponent({
   methods: {
     onImage(image: Logo) {
       [this.logo] = image.srcElement.files;
+      console.log(this.logo);
     },
     checkForm() {
       if (
