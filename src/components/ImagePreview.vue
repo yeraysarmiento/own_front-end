@@ -22,7 +22,8 @@ export default defineComponent({
   name: "ImagePreview",
   data() {
     return {
-      previewImage: "https://i.ibb.co/w68L81v/logo-upload.jpg",
+      previewImage:
+        "https://firebasestorage.googleapis.com/v0/b/own-api-2c648.appspot.com/o/assets%2Fupload-logo.png?alt=media&token=a8f9c376-45ec-4609-a792-3a834abcbdda",
     };
   },
   methods: {

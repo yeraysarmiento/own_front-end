@@ -12,11 +12,6 @@ import BoardForm from "../components/BoardForm/BoardForm.vue";
 export default defineComponent({
   name: "CreateBoard",
   components: { BoardForm },
-  data() {
-    return {
-      username: "",
-    };
-  },
 });
 </script>
 
