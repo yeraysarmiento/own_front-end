@@ -4,17 +4,17 @@ const mutations = {
   loadUser(state: State, payload: User): void {
     state.currentUser = payload;
   },
-  loginUser(state: any): void {
+  loginUser(state: State): void {
     state.isAuthenticated = true;
   },
   logoutUser(state: any): void {
     state.isAuthenticated = false;
     state.currentUser = {};
   },
-  loadBoards(state: any, payload: Array<Board>): void {
+  loadBoards(state: State, payload: Array<Board>): void {
     state.boards = payload;
   },
-  addBoard(state: any, payload: Array<Board>): void {
+  addBoard(state: State, payload: Board): void {
     state.boards = [...state.boards, payload];
   },
 };
