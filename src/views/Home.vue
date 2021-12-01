@@ -29,7 +29,7 @@ export default defineComponent({
 
 .slogan {
   font-size: 35px;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   margin: 30px;
   color: black;
   width: 100vw;
