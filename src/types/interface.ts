@@ -50,3 +50,8 @@ export interface State {
   board: Board | [];
   boards: Array<Board>;
 }
+export interface Logo extends File {
+  srcElement: {
+    files: Array<any>;
+  };
+}

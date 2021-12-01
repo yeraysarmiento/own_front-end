@@ -41,6 +41,19 @@ body {
 
 a {
   text-decoration: none;
+  color: inherit;
+
+  &:focus {
+    color: inherit;
+  }
+
+  &:link {
+    color: inherit;
+  }
+
+  &:active {
+    color: inherit;
+  }
 
   &:visited {
     color: inherit;

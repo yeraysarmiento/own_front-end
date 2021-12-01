@@ -1,5 +1,8 @@
 <template>
-  <li class="board board--new" v-if="isNew">+</li>
+  <router-link v-if="isNew" to="/desk/new"
+    ><li class="board board--new">+</li></router-link
+  >
+
   <li class="board" v-else>
     <img
       class="board__image"

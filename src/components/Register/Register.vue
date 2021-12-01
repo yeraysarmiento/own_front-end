@@ -56,7 +56,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import { UserRegister } from "@/types/interface";
 
 export default defineComponent({
@@ -76,6 +76,7 @@ export default defineComponent({
   computed: {},
   methods: {
     ...mapActions(["registerUser"]),
+    ...mapGetters(["validEmail"]),
     checkForm() {
       if (
         this.username !== "" &&

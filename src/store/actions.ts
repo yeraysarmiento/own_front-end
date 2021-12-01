@@ -1,12 +1,12 @@
 import axios from "axios";
 import { ActionContext } from "vuex";
-import { State, UserLogin, UserRegister } from "@/types/interface";
+import { Board, State, UserLogin, UserRegister } from "@/types/interface";
 import router from "@/router";
 
 const urlOWN = process.env.VUE_APP_OWN_SERVER;
 
 const actions = {
-  async getProfile(
+  async getProfileAction(
     { commit }: ActionContext<State, State>,
     token: UserLogin
   ): Promise<void> {
@@ -26,40 +26,49 @@ const actions = {
     commit("loadBoards", userData.boards);
   },
 
-  getToken({ dispatch }: ActionContext<State, State>) {
+  getTokenAction({ dispatch }: ActionContext<State, State>): void {
     const token = JSON.parse(localStorage.getItem("user") || "");
-    dispatch("getProfile", token);
+    dispatch("getProfileAction", token);
   },
 
-  async loginUser(
+  async loginUserAction(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     { commit, dispatch }: ActionContext<State, State>,
     user: UserLogin
   ): Promise<void> {
     const { data: token } = await axios.post(`${urlOWN}user/login/`, user);
     localStorage.setItem("user", JSON.stringify(token.user));
-    dispatch("getProfile", token);
+    dispatch("getProfileAction", token);
   },
 
-  logoutUser({ commit }: ActionContext<State, State>) {
+  logoutUserAction({ commit }: ActionContext<State, State>): void {
     router.push("/home");
     localStorage.removeItem("user");
     commit("logoutUser");
   },
 
-  async registerUser(
+  async registerUserAction(
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     { commit, dispatch }: ActionContext<State, State>,
     user: UserRegister
   ): Promise<void> {
-    const { data: userData } = await axios.post(
-      `${urlOWN}user/register/`,
-      user
-    );
+    await axios.post(`${urlOWN}user/register/`, user);
     const userLogin = {
       username: user.username,
       password: user.password,
     };
-    dispatch("loginUser", userLogin);
+    dispatch("loginUserAction", userLogin);
+  },
+
+  async createBoardAction(
+    { commit }: ActionContext<State, State>,
+    board: Board
+  ): Promise<void> {
+    const token = JSON.parse(localStorage.getItem("user") || "");
+    const { data: newBoard } = await axios.post(`${urlOWN}board/new/`, board, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    commit("createBoard", newBoard);
   },
 };
 
