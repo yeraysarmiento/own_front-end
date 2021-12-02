@@ -1,7 +1,21 @@
 <template>
-  <OwnHeader />
+  <OwnHeader
+    v-if="
+      ['/login', '/register', '/board', '/home', '/desk', '/notfound'].includes(
+        $route.path
+      )
+    "
+  />
+  <BoardHeader
+    :boardName="currentBoard.name"
+    :boardLogo="currentBoard.logo"
+    v-else
+  />
   <div class="container">
     <router-view />
+  </div>
+  <div class="footer">
+    <p v-if="['/home'].includes($route.path)">- You make own -</p>
   </div>
 </template>
 
@@ -10,16 +24,21 @@ import "@fontsource/sintony";
 import "@fontsource/lora";
 
 import { defineComponent } from "vue";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import OwnHeader from "./components/OwnHeader/OwnHeader.vue";
+import BoardHeader from "./components/BoardHeader/BoardHeader.vue";
 
 export default defineComponent({
   name: "app",
+  computed: {
+    ...mapState(["currentBoard"]),
+  },
   methods: {
     ...mapActions(["getTokenAction"]),
   },
   components: {
     OwnHeader,
+    BoardHeader,
   },
   mounted() {
     if (localStorage.getItem("user")) {
@@ -31,17 +50,12 @@ export default defineComponent({
 
 <style lang="scss">
 @import "./assets/styles/_variables.scss";
+@import "./assets/styles/_mixins.scss";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.container {
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
 }
 
 body {
@@ -66,6 +80,29 @@ a {
 
   &:visited {
     color: inherit;
+  }
+}
+
+.container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+.footer {
+  @include lora-text;
+  @include flex-center;
+
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+
+  & p {
+    @include flex-center;
+    border-top: 1px solid black;
+    width: 200px;
+    padding: 15px 0 30px 0;
   }
 }
 </style>

@@ -3,7 +3,7 @@ import { State } from "@/types/interface";
 const state = {
   boards: [],
   currentUser: {},
-  currentBoard: {},
+  currentBoard: { papers: [] },
   isAuthenticated: false,
 };
 

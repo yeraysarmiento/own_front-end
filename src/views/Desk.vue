@@ -53,6 +53,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   padding: 0 30px;
+  height: 100vh;
 
   &__title {
     @include own-title;
@@ -69,6 +70,16 @@ export default defineComponent({
     text-align: center;
     margin-bottom: 25px;
     @include lora-text;
+  }
+
+  &__info {
+    @include lora-text;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin: 10px 0 100px 0;
+    text-align: center;
+    justify-self: end;
+    cursor: pointer;
   }
 }
 </style>

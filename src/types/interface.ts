@@ -47,7 +47,7 @@ export interface Board {
 export interface State {
   isAuthenticated: boolean | any;
   currentUser: User;
-  currentBoard: Board | [];
+  currentBoard: Board | any;
   boards: Array<Board>;
 }
 export interface Logo extends File {

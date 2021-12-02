@@ -42,7 +42,6 @@ const actions = {
   },
 
   logoutUserAction({ commit }: ActionContext<State, State>): void {
-    router.push("/home");
     localStorage.removeItem("user");
     commit("LOGOUT_USER");
   },
@@ -69,6 +68,31 @@ const actions = {
       headers: { Authorization: `Bearer ${token}` },
     });
     commit("CREATE_BOARD", newBoard);
+  },
+
+  async loadCurrentBoardAction(
+    { commit }: ActionContext<State, State>,
+    id: string
+  ): Promise<void> {
+    const token = JSON.parse(localStorage.getItem("user") || "");
+    const { data: currentBoard } = await axios.get(`${urlOWN}board/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    commit("LOAD_CURRENT_BOARD", currentBoard);
+  },
+
+  async loadBoardByNameAction(
+    { commit }: ActionContext<State, State>,
+    name: string
+  ): Promise<void> {
+    try {
+      const { data: currentBoard } = await axios.get(
+        `${urlOWN}board/name/${name}`
+      );
+      commit("LOAD_CURRENT_BOARD", currentBoard);
+    } catch {
+      router.push("/notfound");
+    }
   },
 };
 

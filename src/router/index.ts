@@ -41,8 +41,12 @@ const routes: Array<RouteRecordRaw> = [
     component: BoardPage,
   },
   {
-    path: "/:catchAll(.*)",
+    path: "/notfound",
     component: NotFound,
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: "/notfound",
   },
 ];
 

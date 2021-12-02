@@ -3,9 +3,9 @@
     <router-link to="/home">
       <h1 class="main-logo" :class="isClicked ? 'main-logo--open' : ''">
         own.
-      </h1></router-link
-    >
-    <!-- <img class="logo-board" src="../../public/img/amallective_logo.png" width="100" height="100" /> -->
+      </h1>
+    </router-link>
+
     <ul
       class="nav"
       @click="isClicked = !isClicked"
@@ -22,7 +22,7 @@
       </li>
       <li
         class="nav__element nav__element--logout"
-        @click="logoutUserAction"
+        @click="logoutUser('home')"
         v-else
       >
         Logout
@@ -53,10 +53,14 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapState(["isAuthenticated"]),
+    ...mapState(["isAuthenticated", "currentBoard"]),
   },
   methods: {
     ...mapActions(["logoutUserAction"]),
+    logoutUser(path: string) {
+      this.logoutUserAction();
+      this.$router.push(`/${path}`);
+    },
   },
 });
 </script>
