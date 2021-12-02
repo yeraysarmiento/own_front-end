@@ -34,7 +34,7 @@ export default defineComponent({
     ...mapActions(["getTokenAction"]),
   },
   mounted() {
-    if (sessionStorage.getItem("user")) {
+    if (localStorage.getItem("user")) {
       this.getTokenAction();
     } else {
       this.$router.push("/login");

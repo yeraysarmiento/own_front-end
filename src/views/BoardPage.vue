@@ -17,7 +17,7 @@ export default defineComponent({
   },
   mounted() {
     this.loadBoardByNameAction(this.$route.params.boardName);
-    if (sessionStorage.getItem("user")) {
+    if (localStorage.getItem("user")) {
       this.getTokenAction();
     }
   },

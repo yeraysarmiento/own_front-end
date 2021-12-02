@@ -140,7 +140,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    if (sessionStorage.getItem("user")) {
+    if (localStorage.getItem("user")) {
       this.getTokenAction();
     } else {
       this.$router.push("/login");

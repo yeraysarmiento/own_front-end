@@ -41,7 +41,7 @@ export default defineComponent({
     BoardHeader,
   },
   mounted() {
-    if (sessionStorage.getItem("user")) {
+    if (localStorage.getItem("user")) {
       this.getTokenAction();
     }
   },
