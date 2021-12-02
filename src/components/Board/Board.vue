@@ -12,6 +12,7 @@
         width="125"
         height="125"
       />
+      <h3 class="board__name">{{ board.name.toUpperCase() }}</h3>
     </router-link>
   </li>
 </template>
@@ -60,6 +61,34 @@ export default defineComponent({
     font-size: 75px;
     background: $button-color;
     border: none;
+  }
+
+  &__name {
+    display: none;
+    position: relative;
+    bottom: -25px;
+    width: 100%;
+    text-align: center;
+    @include own-title;
+    font-size: 14px;
+    font-weight: 500;
+    color: black;
+  }
+}
+
+@media (min-width: $tablet) {
+  .board {
+    width: 208px;
+    height: 208px;
+    margin: 0;
+  }
+}
+
+@media (min-width: $desktop) {
+  .board {
+    &__name {
+      display: block;
+    }
   }
 }
 </style>

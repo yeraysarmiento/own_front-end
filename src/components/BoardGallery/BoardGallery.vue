@@ -19,17 +19,65 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+@import "../../assets/styles/_variables.scss";
+
 .board-gallery {
   display: grid;
   width: 250px;
-  overflow-x: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
   margin: 0 auto;
   border: 1px dashed black;
   border-radius: 25px;
   padding: 20px;
   height: 100%;
   margin-bottom: 50px;
-  overflow: scroll;
   row-gap: 20px;
+
+  &::-webkit-scrollbar-thumb:vertical {
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb:horizontal {
+    height: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+  }
+  &::-webkit-scrollbar-track {
+    height: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 10px;
+  }
+}
+
+@media (min-width: $tablet) {
+  .board-gallery {
+    column-gap: 20px;
+    height: 252px;
+    max-width: 850px;
+    width: 90%;
+    min-width: 600px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    grid-template-columns: repeat(5, 208px);
+    margin-top: 50px;
+  }
+}
+
+@media (min-width: $desktop) {
+  .board-gallery {
+    column-gap: 20px;
+    height: 252px;
+    width: 80%;
+    max-width: 1180px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    grid-template-columns: repeat(5, 208px);
+    margin-top: 50px;
+  }
 }
 </style>
