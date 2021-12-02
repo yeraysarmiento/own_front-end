@@ -64,6 +64,7 @@ export default defineComponent({
     overflow-y: hidden;
     overflow-x: scroll;
     grid-template-columns: repeat(5, 208px);
+    margin-top: 50px;
   }
 }
 
