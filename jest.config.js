@@ -4,4 +4,7 @@ module.exports = {
     "^.+\\.vue$": "vue-jest",
   },
   testMatch: ["**/src/**/*.spec.[jt]s?(x)"],
+  collectCoverage: true,
+  collectCoverageFrom: ["src/**/*.{js,vue,ts}", "!src/main.js"],
+  modulePathIgnorePatterns: ["src/main.ts", "src/store/index.ts"],
 };
