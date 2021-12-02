@@ -35,8 +35,8 @@ TN:
 SF:/Users/yeray/Desktop/own/src/components/Board/Board.vue
 FNF:0
 FNH:0
-DA:18,2
 DA:20,2
+DA:22,2
 LF:2
 LH:2
 BRF:0
@@ -96,9 +96,9 @@ TN:
 SF:/Users/yeray/Desktop/own/src/components/BoardGallery/BoardGallery.vue
 FNF:0
 FNH:0
-DA:11,2
+DA:9,2
+DA:10,2
 DA:12,2
-DA:14,2
 LF:3
 LH:3
 BRF:0
@@ -111,13 +111,13 @@ FN:63,(anonymous_1)
 FN:70,(anonymous_2)
 FNF:3
 FNH:1
-FNDA:1,(anonymous_0)
+FNDA:2,(anonymous_0)
 FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
 DA:46,2
 DA:47,2
 DA:50,2
-DA:54,1
+DA:54,2
 DA:64,0
 DA:65,0
 DA:67,0
