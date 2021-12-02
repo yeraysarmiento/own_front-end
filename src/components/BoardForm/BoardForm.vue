@@ -120,12 +120,6 @@ export default defineComponent({
         this.isDisabled = false;
       }
     },
-    validEmail(email: string) {
-      const regexValidation = RegExp(
-        /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-      );
-      return regexValidation.test(email);
-    },
     async onSubmit() {
       const boardData = new FormData();
       boardData.append("name", this.name);

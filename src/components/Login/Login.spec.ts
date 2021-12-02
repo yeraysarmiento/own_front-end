@@ -1,8 +1,6 @@
 import { mount } from "@vue/test-utils";
 import router from "@/router";
 import Login from "./Login.vue";
-import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/vue";
 
 describe("Given a Login Component", () => {
   describe("When it is rendered", () => {
@@ -18,7 +16,7 @@ describe("Given a Login Component", () => {
         global: {
           plugins: [router],
         },
-        stubs: ["router-link", "router-view"],
+        stubs: ["router-link"],
       });
 
       expect(wrapper.html()).toContain(password);
@@ -27,8 +25,8 @@ describe("Given a Login Component", () => {
     });
   });
   describe("When the fields are not filled", () => {
-    test("Then it should show a disabled submit button", () => {
-      const wrapper = mount(Login, {
+    test("Then it should show a disabled submit button", async () => {
+      const wrapper = await mount(Login, {
         global: {
           plugins: [router],
         },

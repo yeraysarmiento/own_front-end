@@ -9,7 +9,6 @@ describe("Given a Board Component", () => {
         name: "Name",
         logo: "LogoURL",
       };
-
       const imageExpected = `<img class="board__image" src="${board.logo}" alt="Logo of ${board.name}" width="125" height="125">`;
 
       const wrapper = await mount(Board, {
@@ -23,7 +22,6 @@ describe("Given a Board Component", () => {
         stubs: ["router-link", "router-view"],
       });
 
-      // expect(wrapper.html()).toContain(password);
       expect(wrapper.html()).toContain(imageExpected);
     });
   });
@@ -33,7 +31,6 @@ describe("Given a Board Component", () => {
         name: "",
         logo: "",
       };
-
       const textExpected = "+";
 
       const wrapper = await mount(Board, {
@@ -47,7 +44,6 @@ describe("Given a Board Component", () => {
         stubs: ["router-link", "router-view"],
       });
 
-      // expect(wrapper.html()).toContain(password);
       expect(wrapper.text()).toContain(textExpected);
     });
   });
