@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <section class="slogan">Ready<br />to <br />own?</section>
+    <section class="slogan">Ready<br />to <span>OWN?</span></section>
   </div>
 </template>
 
@@ -19,7 +19,6 @@ export default defineComponent({
 .home {
   height: 100vh;
   overflow: hidden;
-  // background-image: url("./../../public/img/background-own.png");
   object-fit: cover;
   background-size: cover;
   background-position-x: -550px;
@@ -28,13 +27,19 @@ export default defineComponent({
 }
 
 .slogan {
-  font-size: 35px;
+  font-size: 50px;
   font-family: "Roboto", sans-serif;
-  margin: 30px;
+  margin: 50px 30px;
   color: black;
   width: 100vw;
   border-bottom: 1px solid white;
-  padding-bottom: 25px;
+  padding-bottom: 40px;
+
+  & span {
+    font-family: "Helvetica Neue";
+    font-style: italic;
+    font-weight: 800;
+  }
 }
 
 @media (min-width: $mobile) {

@@ -3,6 +3,7 @@
   <div class="container">
     <router-view />
   </div>
+  <div class="footer"><p>- You make own -</p></div>
 </template>
 
 <script>
@@ -31,17 +32,12 @@ export default defineComponent({
 
 <style lang="scss">
 @import "./assets/styles/_variables.scss";
+@import "./assets/styles/_mixins.scss";
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-.container {
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
 }
 
 body {
@@ -66,6 +62,29 @@ a {
 
   &:visited {
     color: inherit;
+  }
+}
+
+.container {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+}
+
+.footer {
+  @include lora-text;
+  @include flex-center;
+
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+
+  & p {
+    @include flex-center;
+    border-top: 1px solid black;
+    width: 200px;
+    padding: 15px 0 30px 0;
   }
 }
 </style>

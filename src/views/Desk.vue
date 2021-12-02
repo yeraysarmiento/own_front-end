@@ -11,6 +11,7 @@
     </p>
     <p class="desk__count" v-else>You have {{ boards?.length }}/5 boards.</p>
     <BoardGallery :boards="boards" />
+    <p class="desk__info">Subscribe to get countless boards!</p>
   </div>
 </template>
 
@@ -53,6 +54,7 @@ export default defineComponent({
   width: 100%;
   height: 100%;
   padding: 0 30px;
+  height: 100vh;
 
   &__title {
     @include own-title;
@@ -69,6 +71,14 @@ export default defineComponent({
     text-align: center;
     margin-bottom: 25px;
     @include lora-text;
+  }
+
+  &__info {
+    @include lora-text;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin: 50px 0;
+    text-align: center;
   }
 }
 </style>
