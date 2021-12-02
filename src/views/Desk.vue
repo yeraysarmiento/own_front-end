@@ -11,7 +11,6 @@
     </p>
     <p class="desk__count" v-else>You have {{ boards?.length }}/5 boards.</p>
     <BoardGallery :boards="boards" />
-    <p class="desk__info">Subscribe to get countless boards!</p>
   </div>
 </template>
 
@@ -77,8 +76,10 @@ export default defineComponent({
     @include lora-text;
     text-decoration: underline;
     text-underline-offset: 3px;
-    margin: 50px 0;
+    margin: 10px 0 100px 0;
     text-align: center;
+    justify-self: end;
+    cursor: pointer;
   }
 }
 </style>

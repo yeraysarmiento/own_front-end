@@ -3,7 +3,9 @@
   <div class="container">
     <router-view />
   </div>
-  <div class="footer"><p>- You make own -</p></div>
+  <div class="footer">
+    <p v-if="['/home'].includes($route.path)">- You make own -</p>
+  </div>
 </template>
 
 <script>
