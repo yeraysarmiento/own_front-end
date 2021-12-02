@@ -62,4 +62,12 @@ export default defineComponent({
     border: none;
   }
 }
+
+@media (min-width: $tablet) {
+  .board {
+    width: 208px;
+    height: 208px;
+    margin: 0;
+  }
+}
 </style>

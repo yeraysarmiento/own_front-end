@@ -38,15 +38,45 @@ export default defineComponent({
     height: 10px;
   }
 
+  &::-webkit-scrollbar-thumb:horizontal {
+    height: 10px;
+  }
+
   &::-webkit-scrollbar {
     width: 2px;
-    height: 20px;
+    height: 2px;
   }
   &::-webkit-scrollbar-track {
     height: 10px;
   }
   &::-webkit-scrollbar-thumb {
     height: 10px;
+  }
+}
+
+@media (min-width: $tablet) {
+  .board-gallery {
+    column-gap: 20px;
+    height: 252px;
+    max-width: 850px;
+    width: 90%;
+    min-width: 600px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    grid-template-columns: repeat(5, 208px);
+  }
+}
+
+@media (min-width: $desktop) {
+  .board-gallery {
+    column-gap: 20px;
+    height: 252px;
+    width: 80%;
+    max-width: 1180px;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    grid-template-columns: repeat(5, 208px);
+    margin-top: 50px;
   }
 }
 </style>
