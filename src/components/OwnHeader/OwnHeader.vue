@@ -87,12 +87,6 @@ export default defineComponent({
   @include main-logo;
 }
 
-// .logo {
-//   position: fixed;
-//   top: 15px;
-//   left: 15px;
-// }
-
 .burger {
   height: 25px;
   width: 35px;
@@ -196,16 +190,27 @@ export default defineComponent({
     margin: 0 30px;
 
     &__element {
+      margin: 50px;
+
       &.nav__element--login {
         margin: 0 15px;
+        font-size: 16px;
       }
 
       &.nav__element--register {
         background: none;
         color: black;
         box-shadow: none;
+        margin: 45px;
+        font-size: 16px;
       }
     }
+  }
+}
+
+@media (min-width: $desktop) {
+  .main-logo {
+    font-size: 65px;
   }
 }
 </style>
