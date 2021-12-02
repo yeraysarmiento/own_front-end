@@ -1,16 +1,18 @@
 <template>
-  <router-link v-if="isNew" to="/desk/new"
-    ><li class="board board--new">+</li></router-link
-  >
+  <router-link v-if="isNew" to="/desk/new">
+    <li class="board board--new">+</li>
+  </router-link>
 
   <li class="board" v-else>
-    <img
-      class="board__image"
-      v-bind:src="board.logo"
-      alt="Logo of {{board.name}}"
-      width="125"
-      height="125"
-    />
+    <router-link :to="`/${board.name.toLowerCase()}`">
+      <img
+        class="board__image"
+        v-bind:src="board.logo"
+        alt="Logo of {{board.name}}"
+        width="125"
+        height="125"
+      />
+    </router-link>
   </li>
 </template>
 

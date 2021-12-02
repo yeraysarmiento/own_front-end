@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638401657817" clover="3.2.0">
-  <project timestamp="1638401657817" name="All files">
-    <metrics statements="108" coveredstatements="51" conditionals="37" coveredconditionals="0" methods="19" coveredmethods="2" elements="164" coveredelements="53" complexity="0" loc="108" ncloc="108" packages="10" files="15" classes="15"/>
+<coverage generated="1638402260431" clover="3.2.0">
+  <project timestamp="1638402260431" name="All files">
+    <metrics statements="111" coveredstatements="54" conditionals="37" coveredconditionals="0" methods="19" coveredmethods="2" elements="167" coveredelements="56" complexity="0" loc="111" ncloc="111" packages="10" files="16" classes="16"/>
     <package name="src.components">
       <metrics statements="12" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="ImagePreview.vue" path="/Users/yeray/Desktop/own/src/components/ImagePreview.vue">
@@ -60,9 +60,9 @@
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="BoardGallery.vue" path="/Users/yeray/Desktop/own/src/components/BoardGallery/BoardGallery.vue">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.components.Login">
@@ -120,9 +120,9 @@
       </file>
     </package>
     <package name="src.router">
-      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="/Users/yeray/Desktop/own/src/router/index.ts">
-        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
@@ -130,13 +130,19 @@
         <line num="5" count="2" type="stmt"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
         <line num="49" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
       </file>
     </package>
     <package name="src.views">
-      <metrics statements="21" coveredstatements="17" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <metrics statements="23" coveredstatements="19" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="BoardPage.vue" path="/Users/yeray/Desktop/own/src/views/BoardPage.vue">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+      </file>
       <file name="CreateBoard.vue" path="/Users/yeray/Desktop/own/src/views/CreateBoard.vue">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="9" count="2" type="stmt"/>
