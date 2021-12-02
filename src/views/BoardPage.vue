@@ -1,15 +1,25 @@
 <template>
-  <div class="board-page">
-    <h2 class="board-page__title">Create board</h2>
-  </div>
+  <div class="board-page"></div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions, mapState } from "vuex";
+import BoardHeader from "../components/BoardHeader/BoardHeader.vue";
 
 export default defineComponent({
   name: "CreateBoard",
   components: {},
+  computed: {
+    ...mapState(["currentBoard"]),
+  },
+  methods: {
+    ...mapActions(["loadBoardByNameAction"]),
+  },
+  mounted() {
+    this.loadBoardByNameAction(this.$route.params.boardName);
+    console.log(this.$route.params.boardName);
+  },
 });
 </script>
 

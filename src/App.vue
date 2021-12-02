@@ -1,5 +1,16 @@
 <template>
-  <OwnHeader />
+  <OwnHeader
+    v-if="
+      ['/login', '/register', '/board', '/home', '/desk', '/notfound'].includes(
+        $route.path
+      )
+    "
+  />
+  <BoardHeader
+    :boardName="currentBoard.name"
+    :boardLogo="currentBoard.logo"
+    v-else
+  />
   <div class="container">
     <router-view />
   </div>
@@ -13,16 +24,21 @@ import "@fontsource/sintony";
 import "@fontsource/lora";
 
 import { defineComponent } from "vue";
-import { mapActions } from "vuex";
+import { mapActions, mapState } from "vuex";
 import OwnHeader from "./components/OwnHeader/OwnHeader.vue";
+import BoardHeader from "./components/BoardHeader/BoardHeader.vue";
 
 export default defineComponent({
   name: "app",
+  computed: {
+    ...mapState(["currentBoard"]),
+  },
   methods: {
     ...mapActions(["getTokenAction"]),
   },
   components: {
     OwnHeader,
+    BoardHeader,
   },
   mounted() {
     if (localStorage.getItem("user")) {

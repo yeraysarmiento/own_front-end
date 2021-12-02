@@ -1,8 +1,8 @@
 <template>
   <div class="header">
-    <router-link to="/home">
+    <router-link :to="`/${boardName.toLowerCase()}`">
       <h1 class="main-logo" :class="isClicked ? 'main-logo--open' : ''">
-        own.
+        <img :src="boardLogo" :alt="boardName" width="100" height="100" />
       </h1>
     </router-link>
 
@@ -11,12 +11,13 @@
       @click="isClicked = !isClicked"
       :class="isClicked ? 'nav--open' : ''"
     >
-      <router-link to="/register">
-        <li class="nav__element nav__element--register">Register</li>
+      <router-link to="/home">
+        <li class="nav__element nav__element--register">Wanna be an owner?</li>
       </router-link>
       <li class="nav__element nav__element--login" v-if="isAuthenticated">
-        <router-link to="/desk">My desk</router-link>
+        <router-link to="/desk">Go to OWN</router-link>
       </li>
+
       <li class="nav__element nav__element--login" v-if="!isAuthenticated">
         <router-link to="/login">Login </router-link>
       </li>
@@ -27,6 +28,8 @@
       >
         Logout
       </li>
+
+      <h1 class="nav__heading">{{ boardName }}</h1>
     </ul>
     <div
       class="burger"
@@ -42,21 +45,17 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
-  name: "OwnHeader",
-  props: {},
+  name: "BoardHeader",
+  props: {
+    boardName: String,
+    boardLogo: String,
+  },
   data() {
     return {
       isClicked: false,
     };
-  },
-  computed: {
-    ...mapState(["isAuthenticated", "currentBoard"]),
-  },
-  methods: {
-    ...mapActions(["logoutUserAction"]),
   },
 });
 </script>
@@ -72,21 +71,18 @@ export default defineComponent({
   top: 0;
   width: 100vw;
   display: flex;
-  padding: 5px 30px 5px 30px;
+  padding: 5px 30px 5px 0;
   height: 80px;
   z-index: 1;
   background-color: $main-color;
 }
 
 .main-logo {
+  @include flex-center;
   @include main-logo;
+  left: 10px;
+  top: 15px;
 }
-
-// .logo {
-//   position: fixed;
-//   top: 15px;
-//   left: 15px;
-// }
 
 .burger {
   height: 25px;

@@ -81,6 +81,20 @@ const actions = {
     });
     commit("LOAD_CURRENT_BOARD", currentBoard);
   },
+
+  async loadBoardByNameAction(
+    { commit }: ActionContext<State, State>,
+    name: string
+  ): Promise<void> {
+    try {
+      const { data: currentBoard } = await axios.get(
+        `${urlOWN}board/name/${name}`
+      );
+      commit("LOAD_CURRENT_BOARD", currentBoard);
+    } catch {
+      router.push("/notfound");
+    }
+  },
 };
 
 export default actions;
