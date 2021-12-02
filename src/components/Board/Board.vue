@@ -11,6 +11,7 @@
         :alt="`Logo of ${board.name}`"
         width="125"
         height="125"
+        @click="loadBoard(board.id)"
       />
       <h3 class="board__name">{{ board.name.toUpperCase() }}</h3>
     </router-link>
@@ -19,12 +20,19 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 
 export default defineComponent({
   name: "Board",
   props: {
     board: Object,
     isNew: Boolean,
+  },
+  methods: {
+    ...mapActions(["loadCurrentBoardAction"]),
+    loadBoard(id: string) {
+      this.loadCurrentBoardAction(id);
+    },
   },
 });
 </script>

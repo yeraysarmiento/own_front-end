@@ -103,7 +103,7 @@ export default defineComponent({
   },
   computed: {},
   methods: {
-    ...mapActions(["createBoardAction"]),
+    ...mapActions(["createBoardAction", "getTokenAction"]),
     onImage(image: Logo) {
       [this.logo] = image.srcElement.files;
     },
@@ -138,6 +138,13 @@ export default defineComponent({
         this.isWrong = false;
       }
     },
+  },
+  mounted() {
+    if (localStorage.getItem("user")) {
+      this.getTokenAction();
+    } else {
+      this.$router.push("/login");
+    }
   },
 });
 </script>

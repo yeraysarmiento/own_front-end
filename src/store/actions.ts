@@ -70,6 +70,17 @@ const actions = {
     });
     commit("CREATE_BOARD", newBoard);
   },
+
+  async loadCurrentBoardAction(
+    { commit }: ActionContext<State, State>,
+    id: string
+  ): Promise<void> {
+    const token = JSON.parse(localStorage.getItem("user") || "");
+    const { data: currentBoard } = await axios.get(`${urlOWN}board/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    commit("LOAD_CURRENT_BOARD", currentBoard);
+  },
 };
 
 export default actions;

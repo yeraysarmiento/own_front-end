@@ -1,4 +1,4 @@
-import { Board, State, User } from "@/types/interface";
+import { Board, Paper, State, User } from "@/types/interface";
 
 const mutations = {
   LOAD_USER(state: State, payload: User): void {
@@ -16,6 +16,9 @@ const mutations = {
   },
   CREATE_BOARD(state: State, payload: Board): void {
     state.boards = [...state.boards, payload];
+  },
+  LOAD_CURRENT_BOARD(state: State, payload: Board): void {
+    state.currentBoard = payload;
   },
 };
 
