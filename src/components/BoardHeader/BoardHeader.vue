@@ -1,7 +1,7 @@
 <template>
-  <div class="header">
-    <router-link :to="`/${boardName.toLowerCase()}`">
-      <h1 class="main-logo" :class="isClicked ? 'main-logo--open' : ''">
+  <div class="board-header">
+    <router-link :to="`/${boardName?.toLowerCase()}`">
+      <h1 class="custom-logo" :class="isClicked ? 'custom-logo--open' : ''">
         <img :src="boardLogo" :alt="boardName" width="100" height="100" />
       </h1>
     </router-link>
@@ -11,25 +11,23 @@
       @click="isClicked = !isClicked"
       :class="isClicked ? 'nav--open' : ''"
     >
-      <router-link to="/home">
-        <li class="nav__element nav__element--register">Wanna be an owner?</li>
-      </router-link>
-      <li class="nav__element nav__element--login" v-if="isAuthenticated">
-        <router-link to="/desk">Go to OWN</router-link>
-      </li>
-
       <li class="nav__element nav__element--login" v-if="!isAuthenticated">
-        <router-link to="/login">Login </router-link>
+        <router-link to="/login">Login</router-link>
       </li>
       <li
         class="nav__element nav__element--logout"
-        @click="logoutUserAction"
+        :@click="logoutUser(boardName?.toLowerCase())"
         v-else
       >
         Logout
       </li>
+      <li class="nav__element nav__element--atelier" v-if="isAuthenticated">
+        Atelier Mode
+      </li>
 
-      <h1 class="nav__heading">{{ boardName }}</h1>
+      <li class="nav__element nav__element--heading">
+        <h1>{{ boardName?.toUpperCase() }}</h1>
+      </li>
     </ul>
     <div
       class="burger"
@@ -45,12 +43,23 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
+import { mapActions, mapState } from "vuex";
 
 export default defineComponent({
   name: "BoardHeader",
   props: {
     boardName: String,
     boardLogo: String,
+  },
+  computed: {
+    ...mapState(["isAuthenticated"]),
+  },
+  methods: {
+    ...mapActions(["logoutUserAction"]),
+    logoutUser(path: string) {
+      this.logoutUserAction();
+      this.$router.push(`/${path}`);
+    },
   },
   data() {
     return {
@@ -64,7 +73,7 @@ export default defineComponent({
 @import "../../assets/styles/_variables.scss";
 @import "../../assets/styles/_mixins.scss";
 
-.header {
+.board-header {
   position: fixed;
   align-items: center;
   justify-content: space-between;
@@ -77,91 +86,32 @@ export default defineComponent({
   background-color: $main-color;
 }
 
-.main-logo {
+.custom-logo {
   @include flex-center;
   @include main-logo;
   left: 10px;
-  top: 15px;
-}
+  top: 20px;
 
-.burger {
-  height: 25px;
-  width: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-
-  &__element {
-    border: 1px solid black;
-    transition: transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-
-    &--first {
-      .burger--open & {
-        transform: translateY(11.5px) rotate(45deg);
-        border: 1px solid white;
-      }
-    }
-
-    &--middle {
-      .burger--open & {
-        opacity: 0;
-      }
-    }
-
-    &--last {
-      .burger--open & {
-        transform: translateY(-11.5px) rotate(-45deg);
-        border: 1px solid white;
-      }
-    }
+  &.custom-logo--open {
+    background: white;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(50px);
   }
 }
 
 .nav {
-  @include nav;
-  @include flex-center;
-  padding: 0;
-  background-color: black;
-  color: #fff;
-  position: fixed;
-  top: 0;
-  left: -100vw;
-  right: 100vw;
-  bottom: 0;
-  flex-direction: column;
-  transition: left 0.5s, right 0.5s;
-
-  &.nav--open {
-    left: 0;
-    right: 0;
-  }
-
   &__element {
-    @include flex-center;
-
-    &.nav__element--register {
-      @include button;
-      background-color: black;
-      color: white;
-      font-size: 20px;
+    &.nav__element--heading {
+      font-family: "Helvetica Neue";
+      font-size: 15px;
+      font-style: italic;
     }
 
-    &.nav__element--login {
-      @include button;
-      font-size: 20px;
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    &.nav__element--logout {
-      @include button;
-      font-size: 20px;
-      background-color: $delete-color;
-      &:hover {
-        text-decoration: none;
-      }
+    &.nav__element--atelier {
+      font-family: "Helvetica Neue";
+      font-size: 15px;
+      font-style: italic;
     }
   }
 }

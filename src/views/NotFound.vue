@@ -1,9 +1,11 @@
 <template>
   <div class="notfound-container">
     <h2 class="notfound-container__text">404 NOT FOUND</h2>
-    <p class="notfound-container__information">
-      Please go back to our home page!
-    </p>
+    <router-link to="/home">
+      <p class="notfound-container__information">
+        Please go back to our home page!
+      </p>
+    </router-link>
   </div>
 </template>
 

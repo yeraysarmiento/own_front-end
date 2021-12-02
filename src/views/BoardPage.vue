@@ -5,7 +5,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
-import BoardHeader from "../components/BoardHeader/BoardHeader.vue";
 
 export default defineComponent({
   name: "CreateBoard",
@@ -14,11 +13,13 @@ export default defineComponent({
     ...mapState(["currentBoard"]),
   },
   methods: {
-    ...mapActions(["loadBoardByNameAction"]),
+    ...mapActions(["loadBoardByNameAction", "getTokenAction"]),
   },
   mounted() {
     this.loadBoardByNameAction(this.$route.params.boardName);
-    console.log(this.$route.params.boardName);
+    if (sessionStorage.getItem("user")) {
+      this.getTokenAction();
+    }
   },
 });
 </script>

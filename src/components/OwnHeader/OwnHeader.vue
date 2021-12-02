@@ -22,7 +22,7 @@
       </li>
       <li
         class="nav__element nav__element--logout"
-        @click="logoutUserAction"
+        @click="logoutUser('home')"
         v-else
       >
         Logout
@@ -57,6 +57,10 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["logoutUserAction"]),
+    logoutUser(path: string) {
+      this.logoutUserAction();
+      this.$router.push(`/${path}`);
+    },
   },
 });
 </script>

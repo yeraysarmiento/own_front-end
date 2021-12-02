@@ -27,7 +27,7 @@ const actions = {
   },
 
   getTokenAction({ dispatch }: ActionContext<State, State>): void {
-    const token = JSON.parse(localStorage.getItem("user") || "");
+    const token = JSON.parse(sessionStorage.getItem("user") || "");
     dispatch("getProfileAction", token);
   },
 
@@ -37,13 +37,12 @@ const actions = {
     user: UserLogin
   ): Promise<void> {
     const { data: token } = await axios.post(`${urlOWN}user/login/`, user);
-    localStorage.setItem("user", JSON.stringify(token.user));
+    sessionStorage.setItem("user", JSON.stringify(token.user));
     dispatch("getProfileAction", token);
   },
 
   logoutUserAction({ commit }: ActionContext<State, State>): void {
-    router.push("/home");
-    localStorage.removeItem("user");
+    sessionStorage.removeItem("user");
     commit("LOGOUT_USER");
   },
 
@@ -64,7 +63,7 @@ const actions = {
     { commit }: ActionContext<State, State>,
     board: Board
   ): Promise<void> {
-    const token = JSON.parse(localStorage.getItem("user") || "");
+    const token = JSON.parse(sessionStorage.getItem("user") || "");
     const { data: newBoard } = await axios.post(`${urlOWN}board/new/`, board, {
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -75,7 +74,7 @@ const actions = {
     { commit }: ActionContext<State, State>,
     id: string
   ): Promise<void> {
-    const token = JSON.parse(localStorage.getItem("user") || "");
+    const token = JSON.parse(sessionStorage.getItem("user") || "");
     const { data: currentBoard } = await axios.get(`${urlOWN}board/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
