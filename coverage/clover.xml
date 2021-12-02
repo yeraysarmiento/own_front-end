@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638439934299" clover="3.2.0">
-  <project timestamp="1638439934299" name="All files">
+<coverage generated="1638442455718" clover="3.2.0">
+  <project timestamp="1638442455718" name="All files">
     <metrics statements="111" coveredstatements="54" conditionals="37" coveredconditionals="0" methods="19" coveredmethods="2" elements="167" coveredelements="56" complexity="0" loc="111" ncloc="111" packages="10" files="16" classes="16"/>
     <package name="src.components">
       <metrics statements="12" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="ImagePreview.vue" path="/Users/yeray/Desktop/own/src/components/ImagePreview.vue">
         <metrics statements="12" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="21" count="2" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="34" count="0" type="stmt"/>
@@ -24,18 +24,18 @@
       <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="Board.vue" path="/Users/yeray/Desktop/own/src/components/Board/Board.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.components.BoardForm">
       <metrics statements="22" coveredstatements="4" conditionals="9" coveredconditionals="0" methods="5" coveredmethods="0"/>
       <file name="BoardForm.vue" path="/Users/yeray/Desktop/own/src/components/BoardForm/BoardForm.vue">
         <metrics statements="22" coveredstatements="4" conditionals="9" coveredconditionals="0" methods="5" coveredmethods="0"/>
-        <line num="82" count="2" type="stmt"/>
-        <line num="83" count="2" type="stmt"/>
-        <line num="84" count="2" type="stmt"/>
-        <line num="87" count="2" type="stmt"/>
+        <line num="82" count="3" type="stmt"/>
+        <line num="83" count="3" type="stmt"/>
+        <line num="84" count="3" type="stmt"/>
+        <line num="87" count="3" type="stmt"/>
         <line num="91" count="0" type="stmt"/>
         <line num="108" count="0" type="stmt"/>
         <line num="111" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -60,18 +60,18 @@
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="BoardGallery.vue" path="/Users/yeray/Desktop/own/src/components/BoardGallery/BoardGallery.vue">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.components.Login">
       <metrics statements="13" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="1"/>
       <file name="Login.vue" path="/Users/yeray/Desktop/own/src/components/Login/Login.vue">
         <metrics statements="13" coveredstatements="4" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="1"/>
-        <line num="46" count="2" type="stmt"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="50" count="2" type="stmt"/>
+        <line num="46" count="3" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
         <line num="54" count="2" type="stmt"/>
         <line num="64" count="0" type="cond" truecount="0" falsecount="4"/>
         <line num="65" count="0" type="stmt"/>
@@ -98,9 +98,9 @@
       <metrics statements="19" coveredstatements="3" conditionals="14" coveredconditionals="0" methods="4" coveredmethods="0"/>
       <file name="Register.vue" path="/Users/yeray/Desktop/own/src/components/Register/Register.vue">
         <metrics statements="19" coveredstatements="3" conditionals="14" coveredconditionals="0" methods="4" coveredmethods="0"/>
-        <line num="58" count="2" type="stmt"/>
-        <line num="59" count="2" type="stmt"/>
-        <line num="62" count="2" type="stmt"/>
+        <line num="58" count="3" type="stmt"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
         <line num="66" count="0" type="stmt"/>
         <line num="81" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="87" count="0" type="cond" truecount="0" falsecount="2"/>
@@ -123,38 +123,38 @@
       <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="index.ts" path="/Users/yeray/Desktop/own/src/router/index.ts">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="2" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
-        <line num="54" count="2" type="stmt"/>
+        <line num="1" count="3" type="stmt"/>
+        <line num="2" count="3" type="stmt"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="49" count="3" type="stmt"/>
+        <line num="54" count="3" type="stmt"/>
       </file>
     </package>
     <package name="src.views">
       <metrics statements="23" coveredstatements="19" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
       <file name="BoardPage.vue" path="/Users/yeray/Desktop/own/src/views/BoardPage.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
       </file>
       <file name="CreateBoard.vue" path="/Users/yeray/Desktop/own/src/views/CreateBoard.vue">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
-        <line num="12" count="2" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
       </file>
       <file name="Desk.vue" path="/Users/yeray/Desktop/own/src/views/Desk.vue">
         <metrics statements="8" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-        <line num="18" count="2" type="stmt"/>
-        <line num="19" count="2" type="stmt"/>
-        <line num="20" count="2" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="22" count="3" type="stmt"/>
         <line num="26" count="0" type="stmt"/>
         <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="38" count="0" type="stmt"/>
@@ -162,25 +162,25 @@
       </file>
       <file name="Home.vue" path="/Users/yeray/Desktop/own/src/views/Home.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="10" count="2" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
       </file>
       <file name="NotFound.vue" path="/Users/yeray/Desktop/own/src/views/NotFound.vue">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
       </file>
       <file name="OwnLogin.vue" path="/Users/yeray/Desktop/own/src/views/OwnLogin.vue">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
       </file>
       <file name="OwnRegister.vue" path="/Users/yeray/Desktop/own/src/views/OwnRegister.vue">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
       </file>
     </package>
     <package name="tests">

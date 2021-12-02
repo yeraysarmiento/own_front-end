@@ -7,8 +7,8 @@
     <router-link :to="`/${board.name.toLowerCase()}`">
       <img
         class="board__image"
-        v-bind:src="board.logo"
-        alt="Logo of {{board.name}}"
+        :src="board.logo"
+        :alt="`Logo of ${board.name}`"
         width="125"
         height="125"
       />
