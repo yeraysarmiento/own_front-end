@@ -1,20 +1,20 @@
 import { Board, State, User } from "@/types/interface";
 
 const mutations = {
-  loadUser(state: State, payload: User): void {
+  LOAD_USER(state: State, payload: User): void {
     state.currentUser = payload;
   },
-  loginUser(state: State): void {
+  LOGIN_USER(state: State): void {
     state.isAuthenticated = true;
   },
-  logoutUser(state: any): void {
+  LOGOUT_USER(state: any): void {
     state.isAuthenticated = false;
     state.currentUser = {};
   },
-  loadBoards(state: State, payload: Array<Board>): void {
+  LOAD_BOARDS(state: State, payload: Array<Board>): void {
     state.boards = payload;
   },
-  addBoard(state: State, payload: Board): void {
+  CREATE_BOARD(state: State, payload: Board): void {
     state.boards = [...state.boards, payload];
   },
 };

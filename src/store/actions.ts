@@ -21,9 +21,9 @@ const actions = {
       boards: allData.boards,
     };
 
-    commit("loadUser", userData);
-    commit("loginUser");
-    commit("loadBoards", userData.boards);
+    commit("LOAD_USER", userData);
+    commit("LOGIN_USER");
+    commit("LOAD_BOARDS", userData.boards);
   },
 
   getTokenAction({ dispatch }: ActionContext<State, State>): void {
@@ -44,7 +44,7 @@ const actions = {
   logoutUserAction({ commit }: ActionContext<State, State>): void {
     router.push("/home");
     localStorage.removeItem("user");
-    commit("logoutUser");
+    commit("LOGOUT_USER");
   },
 
   async registerUserAction(
@@ -68,7 +68,7 @@ const actions = {
     const { data: newBoard } = await axios.post(`${urlOWN}board/new/`, board, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    commit("createBoard", newBoard);
+    commit("CREATE_BOARD", newBoard);
   },
 };
 

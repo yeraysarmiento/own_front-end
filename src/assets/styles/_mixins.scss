@@ -58,6 +58,7 @@
 
   &:hover {
     text-decoration: underline;
+    text-underline-offset: 5px;
   }
 
   &:active {
@@ -118,7 +119,7 @@
     border-radius: 25px;
     border: 1px dashed black;
     padding-left: 20px;
-    background: none;
+    background-color: $main-color;
 
     &.wrong {
       border: 1px solid red;
@@ -148,6 +149,7 @@
     @include lora-text;
     font-size: 15px;
     opacity: 0.5;
+    background-color: $main-color;
   }
 
   :focus {

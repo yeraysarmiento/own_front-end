@@ -75,7 +75,7 @@ export default defineComponent({
   },
   computed: {},
   methods: {
-    ...mapActions(["registerUser"]),
+    ...mapActions(["registerUserAction"]),
     ...mapGetters(["validEmail"]),
     checkForm() {
       if (
@@ -111,7 +111,7 @@ export default defineComponent({
           password: this.password,
         };
         try {
-          await this.registerUser(userData);
+          await this.registerUserAction(userData);
           this.$router.push("/desk");
         } catch (error) {
           this.isWrong = true;

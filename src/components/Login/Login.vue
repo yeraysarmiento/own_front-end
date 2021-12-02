@@ -61,7 +61,7 @@ export default defineComponent({
   methods: {
     ...mapActions(["loginUserAction"]),
     checkForm() {
-      if (this.username.length > 5 && this.password.length > 5) {
+      if (this.username.length > 3 && this.password.length > 3) {
         this.isDisabled = false;
       } else {
         this.isDisabled = true;

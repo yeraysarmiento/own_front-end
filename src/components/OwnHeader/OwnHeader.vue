@@ -154,12 +154,18 @@ export default defineComponent({
     &.nav__element--login {
       @include button;
       font-size: 20px;
+      &:hover {
+        text-decoration: none;
+      }
     }
 
     &.nav__element--logout {
       @include button;
       font-size: 20px;
       background-color: $delete-color;
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }
