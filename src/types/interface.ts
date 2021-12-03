@@ -49,6 +49,7 @@ export interface State {
   currentUser: User;
   currentBoard: Board | any;
   boards: Array<Board>;
+  isCustomHeader: boolean;
 }
 export interface Logo extends File {
   srcElement: {

@@ -1,17 +1,5 @@
 <template>
-  <OwnHeader
-    v-if="
-      [
-        '/login',
-        '/register',
-        '/board',
-        '/home',
-        '/desk',
-        '/notfound',
-        '/desk/new',
-      ].includes($route.path)
-    "
-  />
+  <OwnHeader v-if="currentBoard === null" />
   <BoardHeader
     :boardName="currentBoard.name"
     :boardLogo="currentBoard.logo"
@@ -37,7 +25,7 @@ import BoardHeader from "./components/BoardHeader/BoardHeader.vue";
 export default defineComponent({
   name: "app",
   computed: {
-    ...mapState(["currentBoard"]),
+    ...mapState(["currentBoard", "isCustomHeader"]),
   },
   methods: {
     ...mapActions(["getTokenAction"]),
