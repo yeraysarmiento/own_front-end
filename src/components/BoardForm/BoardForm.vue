@@ -63,7 +63,7 @@
           id="about"
           v-model="about"
           rows="10"
-          placeholder="What is your website about?"
+          placeholder="Minumum 25 characters"
           required
         />
       </div>
