@@ -8,59 +8,67 @@
       autocomplete="off"
       @change="checkForm"
     >
-      <div class="logo-container">
-        <label for="logo">*Logo:</label>
-        <ImagePreview v-on:input="onImage" />
-        <p class="logo-container__limit">Up to 1mb</p>
+      <div class="register-form__container">
+        <div class="logo-container">
+          <label for="logo">*Logo:</label>
+          <ImagePreview v-on:input="onImage" />
+          <p class="logo-container__limit">Up to 1mb</p>
+        </div>
+
+        <div class="second-container">
+          <label for="name" type="text">*Website name:</label>
+          <div class="website-container">
+            <p>www.own.com/</p>
+            <input id="name" v-model="name" placeholder="Amallective" />
+          </div>
+
+          <label for="email" type="file">Contact email:</label>
+          <input
+            id="email"
+            v-model="email"
+            placeholder="info@amallective.com"
+          />
+          <label for="category">*Category:</label>
+          <select id="category" name="category" v-model="category" required>
+            <option value="Choose an area">Choose an area</option>
+            <option value="Design">Design</option>
+            <option value="Business">Business</option>
+            <option value="Architecture">Architecture</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
       </div>
+      <div class="register-form__container">
+        <label for="instagram" type="text">Instagram</label>
+        <input
+          id="instagram"
+          v-model="instagram"
+          placeholder="instagram.com/amallective"
+        />
 
-      <label for="name" type="text">*Website name:</label>
-      <div class="website-container">
-        <p>www.own.com/</p>
-        <input id="name" v-model="name" placeholder="Amallective" />
+        <label for="twitter" type="text">Twitter</label>
+        <input
+          id="twitter"
+          v-model="twitter"
+          placeholder="twitter.com/amallective"
+        />
+
+        <label for="facebook" type="text">Facebook</label>
+        <input
+          id="facebook"
+          v-model="facebook"
+          placeholder="facebook.com/amallective"
+        />
+
+        <label for="about" type="text">*Write about your website:</label>
+        <textarea
+          id="about"
+          v-model="about"
+          rows="10"
+          placeholder="What is your website about?"
+          required
+        />
       </div>
-
-      <label for="email" type="file">Contact email:</label>
-      <input id="email" v-model="email" placeholder="info@amallective.com" />
-
-      <label for="category">*Category:</label>
-      <select id="category" name="category" v-model="category" required>
-        <option value="Choose an area">Choose an area</option>
-        <option value="Design">Design</option>
-        <option value="Business">Business</option>
-        <option value="Architecture">Architecture</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <label for="instagram" type="text">Instagram</label>
-      <input
-        id="instagram"
-        v-model="instagram"
-        placeholder="instagram.com/amallective"
-      />
-
-      <label for="twitter" type="text">Twitter</label>
-      <input
-        id="twitter"
-        v-model="twitter"
-        placeholder="twitter.com/amallective"
-      />
-
-      <label for="facebook" type="text">Facebook</label>
-      <input
-        id="facebook"
-        v-model="facebook"
-        placeholder="facebook.com/amallective"
-      />
-
-      <label for="about" type="text">*Write about your website:</label>
-      <textarea
-        id="about"
-        v-model="about"
-        rows="10"
-        placeholder="What is your website about?"
-        required
-      />
 
       <button
         class="button"
@@ -149,9 +157,17 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../assets/styles/_variables.scss";
 @import "../../assets/styles/_mixins.scss";
+
+.register-form {
+  @include form;
+
+  & input {
+    margin-bottom: 10px;
+  }
+}
 
 .logo-container {
   flex-direction: column;
@@ -170,26 +186,27 @@ export default defineComponent({
   }
 }
 
-.image-preview__input {
-  display: none;
-}
-
-.register-form {
-  @include form;
-}
-
-.website-container {
-  width: 100%;
-  display: flex;
-  align-items: center;
-
-  & input {
-    margin-left: 15px;
-  }
-}
-
 .required {
   margin-bottom: 5px;
   color: darkgrey;
+}
+
+@media (min-width: $tablet) {
+  .register-form {
+    display: flex;
+    flex-direction: row;
+
+    &__container {
+      width: 250px;
+      margin: 0 15px;
+    }
+
+    &__container:nth-of-type(1) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      background: red;
+    }
+  }
 }
 </style>

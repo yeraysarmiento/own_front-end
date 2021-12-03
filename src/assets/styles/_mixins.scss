@@ -78,12 +78,11 @@
 
 @mixin form {
   @include lora-text;
+  @include flex-center;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
-  display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
   padding-top: 25px;
   margin-bottom: 25px;
   position: relative;

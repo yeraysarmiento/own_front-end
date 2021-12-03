@@ -46,11 +46,15 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/_mixins.scss";
 
 .image-preview {
   width: 100%;
+
+  &__input {
+    display: none;
+  }
 
   &__container {
     padding: 10px;
