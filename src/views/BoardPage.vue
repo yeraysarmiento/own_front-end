@@ -45,41 +45,4 @@ export default defineComponent({
   row-gap: 50px;
   margin-top: 200px;
 }
-
-.paper {
-  align-items: stretch;
-  width: 100%;
-  position: relative;
-
-  &__image {
-    width: 100%;
-    object-fit: cover;
-
-    &.editing {
-      border-radius: 50px;
-      padding: 15px;
-    }
-  }
-
-  &__text-container {
-    padding-left: 15px;
-    padding-top: 15px;
-  }
-
-  &__title {
-    @include rufina-title;
-  }
-
-  &__author {
-    @include rufina-title;
-    color: lightgray;
-  }
-
-  &__delete {
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    font-size: 20px;
-  }
-}
 </style>

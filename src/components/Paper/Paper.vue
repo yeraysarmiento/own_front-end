@@ -41,4 +41,51 @@ export default defineComponent({
 <style lang="scss">
 @import "../../assets/styles/_mixins.scss";
 @import "../../assets/styles/_variables.scss";
+
+.paper {
+  align-items: stretch;
+  width: 100%;
+  position: relative;
+
+  &:hover {
+    -webkit-animation: tiembla 1s infinite;
+  }
+  @-webkit-keyframes tiembla {
+    50% {
+      -webkit-transform: rotateZ(0deg) scale(0.99);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+
+    &.editing {
+      border-radius: 50px;
+      padding: 15px;
+    }
+  }
+
+  &__text-container {
+    padding-left: 15px;
+    padding-top: 15px;
+  }
+
+  &__title {
+    @include rufina-title;
+  }
+
+  &__author {
+    @include rufina-title;
+    color: lightgray;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 20px;
+  }
+}
 </style>
