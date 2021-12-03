@@ -32,4 +32,12 @@ export default defineComponent({
     text-align: center;
   }
 }
+
+@media (min-width: $desktop) {
+  .create-board {
+    &__title {
+      margin-top: 80px;
+    }
+  }
+}
 </style>
