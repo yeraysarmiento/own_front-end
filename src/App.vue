@@ -1,9 +1,15 @@
 <template>
   <OwnHeader
     v-if="
-      ['/login', '/register', '/board', '/home', '/desk', '/notfound'].includes(
-        $route.path
-      )
+      [
+        '/login',
+        '/register',
+        '/board',
+        '/home',
+        '/desk',
+        '/notfound',
+        '/desk/new',
+      ].includes($route.path)
     "
   />
   <BoardHeader

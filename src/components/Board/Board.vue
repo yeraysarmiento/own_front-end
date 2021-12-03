@@ -1,6 +1,6 @@
 <template>
   <router-link v-if="isNew" to="/desk/new">
-    <li class="board board--new">+</li>
+    <li class="board board--new" v-if="isNew">+</li>
   </router-link>
 
   <li class="board" v-else>
