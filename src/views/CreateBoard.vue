@@ -1,6 +1,6 @@
 <template>
   <div class="create-board">
-    <h2 class="create-board__title">Create board</h2>
+    <h2 class="create-board__title">NEW BOARD</h2>
     <BoardForm />
   </div>
 </template>
@@ -19,7 +19,7 @@ export default defineComponent({
 @import "../assets/styles/_mixins.scss";
 @import "../assets/styles/_variables.scss";
 
-.desk {
+.create-board {
   display: flex;
   flex-direction: column;
   width: 100%;
