@@ -93,7 +93,6 @@ export default defineComponent({
   top: 20px;
 
   &.custom-logo--open {
-    background: white;
     border-radius: 15px;
     background: rgba(255, 255, 255, 0.22);
     backdrop-filter: blur(50px);
@@ -103,13 +102,13 @@ export default defineComponent({
 .nav {
   &__element {
     &.nav__element--heading {
-      font-family: "Helvetica Neue";
+      font-family: "Helvetica Neue", sans-serif;
       font-size: 15px;
       font-style: italic;
     }
 
     &.nav__element--atelier {
-      font-family: "Helvetica Neue";
+      font-family: "Helvetica Neue", sans-serif;
       font-size: 15px;
       font-style: italic;
     }

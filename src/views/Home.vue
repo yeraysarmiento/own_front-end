@@ -36,7 +36,7 @@ export default defineComponent({
   padding-bottom: 40px;
 
   & span {
-    font-family: "Helvetica Neue";
+    font-family: "Helvetica Neue", sans-serif;
     font-style: italic;
     font-weight: 800;
   }
