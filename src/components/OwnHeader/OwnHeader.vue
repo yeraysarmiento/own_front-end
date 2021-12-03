@@ -11,7 +11,7 @@
       @click="isClicked = !isClicked"
       :class="isClicked ? 'nav--open' : ''"
     >
-      <router-link to="/register">
+      <router-link to="/register" v-if="!isAuthenticated">
         <li class="nav__element nav__element--register">Register</li>
       </router-link>
       <li class="nav__element nav__element--login" v-if="isAuthenticated">
@@ -28,6 +28,7 @@
         Logout
       </li>
     </ul>
+
     <div
       class="burger"
       @click="isClicked = !isClicked"
@@ -85,12 +86,6 @@ export default defineComponent({
 .main-logo {
   @include main-logo;
 }
-
-// .logo {
-//   position: fixed;
-//   top: 15px;
-//   left: 15px;
-// }
 
 .burger {
   height: 25px;
@@ -171,6 +166,56 @@ export default defineComponent({
         text-decoration: none;
       }
     }
+  }
+}
+
+@media (min-width: $tablet) {
+  .burger {
+    display: none;
+  }
+
+  .main-logo {
+    &.main-logo--open {
+      color: black;
+    }
+  }
+
+  .nav {
+    flex-direction: row;
+    justify-content: end;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: none;
+    margin: 0 30px;
+
+    &__element {
+      margin: 50px;
+
+      &.nav__element--login {
+        margin: 0 15px;
+        font-size: 16px;
+      }
+
+      &.nav__element--logout {
+        margin: 0 15px;
+        font-size: 16px;
+      }
+
+      &.nav__element--register {
+        background: none;
+        color: black;
+        box-shadow: none;
+        margin: 45px;
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .main-logo {
+    font-size: 65px;
   }
 }
 </style>
