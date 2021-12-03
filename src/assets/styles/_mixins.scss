@@ -33,6 +33,12 @@
   }
 }
 
+@mixin rufina-title {
+  font-family: "Rufina", serif;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
 @mixin nav {
   font-family: $nav-font;
   font-style: italic;
@@ -74,7 +80,6 @@
     text-decoration: none;
     cursor: inherit;
   }
-
 }
 
 @mixin form {

@@ -97,6 +97,7 @@ export default defineComponent({
 
   &__element {
     border: 1px solid black;
+    background: black;
     transition: transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 
     &--first {

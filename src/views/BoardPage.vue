@@ -1,14 +1,23 @@
 <template>
-  <div class="board-page"></div>
+  <div class="board-page">
+    <ul class="papers-container">
+      <Paper
+        v-for="paper in currentBoard?.papers"
+        v-bind:key="paper?.id"
+        :paper="paper"
+      />
+    </ul>
+  </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" scoped>
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
+import Paper from "../components/Paper/Paper.vue";
 
 export default defineComponent({
   name: "CreateBoard",
-  components: {},
+  components: { Paper },
   computed: {
     ...mapState(["currentBoard"]),
   },
@@ -27,4 +36,13 @@ export default defineComponent({
 <style lang="scss">
 @import "../assets/styles/_mixins.scss";
 @import "../assets/styles/_variables.scss";
+
+.papers-container {
+  display: grid;
+  width: 100vw;
+  grid-template-columns: repeat(1, 1fr);
+
+  row-gap: 50px;
+  margin-top: 200px;
+}
 </style>
