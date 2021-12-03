@@ -84,7 +84,6 @@ export default defineComponent({
   padding: 5px 30px 5px 0;
   height: 80px;
   z-index: 1;
-  background-color: $main-color;
 }
 
 .custom-logo {
@@ -96,6 +95,7 @@ export default defineComponent({
 
 .nav {
   &__element {
+    background: black;
     &.nav__element--heading {
       font-family: "Helvetica Neue", sans-serif;
       font-size: 15px;
@@ -109,6 +109,12 @@ export default defineComponent({
       font-size: 15px;
       font-style: italic;
     }
+  }
+}
+
+@media (min-width: $tablet) {
+  .board-header {
+    background-color: $main-color;
   }
 }
 </style>
