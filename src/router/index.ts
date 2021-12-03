@@ -34,14 +34,17 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/desk/new",
+    name: "CreateBoard",
     component: CreateBoard,
   },
   {
     path: "/:boardName",
+    name: "BoardPage",
     component: BoardPage,
   },
   {
     path: "/notfound",
+    name: "NotFound",
     component: NotFound,
   },
   {

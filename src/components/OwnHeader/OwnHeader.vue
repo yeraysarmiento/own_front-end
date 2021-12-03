@@ -175,6 +175,7 @@ export default defineComponent({
   }
 
   .main-logo {
+    font-size: 55px;
     &.main-logo--open {
       color: black;
     }
