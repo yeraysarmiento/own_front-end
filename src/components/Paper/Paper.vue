@@ -3,6 +3,7 @@
     <router-link :to="`${$route.path}/${paper.id}`">
       <img
         class="paper__image"
+        :class="isAuthenticated ? 'editing' : ''"
         :src="paper.images[0]"
         :alt="`Image of ${paper.title}, by ${paper.author}`"
         height="350"
@@ -12,7 +13,9 @@
         <h2 class="paper__title">/ {{ paper.title }}</h2>
 
         <h3 class="paper__author">{{ paper.author }}</h3>
-        <p class="paper__delete"><font-awesome-icon icon="xmark" /></p>
+        <p class="paper__delete" v-if="isAuthenticated">
+          <font-awesome-icon icon="xmark" />
+        </p>
       </div>
     </router-link>
   </li>
@@ -20,12 +23,16 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapState } from "vuex";
 
 export default defineComponent({
   name: "Paper",
   props: {
     // boardName: String,
     paper: Object,
+  },
+  computed: {
+    ...mapState(["isAuthenticated"]),
   },
   methods: {},
 });

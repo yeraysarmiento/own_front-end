@@ -54,6 +54,11 @@ export default defineComponent({
   &__image {
     width: 100%;
     object-fit: cover;
+
+    &.editing {
+      border-radius: 50px;
+      padding: 15px;
+    }
   }
 
   &__text-container {
@@ -72,8 +77,8 @@ export default defineComponent({
 
   &__delete {
     position: absolute;
-    top: 25px;
-    right: 25px;
+    top: 40px;
+    right: 40px;
     font-size: 20px;
   }
 }
