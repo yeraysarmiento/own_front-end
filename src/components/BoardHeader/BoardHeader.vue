@@ -2,7 +2,7 @@
   <div class="board-header">
     <router-link :to="`/${boardName?.toLowerCase()}`">
       <h1 class="custom-logo" :class="isClicked ? 'custom-logo--open' : ''">
-        <img :src="boardLogo" :alt="boardName" width="100" height="100" />
+        <img :src="boardLogo" :alt="boardName" width="70" height="70" />
       </h1>
     </router-link>
 
@@ -11,18 +11,19 @@
       @click="isClicked = !isClicked"
       :class="isClicked ? 'nav--open' : ''"
     >
+      <li class="nav__element nav__element--login" v-if="isAuthenticated">
+        <router-link to="/desk">My Desk</router-link>
+      </li>
       <li class="nav__element nav__element--login" v-if="!isAuthenticated">
         <router-link to="/login">Login</router-link>
       </li>
+
       <li
         class="nav__element nav__element--logout"
         v-on:click="logoutUser(boardName?.toLowerCase())"
         v-else
       >
         Logout
-      </li>
-      <li class="nav__element nav__element--atelier" v-if="isAuthenticated">
-        Atelier Mode
       </li>
 
       <li class="nav__element nav__element--heading">
@@ -89,14 +90,8 @@ export default defineComponent({
 .custom-logo {
   @include flex-center;
   @include main-logo;
-  left: 10px;
-  top: 20px;
-
-  &.custom-logo--open {
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.22);
-    backdrop-filter: blur(50px);
-  }
+  top: 15px;
+  left: 15px;
 }
 
 .nav {
@@ -105,6 +100,8 @@ export default defineComponent({
       font-family: "Helvetica Neue", sans-serif;
       font-size: 15px;
       font-style: italic;
+      position: absolute;
+      bottom: 50px;
     }
 
     &.nav__element--atelier {

@@ -138,6 +138,7 @@ export default defineComponent({
       try {
         await this.createBoardAction(boardData);
         this.isWrong = true;
+        this.$router.push("/desk");
       } catch (error) {
         this.isWrong = false;
       }
