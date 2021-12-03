@@ -49,6 +49,7 @@ export default defineComponent({
 .paper {
   align-items: stretch;
   width: 100%;
+  position: relative;
 
   &__image {
     width: 100%;
@@ -67,6 +68,13 @@ export default defineComponent({
   &__author {
     @include rufina-title;
     color: lightgray;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    font-size: 20px;
   }
 }
 </style>

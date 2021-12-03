@@ -10,8 +10,9 @@
       />
       <div class="paper__text-container">
         <h2 class="paper__title">/ {{ paper.title }}</h2>
+
         <h3 class="paper__author">{{ paper.author }}</h3>
-        <p class="paper__delete">X</p>
+        <p class="paper__delete"><font-awesome-icon icon="xmark" /></p>
       </div>
     </router-link>
   </li>
