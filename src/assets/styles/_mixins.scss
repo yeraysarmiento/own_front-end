@@ -89,6 +89,7 @@
 
   & textarea {
     @include lora-text;
+    margin-top: 10px;
     resize: none;
     overflow-y: auto;
     width: 100%;
@@ -119,6 +120,7 @@
     border: 1px dashed black;
     padding-left: 20px;
     background-color: $main-color;
+    margin-top: 15px;
 
     &.wrong {
       border: 1px solid red;

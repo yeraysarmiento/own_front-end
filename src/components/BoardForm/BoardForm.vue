@@ -1,7 +1,5 @@
 <template>
   <div class="own-register">
-    <h2 class="register-title">NEW BOARD</h2>
-
     <form
       class="register-form"
       @submit.prevent="onSubmit"
@@ -69,20 +67,18 @@
           required
         />
       </div>
-
-      <button
-        class="button"
-        type="submit"
-        :disabled="isDisabled"
-        :class="isDisabled ? 'disabled' : ''"
-      >
-        Create board
-      </button>
-      <p class="required">*Required fields</p>
+      <div class="button-container">
+        <p class="required">*Required fields</p>
+        <button
+          class="button"
+          type="submit"
+          :disabled="isDisabled"
+          :class="isDisabled ? 'disabled' : ''"
+        >
+          Create board
+        </button>
+      </div>
     </form>
-    <router-link to="/home">
-      <div class="go-back">_Go back</div>
-    </router-link>
   </div>
 </template>
 
@@ -161,11 +157,41 @@ export default defineComponent({
 @import "../../assets/styles/_variables.scss";
 @import "../../assets/styles/_mixins.scss";
 
+.own-register {
+  margin: 0 auto;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  flex-direction: column;
+}
+
 .register-form {
   @include form;
 
+  & select {
+    margin-top: 10px;
+  }
+
+  &__container {
+    margin-top: 10px;
+  }
+
   & input {
     margin-bottom: 10px;
+  }
+}
+
+.website-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  & input {
+    margin-left: 15px;
   }
 }
 
@@ -189,24 +215,60 @@ export default defineComponent({
 .required {
   margin-bottom: 5px;
   color: darkgrey;
+  align-self: start;
 }
 
 @media (min-width: $tablet) {
   .register-form {
     display: flex;
     flex-direction: row;
+    max-width: 650px;
+    height: 600px;
+    padding: 30px 0;
+
+    & label {
+      padding: 0 10px 0 10px;
+    }
 
     &__container {
-      width: 250px;
+      width: 100%;
       margin: 0 15px;
     }
 
     &__container:nth-of-type(1) {
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       flex-direction: column;
-      background: red;
+      height: 100%;
     }
+
+    &__container:nth-of-type(2) {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+    }
+  }
+
+  .button-container {
+    position: absolute;
+    bottom: -110px;
+    flex-direction: row;
+    height: 100px;
+    justify-content: space-between;
+  }
+
+  .logo-container {
+    height: 100%;
+  }
+
+  .second-container {
+    height: 100%;
+  }
+}
+
+@media (min-width: $desktop) {
+  .register-form {
+    font-size: 14px;
   }
 }
 </style>
