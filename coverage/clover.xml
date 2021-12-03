@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638486604444" clover="3.2.0">
-  <project timestamp="1638486604445" name="All files">
+<coverage generated="1638490287229" clover="3.2.0">
+  <project timestamp="1638490287229" name="All files">
     <metrics statements="176" coveredstatements="54" conditionals="49" coveredconditionals="0" methods="39" coveredmethods="2" elements="264" coveredelements="56" complexity="0" loc="176" ncloc="176" packages="12" files="21" classes="21"/>
     <package name="src">
       <metrics statements="9" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
@@ -118,12 +118,12 @@
       <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
       <file name="OwnHeader.vue" path="/Users/yeray/Desktop/own/src/components/OwnHeader/OwnHeader.vue">
         <metrics statements="6" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
-        <line num="44" count="1" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="51" count="2" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
+        <line num="63" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.components.Register">

@@ -39,7 +39,7 @@ describe("Given an OwnMenu component", () => {
       });
 
       expect(wrapper.html()).toContain(logoutText);
-      expect(wrapper.html()).toContain(registerText);
+      // expect(wrapper.html()).toContain(registerText);
     });
   });
 });

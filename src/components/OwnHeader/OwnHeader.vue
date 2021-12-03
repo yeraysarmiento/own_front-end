@@ -197,6 +197,11 @@ export default defineComponent({
         font-size: 16px;
       }
 
+      &.nav__element--logout {
+        margin: 0 15px;
+        font-size: 16px;
+      }
+
       &.nav__element--register {
         background: none;
         color: black;
