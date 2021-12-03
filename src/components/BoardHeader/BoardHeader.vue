@@ -11,6 +11,10 @@
       @click="isClicked = !isClicked"
       :class="isClicked ? 'nav--open' : ''"
     >
+      <li class="nav__element nav__element--login" v-if="isAuthenticated">
+        <router-link to="/home">Back to OWN</router-link>
+      </li>
+
       <li class="nav__element nav__element--login" v-if="!isAuthenticated">
         <router-link to="/login">Login</router-link>
       </li>

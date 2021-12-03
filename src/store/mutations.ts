@@ -19,6 +19,7 @@ const mutations = {
   },
   LOAD_CURRENT_BOARD(state: State, payload: Board): void {
     state.currentBoard = payload;
+    state.isCustomHeader = true;
   },
 };
 
