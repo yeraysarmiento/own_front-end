@@ -11,6 +11,7 @@
   <div class="footer">
     <p v-if="['/home'].includes($route.path)">- You make own -</p>
   </div>
+  <Spinner v-if="isLoading" />
 </template>
 
 <script>
@@ -21,11 +22,12 @@ import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import OwnHeader from "./components/OwnHeader/OwnHeader.vue";
 import BoardHeader from "./components/BoardHeader/BoardHeader.vue";
+import Spinner from "./components/Spinner.vue";
 
 export default defineComponent({
   name: "app",
   computed: {
-    ...mapState(["currentBoard", "isCustomHeader"]),
+    ...mapState(["currentBoard", "isCustomHeader", "isLoading"]),
   },
   methods: {
     ...mapActions(["getTokenAction"]),
@@ -33,6 +35,7 @@ export default defineComponent({
   components: {
     OwnHeader,
     BoardHeader,
+    Spinner,
   },
   mounted() {
     if (localStorage.getItem("user")) {

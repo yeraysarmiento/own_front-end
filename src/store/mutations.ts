@@ -21,6 +21,12 @@ const mutations = {
     state.currentBoard = payload;
     state.isCustomHeader = true;
   },
+  START_LOADING(state: State): void {
+    state.isLoading = true;
+  },
+  STOP_LOADING(state: State): void {
+    state.isLoading = false;
+  },
 };
 
 export default mutations;

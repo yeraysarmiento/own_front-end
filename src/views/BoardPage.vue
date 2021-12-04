@@ -19,6 +19,11 @@ import Paper from "../components/Paper/Paper.vue";
 export default defineComponent({
   name: "CreateBoard",
   components: { Paper },
+  data() {
+    return {
+      isLoading: "",
+    };
+  },
   computed: {
     ...mapState(["currentBoard", "isAuthenticated"]),
   },
