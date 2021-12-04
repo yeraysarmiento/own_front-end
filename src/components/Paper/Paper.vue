@@ -55,14 +55,19 @@ export default defineComponent({
     cursor: pointer;
     filter: saturate(30%);
 
-    &:hover {
-      filter: saturate(100%);
-      -webkit-animation: tiembla 1s infinite;
-      @-webkit-keyframes tiembla {
-        50% {
-          -webkit-transform: rotateZ(0deg) scale(0.98);
+    &.editing {
+      &:hover {
+        -webkit-animation: tiembla 1s infinite;
+        @-webkit-keyframes tiembla {
+          50% {
+            -webkit-transform: rotateZ(0deg) scale(0.98);
+          }
         }
       }
+    }
+
+    &:hover {
+      filter: saturate(100%);
     }
 
     &.editing {
@@ -112,6 +117,20 @@ export default defineComponent({
     &__delete {
       top: 20px;
       right: 20px;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .paper {
+    &__image {
+      height: 265px;
+      width: 265px;
+    }
+
+    &__delete {
+      top: 20px;
+      right: 15px;
     }
   }
 }

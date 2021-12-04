@@ -63,4 +63,16 @@ export default defineComponent({
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (min-width: $desktop) {
+  .board-page {
+    margin: 30px;
+  }
+
+  .papers-container {
+    width: 1080px;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 10px;
+  }
+}
 </style>
