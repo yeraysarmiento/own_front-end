@@ -1,5 +1,11 @@
 <template>
-  <li class="paper">
+  <li class="paper" v-if="isEditing">
+    <router-link to="">
+      <p class="paper__image create">+</p>
+    </router-link>
+  </li>
+
+  <li class="paper" v-else>
     <router-link :to="`${$route.path}/${paper.id}`">
       <img
         class="paper__image"
@@ -30,6 +36,7 @@ export default defineComponent({
   props: {
     // boardName: String,
     paper: Object,
+    isEditing: Boolean,
   },
   computed: {
     ...mapState(["isAuthenticated"]),
@@ -43,7 +50,6 @@ export default defineComponent({
 @import "../../assets/styles/_variables.scss";
 
 .paper {
-  align-items: stretch;
   width: 100%;
   position: relative;
   list-style: none;
@@ -55,14 +61,41 @@ export default defineComponent({
     cursor: pointer;
     filter: saturate(30%);
 
-    &:hover {
-      filter: saturate(100%);
-      -webkit-animation: tiembla 1s infinite;
-      @-webkit-keyframes tiembla {
-        50% {
-          -webkit-transform: rotateZ(0deg) scale(0.98);
+    &.create {
+      @include flex-center;
+      font-size: 75px;
+      height: 320px;
+      width: 345px;
+      margin: 15px;
+
+      filter: none;
+      border-radius: 50px;
+      background: $button-color;
+      box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+
+      &:hover {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      &:active {
+        box-shadow: none;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+    }
+
+    &.editing {
+      &:hover {
+        -webkit-animation: tiembla 1s infinite;
+        @-webkit-keyframes tiembla {
+          50% {
+            -webkit-transform: rotateZ(0deg) scale(0.98);
+          }
         }
       }
+    }
+
+    &:hover {
+      filter: saturate(100%);
     }
 
     &.editing {
@@ -72,6 +105,7 @@ export default defineComponent({
   }
 
   &__text-container {
+    margin-top: 15px;
     padding-left: 20px;
     margin-bottom: 45px;
   }
@@ -99,19 +133,49 @@ export default defineComponent({
 @media (min-width: $tablet) {
   .paper {
     width: 100%;
+
     &__image {
       height: 225px;
       width: 100%;
+
+      &.create {
+        @include flex-center;
+        height: 195px;
+        width: 210px;
+        margin-left: 15px;
+      }
     }
 
     &__text-container {
-      padding-left: 25px;
-      padding-top: 5px;
+      margin-top: 0px;
+      padding-left: 15px;
+      padding-top: 7px;
     }
 
     &__delete {
       top: 20px;
       right: 20px;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .paper {
+    &__image {
+      height: 265px;
+      width: 265px;
+
+      &.create {
+        @include flex-center;
+        height: 235px;
+        width: 235px;
+        margin-left: 15px;
+      }
+    }
+
+    &__delete {
+      top: 20px;
+      right: 15px;
     }
   }
 }
