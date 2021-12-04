@@ -116,5 +116,14 @@ export default defineComponent({
   .board-header {
     background-color: $main-color;
   }
+
+  .custom-logo {
+    & img {
+      margin-top: 10px;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
 }
 </style>

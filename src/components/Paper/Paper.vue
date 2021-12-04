@@ -46,20 +46,24 @@ export default defineComponent({
   align-items: stretch;
   width: 100%;
   position: relative;
-
-  &:hover {
-    -webkit-animation: tiembla 1s infinite;
-  }
-  @-webkit-keyframes tiembla {
-    50% {
-      -webkit-transform: rotateZ(0deg) scale(0.99);
-    }
-  }
+  list-style: none;
+  overflow: hidden;
 
   &__image {
     width: 100%;
     object-fit: cover;
     cursor: pointer;
+    filter: saturate(30%);
+
+    &:hover {
+      filter: saturate(100%);
+      -webkit-animation: tiembla 1s infinite;
+      @-webkit-keyframes tiembla {
+        50% {
+          -webkit-transform: rotateZ(0deg) scale(0.98);
+        }
+      }
+    }
 
     &.editing {
       border-radius: 50px;
@@ -70,6 +74,7 @@ export default defineComponent({
   &__text-container {
     padding-left: 15px;
     padding-top: 15px;
+    margin-bottom: 45px;
   }
 
   &__title {
@@ -86,6 +91,20 @@ export default defineComponent({
     top: 40px;
     right: 40px;
     font-size: 20px;
+  }
+}
+
+@media (min-width: $tablet) {
+  .paper {
+    &__image {
+      height: 250px;
+      margin: 15px;
+    }
+
+    &__text-container {
+      padding-left: 10px;
+      padding-top: 5px;
+    }
   }
 }
 </style>

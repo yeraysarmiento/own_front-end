@@ -37,12 +37,30 @@ export default defineComponent({
 @import "../assets/styles/_mixins.scss";
 @import "../assets/styles/_variables.scss";
 
+.board-page {
+  display: flex;
+  justify-content: end;
+}
+
 .papers-container {
   display: grid;
   width: 100vw;
   grid-template-columns: repeat(1, 1fr);
 
-  row-gap: 50px;
   margin-top: 200px;
+  padding-bottom: 250px;
+  margin-bottom: 50px;
+  border-bottom: 1px solid black;
+}
+
+@media (min-width: $tablet) {
+  .board-page {
+    margin: 15px;
+  }
+
+  .papers-container {
+    width: 500px;
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 </style>
