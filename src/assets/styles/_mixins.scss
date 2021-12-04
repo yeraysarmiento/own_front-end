@@ -198,6 +198,9 @@
       }
     }
   }
+  @media (min-width: $desktop) {
+    display: none;
+  }
 }
 
 @mixin spinner {
@@ -335,7 +338,7 @@
 
     &.nav__element--heading {
       font-family: "Helvetica Neue", sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       font-style: italic;
       position: absolute;
       bottom: 50px;
@@ -343,13 +346,13 @@
 
     &.nav__element--mydesk {
       font-family: "Helvetica Neue", sans-serif;
-      font-size: 18px;
+      font-size: 16px;
       font-style: italic;
     }
 
     &.nav__element--atelier {
       font-family: "Helvetica Neue", sans-serif;
-      font-size: 15px;
+      font-size: 16px;
       font-style: italic;
     }
 
@@ -362,12 +365,12 @@
       @include button;
       background-color: black;
       color: white;
-      font-size: 20px;
+      font-size: 16px;
     }
 
     &.nav__element--login {
       @include button;
-      font-size: 20px;
+      font-size: 16px;
       &:hover {
         text-decoration: none;
       }
@@ -375,10 +378,59 @@
 
     &.nav__element--logout {
       @include button;
-      font-size: 20px;
+      font-size: 16px;
       background-color: $delete-color;
       &:hover {
         text-decoration: none;
+      }
+    }
+  }
+
+  @media (min-width: $desktop) {
+    background: none;
+    color: black;
+    position: fixed;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    transition: left 0.5s, right 0.5s;
+    padding: 0;
+    height: 70px;
+    flex-direction: row;
+    justify-content: right;
+
+    &__container {
+      @include flex-center;
+      flex-direction: row;
+      width: 570px;
+      align-items: end;
+
+      padding: 0;
+      background: orange;
+
+      &:nth-of-type(2) {
+        @include flex-center;
+        flex-direction: row;
+        justify-content: end;
+        padding-right: 40px;
+      }
+    }
+
+    &__element {
+      background: red;
+
+      &.nav__element--heading {
+        display: none;
+      }
+
+      &.nav__element--logout {
+        width: 265px;
+        margin: 0;
+      }
+
+      &.nav__element--mydesk {
+        width: 265px;
+        text-align: center;
       }
     }
   }
