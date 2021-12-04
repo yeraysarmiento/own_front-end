@@ -1,5 +1,11 @@
 <template>
-  <li class="paper">
+  <li class="paper" v-if="isEditing">
+    <router-link to="">
+      <li class="paper__image create">+</li>
+    </router-link>
+  </li>
+
+  <li class="paper" v-else>
     <router-link :to="`${$route.path}/${paper.id}`">
       <img
         class="paper__image"
@@ -30,6 +36,7 @@ export default defineComponent({
   props: {
     // boardName: String,
     paper: Object,
+    isEditing: Boolean,
   },
   computed: {
     ...mapState(["isAuthenticated"]),
@@ -43,7 +50,6 @@ export default defineComponent({
 @import "../../assets/styles/_variables.scss";
 
 .paper {
-  align-items: stretch;
   width: 100%;
   position: relative;
   list-style: none;
@@ -54,6 +60,28 @@ export default defineComponent({
     object-fit: cover;
     cursor: pointer;
     filter: saturate(30%);
+
+    &.create {
+      @include flex-center;
+      font-size: 75px;
+      height: 320px;
+      width: 345px;
+      margin: 15px;
+
+      filter: none;
+      border-radius: 50px;
+      background: $button-color;
+      box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+
+      &:hover {
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+
+      &:active {
+        box-shadow: none;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+      }
+    }
 
     &.editing {
       &:hover {
@@ -109,6 +137,13 @@ export default defineComponent({
     &__image {
       height: 225px;
       width: 100%;
+
+      &.create {
+        @include flex-center;
+        height: 195px;
+        width: 210px;
+        margin-left: 15px;
+      }
     }
 
     &__text-container {
@@ -129,6 +164,13 @@ export default defineComponent({
     &__image {
       height: 265px;
       width: 265px;
+
+      &.create {
+        @include flex-center;
+        height: 235px;
+        width: 235px;
+        margin-left: 15px;
+      }
     }
 
     &__delete {

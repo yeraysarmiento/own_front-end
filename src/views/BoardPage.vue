@@ -1,11 +1,12 @@
 <template>
   <div class="board-page">
-    <ul class="papers-container">
+    <ul class="papers-container" :class="isAuthenticated ? 'editing' : ''">
       <Paper
         v-for="paper in currentBoard?.papers"
         v-bind:key="paper?.id"
         :paper="paper"
       />
+      <Paper :isEditing="true" />
     </ul>
   </div>
 </template>
@@ -19,7 +20,7 @@ export default defineComponent({
   name: "CreateBoard",
   components: { Paper },
   computed: {
-    ...mapState(["currentBoard"]),
+    ...mapState(["currentBoard", "isAuthenticated"]),
   },
   methods: {
     ...mapActions(["loadBoardByNameAction", "getTokenAction"]),
@@ -62,6 +63,11 @@ export default defineComponent({
     width: 500px;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 15px;
+
+    &.editing {
+      border: 1px dashed black;
+      border-radius: 40px;
+    }
   }
 }
 
