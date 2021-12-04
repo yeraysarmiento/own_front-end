@@ -1,12 +1,12 @@
 <template>
   <div class="board-page">
     <ul class="papers-container" :class="isAuthenticated ? 'editing' : ''">
+      <Paper :isEditing="true" v-if="isAuthenticated" />
       <Paper
         v-for="paper in currentBoard?.papers"
         v-bind:key="paper?.id"
         :paper="paper"
       />
-      <Paper :isEditing="true" v-if="isAuthenticated" />
     </ul>
   </div>
 </template>
