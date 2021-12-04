@@ -18,7 +18,7 @@
       <div class="paper__text-container">
         <h2 class="paper__title">/ {{ paper.title }}</h2>
 
-        <h3 class="paper__author">{{ paper.author }}</h3>
+        <h3 class="paper__author">by {{ paper.author }}</h3>
         <p class="paper__delete" v-if="isAuthenticated">
           <font-awesome-icon icon="xmark" />
         </p>
@@ -34,7 +34,6 @@ import { mapState } from "vuex";
 export default defineComponent({
   name: "Paper",
   props: {
-    // boardName: String,
     paper: Object,
     isEditing: Boolean,
   },

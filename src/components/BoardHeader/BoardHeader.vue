@@ -6,26 +6,39 @@
       </h1>
     </router-link>
 
-    <ul
-      class="nav"
-      @click="isClicked = !isClicked"
-      :class="isClicked ? 'nav--open' : ''"
-    >
-      <li class="nav__element nav__element--login" v-if="isAuthenticated">
-        <router-link to="/desk">My Desk</router-link>
-      </li>
-      <li class="nav__element nav__element--login" v-if="!isAuthenticated">
-        <router-link to="/login">Login</router-link>
-      </li>
+    <ul class="nav" :class="isClicked ? 'nav--open' : ''">
+      <div class="nav__container">
+        <li class="nav__element nav__element--filter">
+          <select id="area" name="area" v-model="area" required autofocus>
+            <option disabled selected value>- Select an area -</option>
+            <option value="All projects">All projects</option>
+            <option value="Design">Architecture</option>
+            <option value="Business">Interiors</option>
+            <option value="Architecture">Landscape</option>
+          </select>
+        </li>
 
-      <li
-        class="nav__element nav__element--logout"
-        v-on:click="logoutUser(boardName?.toLowerCase())"
-        v-else
-      >
-        Logout
-      </li>
+        <li v-if="isAuthenticated" class="nav__element nav__element--greeting">
+          <p>Welcome back, {{ currentUser.username }}</p>
+        </li>
+      </div>
+      <div class="nav__container">
+        <li class="nav__element nav__element--mydesk" v-if="isAuthenticated">
+          <router-link to="/desk">My Desk</router-link>
+        </li>
 
+        <li class="nav__element nav__element--login" v-if="!isAuthenticated">
+          <router-link to="/login">Login</router-link>
+        </li>
+
+        <li
+          class="nav__element nav__element--logout"
+          v-on:click="logoutUser(boardName?.toLowerCase())"
+          v-else
+        >
+          Logout
+        </li>
+      </div>
       <li class="nav__element nav__element--heading">
         <h1>{{ boardName?.toUpperCase() }}</h1>
       </li>
@@ -53,7 +66,7 @@ export default defineComponent({
     boardLogo: String,
   },
   computed: {
-    ...mapState(["isAuthenticated"]),
+    ...mapState(["isAuthenticated", "currentUser"]),
   },
   methods: {
     ...mapActions(["logoutUserAction"]),
@@ -64,7 +77,8 @@ export default defineComponent({
   },
   data() {
     return {
-      isClicked: false,
+      isClicked: true,
+      area: "All projects",
     };
   },
 });
@@ -94,8 +108,38 @@ export default defineComponent({
 }
 
 .nav {
+  padding: 100px 50px;
+  &__container {
+    width: 100%;
+    height: 100%;
+    padding: 25px;
+
+    &:nth-of-type(2) {
+      @include flex-center;
+      flex-direction: column;
+    }
+  }
+
   &__element {
-    background: black;
+    &.nav__element--filter {
+      width: 100%;
+      height: 35px;
+
+      & select {
+        @include lora-text;
+        padding-left: 15px;
+        border-radius: 15px;
+        width: 100%;
+        height: 100%;
+        border: none;
+        background-color: $button-color;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
     &.nav__element--heading {
       font-family: "Helvetica Neue", sans-serif;
       font-size: 15px;
@@ -104,10 +148,20 @@ export default defineComponent({
       bottom: 50px;
     }
 
+    &.nav__element--mydesk {
+      font-family: "Helvetica Neue", sans-serif;
+      font-size: 18px;
+      font-style: italic;
+    }
+
     &.nav__element--atelier {
       font-family: "Helvetica Neue", sans-serif;
       font-size: 15px;
       font-style: italic;
+    }
+
+    &.nav__element--greeting {
+      margin-top: 30px;
     }
   }
 }
@@ -123,6 +177,16 @@ export default defineComponent({
       width: 100px;
       height: 100px;
       object-fit: cover;
+    }
+  }
+
+  .nav {
+    &__element {
+      &.nav__element--heading {
+      }
+
+      &.nav__element--atelier {
+      }
     }
   }
 }
