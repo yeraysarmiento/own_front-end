@@ -5,7 +5,7 @@
         <img :src="boardLogo" :alt="boardName" width="70" height="70" />
       </h1>
     </router-link>
-
+    <h2 class="custom-title">{{ boardName.toUpperCase() }}</h2>
     <ul class="nav" :class="isClicked ? 'nav--open' : ''">
       <div class="nav__container">
         <li class="nav__element nav__element--filter">
@@ -84,7 +84,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../assets/styles/_variables.scss";
 @import "../../assets/styles/_mixins.scss";
 
@@ -107,63 +107,21 @@ export default defineComponent({
   left: 15px;
 }
 
+.custom-title {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  position: absolute;
+  left: 150px;
+  display: none;
+}
+
+.burger {
+  @include burger;
+}
+
 .nav {
-  padding: 100px 50px;
-  &__container {
-    width: 100%;
-    height: 100%;
-    padding: 25px;
-
-    &:nth-of-type(2) {
-      @include flex-center;
-      flex-direction: column;
-    }
-  }
-
-  &__element {
-    &.nav__element--filter {
-      width: 100%;
-      height: 35px;
-
-      & select {
-        @include lora-text;
-        padding-left: 15px;
-        border-radius: 15px;
-        width: 100%;
-        height: 100%;
-        border: none;
-        background-color: $button-color;
-
-        &:focus {
-          outline: none;
-        }
-      }
-    }
-
-    &.nav__element--heading {
-      font-family: "Helvetica Neue", sans-serif;
-      font-size: 15px;
-      font-style: italic;
-      position: absolute;
-      bottom: 50px;
-    }
-
-    &.nav__element--mydesk {
-      font-family: "Helvetica Neue", sans-serif;
-      font-size: 18px;
-      font-style: italic;
-    }
-
-    &.nav__element--atelier {
-      font-family: "Helvetica Neue", sans-serif;
-      font-size: 15px;
-      font-style: italic;
-    }
-
-    &.nav__element--greeting {
-      margin-top: 30px;
-    }
-  }
+  @include nav-menu;
 }
 
 @media (min-width: $tablet) {
@@ -180,14 +138,24 @@ export default defineComponent({
     }
   }
 
+  .custom-title {
+    display: block;
+  }
+
   .nav {
     &__element {
-      &.nav__element--heading {
+      &.nav__element--filter {
+        & select {
+          width: 300px;
+        }
       }
-
-      &.nav__element--atelier {
+      &.nav__element--mydesk {
+        margin-bottom: 30px;
       }
     }
   }
+}
+
+@media (min-width: $desktop) {
 }
 </style>

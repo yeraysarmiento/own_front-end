@@ -60,7 +60,7 @@ export default defineComponent({
     font-size: 75px;
     height: 320px;
     margin: 15px;
-    border-radius: 50px;
+    border-radius: 30px;
     background: $button-color;
     box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
 

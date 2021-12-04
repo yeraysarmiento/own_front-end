@@ -14,7 +14,7 @@
       <router-link to="/register" v-if="!isAuthenticated">
         <li class="nav__element nav__element--register">Register</li>
       </router-link>
-      <li class="nav__element nav__element--login" v-if="isAuthenticated">
+      <li class="nav__element nav__element--mydesk" v-if="isAuthenticated">
         <router-link to="/desk">My desk</router-link>
       </li>
       <li class="nav__element nav__element--login" v-if="!isAuthenticated">
@@ -66,7 +66,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../../assets/styles/_variables.scss";
 @import "../../assets/styles/_mixins.scss";
 
@@ -88,86 +88,12 @@ export default defineComponent({
 }
 
 .burger {
-  height: 25px;
-  width: 35px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  cursor: pointer;
-
-  &__element {
-    border: 1px solid black;
-    background: black;
-    transition: transform 0.4s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-
-    &--first {
-      .burger--open & {
-        transform: translateY(11.5px) rotate(45deg);
-        border: 1px solid white;
-      }
-    }
-
-    &--middle {
-      .burger--open & {
-        opacity: 0;
-      }
-    }
-
-    &--last {
-      .burger--open & {
-        transform: translateY(-11.5px) rotate(-45deg);
-        border: 1px solid white;
-      }
-    }
-  }
+  @include burger;
 }
 
 .nav {
-  @include nav;
-  @include flex-center;
   padding: 0;
-  background-color: black;
-  color: #fff;
-  position: fixed;
-  top: 0;
-  left: -100vw;
-  right: 100vw;
-  bottom: 0;
-  flex-direction: column;
-  transition: left 0.5s, right 0.5s;
-
-  &.nav--open {
-    left: 0;
-    right: 0;
-  }
-
-  &__element {
-    @include flex-center;
-
-    &.nav__element--register {
-      @include button;
-      background-color: black;
-      color: white;
-      font-size: 20px;
-    }
-
-    &.nav__element--login {
-      @include button;
-      font-size: 20px;
-      &:hover {
-        text-decoration: none;
-      }
-    }
-
-    &.nav__element--logout {
-      @include button;
-      font-size: 20px;
-      background-color: $delete-color;
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
+  @include nav-menu;
 }
 
 @media (min-width: $tablet) {
@@ -183,6 +109,7 @@ export default defineComponent({
   }
 
   .nav {
+    padding: 0;
     flex-direction: row;
     justify-content: end;
     left: 0;
@@ -190,17 +117,31 @@ export default defineComponent({
     height: 80px;
     background: none;
     margin: 0 30px;
+    justify-content: end;
 
     &__element {
       margin: 50px;
 
       &.nav__element--login {
-        margin: 0 15px;
+        margin-left: 15px;
         font-size: 16px;
       }
 
+      &.nav__element--mydesk {
+        font-weight: bolder;
+        color: black;
+        margin-left: 15px;
+        font-size: 16px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+
+        &:hover {
+          font-weight: bold;
+        }
+      }
+
       &.nav__element--logout {
-        margin: 0 15px;
+        margin-left: 15px;
         font-size: 16px;
       }
 
