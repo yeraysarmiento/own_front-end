@@ -149,16 +149,63 @@ export default defineComponent({
         background: none;
         color: black;
         box-shadow: none;
-        margin: 45px;
         font-size: 16px;
+
+        &:active {
+          font-weight: bold;
+        }
       }
     }
   }
 }
 
 @media (min-width: $desktop) {
-  .main-logo {
-    font-size: 65px;
+  .nav {
+    padding: 0;
+    flex-direction: row;
+    justify-content: end;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: none;
+    margin: 0 30px;
+
+    &__element {
+      margin: 50px;
+
+      &.nav__element--login {
+        margin-left: 15px;
+        font-size: 16px;
+      }
+
+      &.nav__element--mydesk {
+        font-weight: bolder;
+        width: 125px;
+        color: black;
+        font-size: 16px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        justify-self: end;
+
+        &:hover {
+          font-weight: bold;
+        }
+      }
+
+      &.nav__element--logout {
+        margin-left: 15px;
+        font-size: 16px;
+        width: 125px;
+      }
+
+      &.nav__element--register {
+        width: 160px;
+        background: none;
+        color: black;
+        box-shadow: none;
+        font-size: 16px;
+      }
+    }
   }
 }
 </style>

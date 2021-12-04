@@ -56,7 +56,6 @@
   cursor: pointer;
   background-color: #fff4dd;
   border-radius: 15px;
-  margin: 30px 0 30px 0;
   height: 40px;
   width: 125px;
   color: black;
@@ -125,7 +124,6 @@
     border-radius: 25px;
     border: 1px dashed black;
     padding-left: 20px;
-    background-color: $main-color;
     margin-top: 15px;
 
     &.wrong {
@@ -382,6 +380,7 @@
 
     &.nav__element--login {
       @include button;
+      margin: 30px 0 30px 0;
       font-size: 16px;
       &:hover {
         text-decoration: none;
@@ -391,6 +390,7 @@
     &.nav__element--logout {
       @include button;
       font-size: 16px;
+      margin: 30px 0 30px 0;
       background-color: $delete-color;
       &:hover {
         text-decoration: none;

@@ -106,6 +106,10 @@ export default defineComponent({
 
 .login-form {
   @include form;
+
+  & button {
+    margin: 30px 0 30px 0;
+  }
 }
 
 .signup {
