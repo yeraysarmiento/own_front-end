@@ -1,7 +1,7 @@
 <template>
   <li class="paper" v-if="isEditing">
     <router-link to="">
-      <li class="paper__image create">+</li>
+      <p class="paper__image create">+</p>
     </router-link>
   </li>
 

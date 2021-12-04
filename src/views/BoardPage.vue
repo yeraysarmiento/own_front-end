@@ -6,7 +6,7 @@
         v-bind:key="paper?.id"
         :paper="paper"
       />
-      <Paper :isEditing="true" />
+      <Paper :isEditing="true" v-if="isAuthenticated" />
     </ul>
   </div>
 </template>
