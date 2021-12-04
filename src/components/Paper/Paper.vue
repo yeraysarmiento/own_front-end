@@ -1,7 +1,7 @@
 <template>
   <li class="paper" v-if="isEditing">
     <router-link to="">
-      <p class="paper__image create">+</p>
+      <p class="paper__create">+</p>
     </router-link>
   </li>
 
@@ -54,41 +54,41 @@ export default defineComponent({
   position: relative;
   list-style: none;
   overflow: hidden;
+  cursor: pointer;
+
+  &__create {
+    @include flex-center;
+    font-size: 75px;
+    height: 320px;
+    margin: 15px;
+    border-radius: 50px;
+    background: $button-color;
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
+
+    &:hover {
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    &:active {
+      box-shadow: none;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    }
+  }
 
   &__image {
     width: 100%;
     object-fit: cover;
-    cursor: pointer;
     filter: saturate(30%);
 
-    &.create {
-      @include flex-center;
-      font-size: 75px;
-      height: 320px;
-      width: 345px;
-      margin: 15px;
-
-      filter: none;
-      border-radius: 50px;
-      background: $button-color;
-      box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.25);
-
-      &:hover {
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      }
-
-      &:active {
-        box-shadow: none;
-        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
-      }
-    }
-
     &.editing {
+      border-radius: 50px;
+      padding: 15px;
+
       &:hover {
         -webkit-animation: tiembla 1s infinite;
         @-webkit-keyframes tiembla {
           50% {
-            -webkit-transform: rotateZ(0deg) scale(0.98);
+            -webkit-transform: scale(0.98);
           }
         }
       }
@@ -96,11 +96,6 @@ export default defineComponent({
 
     &:hover {
       filter: saturate(100%);
-    }
-
-    &.editing {
-      border-radius: 50px;
-      padding: 15px;
     }
   }
 
@@ -134,16 +129,15 @@ export default defineComponent({
   .paper {
     width: 100%;
 
+    &__create {
+      @include flex-center;
+      height: 195px;
+      width: 210px;
+    }
+
     &__image {
       height: 225px;
       width: 100%;
-
-      &.create {
-        @include flex-center;
-        height: 195px;
-        width: 210px;
-        margin-left: 15px;
-      }
     }
 
     &__text-container {
@@ -161,16 +155,16 @@ export default defineComponent({
 
 @media (min-width: $desktop) {
   .paper {
+    &__create {
+      @include flex-center;
+      height: 235px;
+      width: 235px;
+      margin-left: 15px;
+    }
+
     &__image {
       height: 265px;
       width: 265px;
-
-      &.create {
-        @include flex-center;
-        height: 235px;
-        width: 235px;
-        margin-left: 15px;
-      }
     }
 
     &__delete {
