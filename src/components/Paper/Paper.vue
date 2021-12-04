@@ -77,6 +77,7 @@ export default defineComponent({
   }
 
   &__text-container {
+    margin-top: 15px;
     padding-left: 20px;
     margin-bottom: 45px;
   }
@@ -104,14 +105,16 @@ export default defineComponent({
 @media (min-width: $tablet) {
   .paper {
     width: 100%;
+
     &__image {
       height: 225px;
       width: 100%;
     }
 
     &__text-container {
-      padding-left: 25px;
-      padding-top: 5px;
+      margin-top: 0px;
+      padding-left: 15px;
+      padding-top: 7px;
     }
 
     &__delete {

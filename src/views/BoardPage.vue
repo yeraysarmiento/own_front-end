@@ -46,7 +46,6 @@ export default defineComponent({
   display: grid;
   width: 100vw;
   grid-template-columns: repeat(1, 1fr);
-  padding: 10px;
   margin-top: 200px;
   padding-bottom: 250px;
   margin-bottom: 50px;
@@ -59,8 +58,10 @@ export default defineComponent({
   }
 
   .papers-container {
+    margin-right: 10px;
     width: 500px;
     grid-template-columns: repeat(2, 1fr);
+    column-gap: 15px;
   }
 }
 
