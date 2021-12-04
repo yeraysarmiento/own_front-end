@@ -46,7 +46,7 @@ export default defineComponent({
   display: grid;
   width: 100vw;
   grid-template-columns: repeat(1, 1fr);
-
+  padding: 10px;
   margin-top: 200px;
   padding-bottom: 250px;
   margin-bottom: 50px;

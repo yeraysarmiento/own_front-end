@@ -72,8 +72,7 @@ export default defineComponent({
   }
 
   &__text-container {
-    padding-left: 15px;
-    padding-top: 15px;
+    padding-left: 20px;
     margin-bottom: 45px;
   }
 
@@ -87,23 +86,32 @@ export default defineComponent({
   }
 
   &__delete {
+    @include flex-center;
+    width: 50px;
+    height: 50px;
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 30px;
+    right: 30px;
     font-size: 20px;
   }
 }
 
 @media (min-width: $tablet) {
   .paper {
+    width: 100%;
     &__image {
-      height: 250px;
-      margin: 15px;
+      height: 225px;
+      width: 100%;
     }
 
     &__text-container {
-      padding-left: 10px;
+      padding-left: 25px;
       padding-top: 5px;
+    }
+
+    &__delete {
+      top: 20px;
+      right: 20px;
     }
   }
 }
