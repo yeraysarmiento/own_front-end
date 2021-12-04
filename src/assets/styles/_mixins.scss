@@ -330,6 +330,10 @@
         border: none;
         background-color: $button-color;
 
+        &:hover {
+          box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
+        }
+
         &:focus {
           outline: none;
         }
@@ -348,6 +352,14 @@
       font-family: "Helvetica Neue", sans-serif;
       font-size: 16px;
       font-style: italic;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 5px;
+      }
+      &:active {
+        font-weight: bolder;
+      }
     }
 
     &.nav__element--atelier {
@@ -400,37 +412,59 @@
     justify-content: right;
 
     &__container {
-      @include flex-center;
+      display: flex;
       flex-direction: row;
-      width: 570px;
       align-items: end;
-
+      width: 530px;
       padding: 0;
-      background: orange;
+
+      &:nth-of-type(1) {
+        @include flex-center;
+        justify-content: start;
+      }
 
       &:nth-of-type(2) {
         @include flex-center;
         flex-direction: row;
+        margin-right: 40px;
+        width: 265px;
+        margin-left: 10px;
         justify-content: end;
-        padding-right: 40px;
       }
     }
 
     &__element {
-      background: red;
+      width: 265px;
 
       &.nav__element--heading {
         display: none;
       }
 
-      &.nav__element--logout {
+      &.nav__element--filter {
         width: 265px;
+
+        & select {
+          width: 265px;
+        }
+      }
+
+      &.nav__element--login {
+        justify-self: end;
+        margin: 0;
+      }
+
+      &.nav__element--logout {
+        width: 100%;
         margin: 0;
       }
 
       &.nav__element--mydesk {
-        width: 265px;
-        text-align: center;
+        margin: 0;
+        width: 100%;
+      }
+
+      &.nav__element--greeting {
+        display: none;
       }
     }
   }

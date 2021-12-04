@@ -157,5 +157,8 @@ export default defineComponent({
 }
 
 @media (min-width: $desktop) {
+  .nav {
+    @include nav-menu;
+  }
 }
 </style>
