@@ -10,10 +10,10 @@ const actions = {
     { commit }: ActionContext<State, State>,
     token: UserLogin
   ): Promise<void> {
+    commit("START_LOADING");
     const { data: allData } = await axios.get(`${urlOWN}user`, {
       headers: { Authorization: `Bearer ${token}` },
     });
-
     const userData = {
       id: allData.id,
       username: allData.username,
@@ -24,6 +24,7 @@ const actions = {
     commit("LOAD_USER", userData);
     commit("LOGIN_USER");
     commit("LOAD_BOARDS", userData.boards);
+    commit("STOP_LOADING");
   },
 
   getTokenAction({ dispatch }: ActionContext<State, State>): void {
@@ -36,14 +37,18 @@ const actions = {
     { commit, dispatch }: ActionContext<State, State>,
     user: UserLogin
   ): Promise<void> {
+    commit("START_LOADING");
     const { data: token } = await axios.post(`${urlOWN}user/login/`, user);
     localStorage.setItem("user", JSON.stringify(token.user));
     dispatch("getProfileAction", token);
+    commit("STOP_LOADING");
   },
 
   logoutUserAction({ commit }: ActionContext<State, State>): void {
+    commit("START_LOADING");
     localStorage.removeItem("user");
     commit("LOGOUT_USER");
+    commit("STOP_LOADING");
   },
 
   async registerUserAction(
@@ -51,45 +56,53 @@ const actions = {
     { commit, dispatch }: ActionContext<State, State>,
     user: UserRegister
   ): Promise<void> {
+    commit("START_LOADING");
     await axios.post(`${urlOWN}user/register/`, user);
     const userLogin = {
       username: user.username,
       password: user.password,
     };
     dispatch("loginUserAction", userLogin);
+    commit("STOP_LOADING");
   },
 
   async createBoardAction(
     { commit }: ActionContext<State, State>,
     board: Board
   ): Promise<void> {
+    commit("START_LOADING");
     const token = JSON.parse(localStorage.getItem("user") || "");
     const { data: newBoard } = await axios.post(`${urlOWN}board/new/`, board, {
       headers: { Authorization: `Bearer ${token}` },
     });
     commit("CREATE_BOARD", newBoard);
+    commit("STOP_LOADING");
   },
 
   async loadCurrentBoardAction(
     { commit }: ActionContext<State, State>,
     id: string
   ): Promise<void> {
+    commit("START_LOADING");
     const token = JSON.parse(localStorage.getItem("user") || "");
     const { data: currentBoard } = await axios.get(`${urlOWN}board/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     commit("LOAD_CURRENT_BOARD", currentBoard);
+    commit("STOP_LOADING");
   },
 
   async loadBoardByNameAction(
     { commit }: ActionContext<State, State>,
     name: string
   ): Promise<void> {
+    commit("START_LOADING");
     try {
       const { data: currentBoard } = await axios.get(
         `${urlOWN}board/name/${name}`
       );
       commit("LOAD_CURRENT_BOARD", currentBoard);
+      commit("STOP_LOADING");
     } catch {
       router.push("/notfound");
     }

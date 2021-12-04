@@ -50,6 +50,7 @@ export interface State {
   currentBoard: Board | any;
   boards: Array<Board>;
   isCustomHeader: boolean;
+  isLoading: boolean;
 }
 export interface Logo extends File {
   srcElement: {

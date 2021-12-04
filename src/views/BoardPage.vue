@@ -1,14 +1,13 @@
 <template>
   <div class="board-page">
-    <Spinner />
-    <!-- <ul class="papers-container" :class="isAuthenticated ? 'editing' : ''">
+    <ul class="papers-container" :class="isAuthenticated ? 'editing' : ''">
       <Paper :isEditing="true" v-if="isAuthenticated" />
       <Paper
         v-for="paper in currentBoard?.papers"
         v-bind:key="paper?.id"
         :paper="paper"
       />
-    </ul> -->
+    </ul>
   </div>
 </template>
 
@@ -16,11 +15,10 @@
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import Paper from "../components/Paper/Paper.vue";
-import Spinner from "../components/Spinner.vue";
 
 export default defineComponent({
   name: "CreateBoard",
-  components: { Paper, Spinner },
+  components: { Paper },
   data() {
     return {
       isLoading: "",

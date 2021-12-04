@@ -5,6 +5,7 @@ const state = {
   currentUser: {},
   currentBoard: null,
   isAuthenticated: false,
+  isLoading: false,
 };
 
 export default state as unknown as State;
