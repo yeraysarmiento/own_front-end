@@ -1,13 +1,18 @@
 import { createApp } from "vue";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faPhone, faXmark } from "@fortawesome/free-solid-svg-icons";
+import {
+  faPhone,
+  faXmark,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
 library.add(faPhone);
 library.add(faXmark);
+library.add(faChevronLeft);
 
 createApp(App)
   .component("font-awesome-icon", FontAwesomeIcon)

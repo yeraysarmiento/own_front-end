@@ -26,7 +26,7 @@ describe("Given a BoardGallery component", () => {
 
       const elements = await wrapper.findAllComponents(Board);
 
-      expect(elements).toHaveLength(boards.length + 1);
+      expect(elements).toHaveLength(boards.length + 5);
     });
   });
 });

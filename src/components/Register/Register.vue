@@ -1,5 +1,10 @@
 <template>
   <div class="own-register">
+    <router-link to="/home">
+      <div class="go-back">
+        <font-awesome-icon icon="chevron-left" /> Back to Home
+      </div>
+    </router-link>
     <h2 class="register-title">REGISTER</h2>
     <form
       class="register-form"
@@ -127,7 +132,7 @@ export default defineComponent({
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin: 150px 0;
+  margin: 120px 0;
   padding: 0 30px;
 }
 
@@ -137,6 +142,12 @@ export default defineComponent({
 
 .register-form {
   @include form;
+}
+
+.go-back {
+  @include lora-text;
+  color: lightgray;
+  height: 60px;
 }
 
 .signup {
