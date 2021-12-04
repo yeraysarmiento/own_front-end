@@ -102,10 +102,10 @@ const actions = {
         `${urlOWN}board/name/${name}`
       );
       commit("LOAD_CURRENT_BOARD", currentBoard);
-      commit("STOP_LOADING");
     } catch {
       router.push("/notfound");
     }
+    commit("STOP_LOADING");
   },
 };
 
