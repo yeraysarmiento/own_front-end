@@ -36,7 +36,6 @@ export default defineComponent({
   margin: 50px 30px;
   color: black;
   width: 100vw;
-  border-bottom: 1px solid white;
   padding-bottom: 40px;
 
   & span {

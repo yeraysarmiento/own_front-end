@@ -121,35 +121,7 @@ export default defineComponent({
 }
 
 .modal-delete {
-  @include flex-center;
-  @include rufina-title;
-  position: absolute;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10px);
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: inherit;
-  flex-direction: column;
-  text-align: center;
-  padding: 30px;
-  line-height: 25px;
-
-  &__container {
-    @include flex-center;
-    margin-top: 20px;
-  }
-
-  &__delete {
-    @include button;
-    background: $delete-color;
-
-    &:hover {
-      text-decoration: none;
-      border: 1px solid darkred;
-    }
-  }
+  @include modal-delete;
 }
 
 @media (min-width: $tablet) {

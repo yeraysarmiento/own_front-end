@@ -46,7 +46,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions } from "vuex";
+import { mapActions, mapMutations } from "vuex";
 import { UserLogin } from "@/types/interface";
 
 export default defineComponent({
@@ -62,6 +62,7 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["loginUserAction"]),
+    ...mapMutations(["STOP_LOADING"]),
     checkForm() {
       if (this.username.length > 3 && this.password.length > 3) {
         this.isDisabled = false;
@@ -81,6 +82,7 @@ export default defineComponent({
           this.isWrong = false;
         } catch (error) {
           this.isWrong = true;
+          this.STOP_LOADING();
         }
       }
     },

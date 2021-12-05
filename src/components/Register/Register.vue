@@ -62,7 +62,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import { UserRegister } from "@/types/interface";
 
 export default defineComponent({
@@ -83,6 +83,7 @@ export default defineComponent({
   methods: {
     ...mapActions(["registerUserAction"]),
     ...mapGetters(["validEmail"]),
+    ...mapMutations(["STOP_LOADING"]),
     checkForm() {
       if (
         this.username !== "" &&
@@ -121,6 +122,7 @@ export default defineComponent({
           this.$router.push("/desk");
         } catch (error) {
           this.isWrong = true;
+          this.STOP_LOADING();
         }
       }
     },
