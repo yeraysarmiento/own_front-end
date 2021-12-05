@@ -17,6 +17,7 @@ export interface UserLogin {
 }
 
 export interface Paper {
+  id: string;
   title: string;
   author: string;
   year: number;
@@ -36,6 +37,7 @@ export interface Social {
 }
 
 export interface Board {
+  id: string;
   name: string;
   about: string;
   email: string;

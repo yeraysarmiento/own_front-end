@@ -79,6 +79,15 @@ const actions = {
     commit("STOP_LOADING");
   },
 
+  async deleteBoardAction(
+    { commit }: ActionContext<State, State>,
+    id: string
+  ): Promise<void> {
+    commit("START_LOADING");
+    commit("DELETE_BOARD", id);
+    commit("STOP_LOADING");
+  },
+
   async loadCurrentBoardAction(
     { commit }: ActionContext<State, State>,
     id: string

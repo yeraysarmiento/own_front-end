@@ -20,11 +20,12 @@
     </router-link>
     <div class="modal-delete" v-if="isDelete">
       <p class="modal-delete__text">
-        Board {{ board.name.toUpperCase() }} is about to get lost. <br />Are you
-        sure?
+        Are you sure you want to delete {{ board.name.toUpperCase() }}?
       </p>
       <div class="modal-delete__container">
-        <button class="modal-delete__delete">Delete</button>
+        <button class="modal-delete__delete" @click="deleteBoard(board.id)">
+          Delete
+        </button>
       </div>
     </div>
   </li>
@@ -46,9 +47,12 @@ export default defineComponent({
     };
   },
   methods: {
-    ...mapActions(["loadCurrentBoardAction"]),
+    ...mapActions(["loadCurrentBoardAction", "deleteBoardAction"]),
     loadBoard(id: string) {
       this.loadCurrentBoardAction(id);
+    },
+    deleteBoard(id: string) {
+      this.deleteBoardAction(id);
     },
   },
 });
@@ -118,7 +122,7 @@ export default defineComponent({
 
 .modal-delete {
   @include flex-center;
-  @include lora-text;
+  @include rufina-title;
   position: absolute;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(10px);
@@ -129,7 +133,8 @@ export default defineComponent({
   border-radius: inherit;
   flex-direction: column;
   text-align: center;
-  padding: 20px;
+  padding: 30px;
+  line-height: 25px;
 
   &__container {
     @include flex-center;
