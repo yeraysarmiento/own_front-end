@@ -34,7 +34,7 @@
         Are you sure you want to delete this Paper?
       </p>
       <div class="modal-delete__container">
-        <button class="modal-delete__delete" @click="deleteBoard(board.id)">
+        <button class="modal-delete__delete" @click="deletePaper(paper.id)">
           Delete
         </button>
       </div>
@@ -62,9 +62,12 @@ export default defineComponent({
     ...mapState(["isAuthenticated"]),
   },
   methods: {
-    ...mapActions(["loadCurrentPaperAction"]),
+    ...mapActions(["loadCurrentPaperAction", "deletePaperAction"]),
     loadPaper(paper: Paper) {
       this.loadCurrentPaperAction(paper);
+    },
+    deletePaper(id: string) {
+      this.deletePaperAction(id);
     },
   },
 });

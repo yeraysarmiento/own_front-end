@@ -138,6 +138,19 @@ const actions = {
     commit("LOAD_CURRENT_PAPER", paper);
     commit("STOP_LOADING");
   },
+
+  async deletePaperAction(
+    { commit }: ActionContext<State, State>,
+    id: string
+  ): Promise<void> {
+    commit("START_LOADING");
+    const token = JSON.parse(localStorage.getItem("user") || "");
+    await axios.delete(`${urlOWN}paper/delete/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    commit("DELETE_PAPER", id);
+    commit("STOP_LOADING");
+  },
 };
 
 export default actions;
