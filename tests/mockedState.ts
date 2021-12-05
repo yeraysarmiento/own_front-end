@@ -1,40 +1,41 @@
-const mockedState = {
+import { State } from "@/types/interface";
+
+const mockedState: State = {
   currentUser: {
     username: "loling",
     password: "loling",
     email: "loling@gmail.com",
-    boards: [
-      {
-        _id: 1,
-        name: "Amallective",
-        about: "About me",
-        email: "amallective@gmail.com",
-        logo: "urlImage",
-        category: "Architecture",
-        social: {
-          instagram: "instagram",
-          twitter: "twitter",
-          facebook: "facebook",
-        },
-        papers: ["1", "2"],
-      },
-      {
-        _id: 2,
-        name: "Web2",
-        about: "About me",
-        email: "web2@gmail.com",
-        logo: "urlImage",
-        category: "Design",
-        social: {
-          instagram: "instagram",
-          twitter: "twitter",
-          facebook: "facebook",
-        },
-        papers: ["3", "4"],
-      },
-    ],
+    boards: [],
   },
-  board: {
+  boards: [
+    {
+      name: "Amallective",
+      about: "About me",
+      email: "amallective@gmail.com",
+      logo: "urlImage",
+      category: "Architecture",
+      social: {
+        instagram: "instagram",
+        twitter: "twitter",
+        facebook: "facebook",
+      },
+      papers: ["1", "2"],
+    },
+    {
+      name: "Web2",
+      about: "About me",
+      email: "web2@gmail.com",
+      logo: "urlImage",
+      category: "Design",
+      social: {
+        instagram: "instagram",
+        twitter: "twitter",
+        facebook: "facebook",
+      },
+      papers: ["3", "4"],
+    },
+  ],
+  currentBoard: {
     _id: 3,
     name: "Amallective",
     about: "About me",
@@ -90,6 +91,7 @@ const mockedState = {
     ],
   },
   isAuthenticated: true,
+  isLoading: false,
 };
 
 export default mockedState;

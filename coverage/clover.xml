@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638666314353" clover="3.2.0">
-  <project timestamp="1638666314353" name="All files">
-    <metrics statements="200" coveredstatements="101" conditionals="49" coveredconditionals="6" methods="42" coveredmethods="10" elements="291" coveredelements="117" complexity="0" loc="200" ncloc="200" packages="13" files="23" classes="23"/>
+<coverage generated="1638700280871" clover="3.2.0">
+  <project timestamp="1638700280871" name="All files">
+    <metrics statements="199" coveredstatements="112" conditionals="49" coveredconditionals="6" methods="42" coveredmethods="18" elements="290" coveredelements="136" complexity="0" loc="199" ncloc="199" packages="13" files="23" classes="23"/>
     <package name="src">
       <metrics statements="8" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.vue" path="/Users/yeray/Desktop/own/src/App.vue">
@@ -183,7 +183,7 @@
       </file>
     </package>
     <package name="src.store">
-      <metrics statements="60" coveredstatements="43" conditionals="6" coveredconditionals="6" methods="16" coveredmethods="8"/>
+      <metrics statements="59" coveredstatements="54" conditionals="6" coveredconditionals="6" methods="16" coveredmethods="16"/>
       <file name="actions.ts" path="/Users/yeray/Desktop/own/src/store/actions.ts">
         <metrics statements="44" coveredstatements="43" conditionals="6" coveredconditionals="6" methods="8" coveredmethods="8"/>
         <line num="1" count="1" type="stmt"/>
@@ -237,19 +237,18 @@
         <line num="3" count="0" type="stmt"/>
       </file>
       <file name="mutations.ts" path="/Users/yeray/Desktop/own/src/store/mutations.ts">
-        <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="32" count="0" type="stmt"/>
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
       </file>
       <file name="state.ts" path="/Users/yeray/Desktop/own/src/store/state.ts">
         <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

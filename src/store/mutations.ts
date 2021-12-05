@@ -7,9 +7,9 @@ const mutations = {
   LOGIN_USER(state: State): void {
     state.isAuthenticated = true;
   },
-  LOGOUT_USER(state: any): void {
+  LOGOUT_USER(state: State): void {
     state.isAuthenticated = false;
-    state.currentUser = {};
+    state.currentUser = {} as User;
   },
   LOAD_BOARDS(state: State, payload: Array<Board>): void {
     state.boards = payload;
@@ -19,7 +19,6 @@ const mutations = {
   },
   LOAD_CURRENT_BOARD(state: State, payload: Board): void {
     state.currentBoard = payload;
-    state.isCustomHeader = true;
   },
   START_LOADING(state: State): void {
     state.isLoading = true;
