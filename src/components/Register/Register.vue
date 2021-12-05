@@ -142,6 +142,9 @@ export default defineComponent({
 
 .register-form {
   @include form;
+  & button {
+    margin: 30px 0 30px 0;
+  }
 }
 
 .go-back {
