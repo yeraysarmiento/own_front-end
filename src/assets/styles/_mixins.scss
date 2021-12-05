@@ -20,6 +20,13 @@
   justify-content: center;
 }
 
+@mixin helvetica-title {
+  font-family: "Helvetica Neue", serif;
+  font-size: 40px;
+  font-weight: bold;
+  font-style: italic;
+}
+
 @mixin main-logo {
   font-family: $nav-font;
   font-size: 45px;
