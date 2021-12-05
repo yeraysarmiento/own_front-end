@@ -63,7 +63,7 @@
           id="about"
           v-model="about"
           rows="10"
-          placeholder="Minumum 25 characters"
+          placeholder="Tell your viewers about your website"
           required
         />
       </div>
@@ -116,7 +116,6 @@ export default defineComponent({
         this.name.length > 3 &&
         this.name.length < 15 &&
         this.category !== "" &&
-        this.about.length > 15 &&
         this.about.length < 225 &&
         this.logo &&
         this.category !== "Choose an area"
@@ -131,16 +130,25 @@ export default defineComponent({
       boardData.append("category", this.category);
       boardData.append("logo", this.logo);
       boardData.append("about", this.about);
-      boardData.append("social[twitter]", this.twitter);
-      boardData.append("social[instagram]", this.instagram);
-      boardData.append("social[facebook]", this.facebook);
+      boardData.append(
+        "social[twitter]",
+        this.twitter || "https://twitter.com/?lang=es"
+      );
+      boardData.append(
+        "social[instagram]",
+        this.instagram || "https://www.instagram.com/?hl=es"
+      );
+      boardData.append(
+        "social[facebook]",
+        this.facebook || "https://es-es.facebook.com/"
+      );
 
       try {
         await this.createBoardAction(boardData);
-        this.isWrong = true;
+        this.isWrong = false;
         this.$router.push("/desk");
       } catch (error) {
-        this.isWrong = false;
+        this.isWrong = true;
       }
     },
   },
@@ -172,6 +180,10 @@ export default defineComponent({
 
 .register-form {
   @include form;
+
+  .button {
+    margin-bottom: 30px;
+  }
 
   & select {
     margin-top: 10px;
