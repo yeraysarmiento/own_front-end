@@ -47,6 +47,7 @@ export default defineComponent({
   width: 100%;
   @include flex-center;
   justify-content: end;
+  margin-bottom: 150px;
 }
 
 .about {

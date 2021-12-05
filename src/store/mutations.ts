@@ -29,11 +29,16 @@ const mutations = {
     state.currentBoard = payload;
   },
   DELETE_BOARD(state: State, payload: string): void {
-    state.boards = state.boards.filter((board) => board.id !== payload);
+    state.boards = state.boards.filter((board: Board) => board.id !== payload);
   },
 
   LOAD_CURRENT_PAPER(state: State, payload: Paper): void {
     state.currentPaper = payload;
+  },
+  DELETE_PAPER(state: State, payload: string): void {
+    state.currentBoard.papers = state.currentBoard.papers.filter(
+      (paper: Paper) => paper.id !== payload
+    );
   },
 };
 

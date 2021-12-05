@@ -6,6 +6,13 @@
   </li>
 
   <li class="paper" v-else>
+    <p
+      class="paper__delete"
+      v-if="isAuthenticated"
+      @click="isDelete = !isDelete"
+    >
+      <font-awesome-icon icon="xmark" />
+    </p>
     <router-link :to="`${$route.path}/${paper.id}`">
       <img
         class="paper__image"
@@ -20,11 +27,18 @@
         <h2 class="paper__title">/ {{ paper.title }}</h2>
 
         <h3 class="paper__author">by {{ paper.author }}</h3>
-        <p class="paper__delete" v-if="isAuthenticated">
-          <font-awesome-icon icon="xmark" />
-        </p>
       </div>
     </router-link>
+    <div class="modal-delete" v-if="isDelete">
+      <p class="modal-delete__text">
+        Are you sure you want to delete this Paper?
+      </p>
+      <div class="modal-delete__container">
+        <button class="modal-delete__delete" @click="deletePaper(paper.id)">
+          Delete
+        </button>
+      </div>
+    </div>
   </li>
 </template>
 
@@ -39,13 +53,21 @@ export default defineComponent({
     paper: Object,
     isEditing: Boolean,
   },
+  data() {
+    return {
+      isDelete: false,
+    };
+  },
   computed: {
     ...mapState(["isAuthenticated"]),
   },
   methods: {
-    ...mapActions(["loadCurrentPaperAction"]),
+    ...mapActions(["loadCurrentPaperAction", "deletePaperAction"]),
     loadPaper(paper: Paper) {
       this.loadCurrentPaperAction(paper);
+    },
+    deletePaper(id: string) {
+      this.deletePaperAction(id);
     },
   },
 });
@@ -128,11 +150,17 @@ export default defineComponent({
     top: 30px;
     right: 30px;
     font-size: 20px;
+    z-index: 99;
 
     &:hover {
       color: darkred;
     }
   }
+}
+
+.modal-delete {
+  @include modal-delete;
+  border-radius: 50px;
 }
 
 @media (min-width: $tablet) {

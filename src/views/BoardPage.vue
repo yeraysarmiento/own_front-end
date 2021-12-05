@@ -78,7 +78,7 @@ export default defineComponent({
 
 @media (min-width: $desktop) {
   .board-page {
-    margin: 30px;
+    margin: 15px;
   }
 
   .papers-container {
