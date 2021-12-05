@@ -118,12 +118,14 @@ const actions = {
   ): Promise<void> {
     commit("START_LOADING");
     try {
+      console.log("llamando loardBoard");
       const { data: currentBoard } = await axios.get(
         `${urlOWN}board/name/${name}`
       );
       commit("LOAD_CURRENT_BOARD", currentBoard);
     } catch {
       router.push("/notfound");
+      commit("STOP_LOADING");
     }
     commit("STOP_LOADING");
   },

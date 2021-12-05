@@ -7,7 +7,7 @@ import { defineComponent } from "vue";
 import Register from "../components/Register/Register.vue";
 
 export default defineComponent({
-  name: "OwnLogin",
+  name: "OwnRegister",
   components: { Register },
 });
 </script>

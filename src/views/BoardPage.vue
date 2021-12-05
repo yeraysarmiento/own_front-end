@@ -8,30 +8,7 @@
         :paper="paper"
       />
     </ul>
-    <div class="about-container">
-      <div class="about">
-        <h2 class="about__title">{{ currentBoard?.name.toUpperCase() }}</h2>
-        <p class="about__description">{{ currentBoard?.about }}</p>
-        <p class="about__email">{{ currentBoard?.email }}</p>
-        <ul class="social">
-          <li class="social__icon" v-if="currentBoard?.social.instagram">
-            <a :href="currentBoard.social.instagram" target="_blank"
-              ><img src="../assets/icons/instagram.svg" height="30" width="30"
-            /></a>
-          </li>
-          <li class="social__icon" v-if="currentBoard?.social.facebook">
-            <a :href="currentBoard?.social.facebook" target="_blank"
-              ><img src="../assets/icons/facebook.svg" height="30" width="30"
-            /></a>
-          </li>
-          <li class="social__icon" v-if="currentBoard?.social.twitter">
-            <a :href="currentBoard?.social.twitter" target="_blank"
-              ><img src="../assets/icons/twitter.svg" height="30" width="30"
-            /></a>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <About :board="currentBoard" />
   </div>
 </template>
 
@@ -39,10 +16,11 @@
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import Paper from "../components/Paper/Paper.vue";
+import About from "../components/About/About.vue";
 
 export default defineComponent({
   name: "BoardPage",
-  components: { Paper },
+  components: { Paper, About },
   computed: {
     ...mapState(["currentBoard", "isAuthenticated"]),
   },
@@ -50,7 +28,10 @@ export default defineComponent({
     ...mapActions(["loadBoardByNameAction", "getTokenAction"]),
   },
   mounted() {
-    this.loadBoardByNameAction(this.$route.params.boardName);
+    if (this.$route.params.boardName) {
+      this.loadBoardByNameAction(this.$route.params.boardName);
+    }
+
     if (localStorage.getItem("user")) {
       this.getTokenAction();
     }
@@ -58,7 +39,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "../assets/styles/_mixins.scss";
 @import "../assets/styles/_variables.scss";
 
@@ -77,51 +58,6 @@ export default defineComponent({
   margin-bottom: 50px;
 }
 
-.about-container {
-  width: 100%;
-  @include flex-center;
-  justify-content: end;
-}
-
-.about {
-  max-width: 500px;
-  margin: 0 15px 300px 15px;
-  padding-top: 50px;
-  border-top: 1px solid black;
-
-  &__title {
-    @include helvetica-title;
-    font-size: 30px;
-  }
-
-  &__description {
-    @include lora-text;
-    margin: 30px 0;
-    line-height: 30px;
-  }
-
-  &__email {
-    @include lora-text;
-    margin: 50px 0;
-    text-decoration: underline;
-    text-underline-offset: 5px;
-  }
-}
-
-.social {
-  @include flex-center;
-  justify-content: start;
-  list-style: none;
-  margin-top: 50px;
-
-  &__icon {
-    @include flex-center;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-  }
-}
-
 @media (min-width: $tablet) {
   .board-page {
     margin: 15px;
@@ -138,10 +74,6 @@ export default defineComponent({
       border-radius: 40px;
     }
   }
-
-  .about__title {
-    @include helvetica-title;
-  }
 }
 
 @media (min-width: $desktop) {
@@ -153,10 +85,6 @@ export default defineComponent({
     width: 1080px;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 10px;
-  }
-
-  .about__title {
-    @include helvetica-title;
   }
 }
 </style>
