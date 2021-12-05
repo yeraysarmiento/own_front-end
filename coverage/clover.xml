@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638703959234" clover="3.2.0">
-  <project timestamp="1638703959235" name="All files">
-    <metrics statements="198" coveredstatements="121" conditionals="49" coveredconditionals="13" methods="41" coveredmethods="20" elements="288" coveredelements="154" complexity="0" loc="198" ncloc="198" packages="13" files="23" classes="23"/>
+<coverage generated="1638704131129" clover="3.2.0">
+  <project timestamp="1638704131130" name="All files">
+    <metrics statements="198" coveredstatements="123" conditionals="49" coveredconditionals="13" methods="41" coveredmethods="20" elements="288" coveredelements="156" complexity="0" loc="198" ncloc="198" packages="13" files="23" classes="23"/>
     <package name="src">
       <metrics statements="8" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.vue" path="/Users/yeray/Desktop/own/src/App.vue">
@@ -183,7 +183,7 @@
       </file>
     </package>
     <package name="src.store">
-      <metrics statements="59" coveredstatements="56" conditionals="6" coveredconditionals="6" methods="16" coveredmethods="16"/>
+      <metrics statements="59" coveredstatements="58" conditionals="6" coveredconditionals="6" methods="16" coveredmethods="16"/>
       <file name="actions.ts" path="/Users/yeray/Desktop/own/src/store/actions.ts">
         <metrics statements="44" coveredstatements="43" conditionals="6" coveredconditionals="6" methods="8" coveredmethods="8"/>
         <line num="1" count="1" type="stmt"/>
@@ -232,9 +232,9 @@
         <line num="112" count="1" type="stmt"/>
       </file>
       <file name="getters.ts" path="/Users/yeray/Desktop/own/src/store/getters.ts">
-        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
       </file>
       <file name="mutations.ts" path="/Users/yeray/Desktop/own/src/store/mutations.ts">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
