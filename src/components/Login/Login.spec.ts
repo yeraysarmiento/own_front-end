@@ -53,9 +53,7 @@ describe("Given a Login Component", () => {
         },
         stubs: ["router-link", "router-view"],
         $store: {
-          methods: {
-            $store,
-          },
+          $store,
         },
       });
 

@@ -23,8 +23,11 @@
         placeholder="mario@minidefuet.com"
         :class="isWrongEmail ? 'wrong' : ''"
       />
-      <label for="password" :class="isWrong ? 'wrong' : ''">Password:</label>
+      <label for="password" type="password" :class="isWrong ? 'wrong' : ''"
+        >Password:</label
+      >
       <input
+        data-testid="password"
         id="password"
         type="password"
         v-model="password"
@@ -35,6 +38,7 @@
         >Repeat password:</label
       >
       <input
+        data-testid="repeatpassword"
         id="repeatPassword"
         type="password"
         v-model="repeatPassword"
