@@ -1,6 +1,13 @@
 import { Board, State, User } from "@/types/interface";
 
 const mutations = {
+  START_LOADING(state: State): void {
+    state.isLoading = true;
+  },
+  STOP_LOADING(state: State): void {
+    state.isLoading = false;
+  },
+
   LOAD_USER(state: State, payload: User): void {
     state.currentUser = payload;
   },
@@ -11,6 +18,7 @@ const mutations = {
     state.isAuthenticated = false;
     state.currentUser = {} as User;
   },
+
   LOAD_BOARDS(state: State, payload: Array<Board>): void {
     state.boards = payload;
   },
@@ -20,11 +28,8 @@ const mutations = {
   LOAD_CURRENT_BOARD(state: State, payload: Board): void {
     state.currentBoard = payload;
   },
-  START_LOADING(state: State): void {
-    state.isLoading = true;
-  },
-  STOP_LOADING(state: State): void {
-    state.isLoading = false;
+  DELETE_BOARD(state: State, payload: string): void {
+    state.boards = state.boards.filter((board) => board.id !== payload);
   },
 };
 

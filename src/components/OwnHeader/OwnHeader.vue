@@ -128,15 +128,19 @@ export default defineComponent({
       }
 
       &.nav__element--mydesk {
-        font-weight: bolder;
         color: black;
         margin-left: 15px;
+        font-family: "Helvetica Neue", sans-serif;
         font-size: 16px;
-        text-decoration: underline;
-        text-underline-offset: 3px;
+        font-style: italic;
 
         &:hover {
-          font-weight: bold;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+
+        &:active {
+          font-weight: bolder;
         }
       }
 
@@ -179,17 +183,9 @@ export default defineComponent({
       }
 
       &.nav__element--mydesk {
-        font-weight: bolder;
         width: 125px;
         color: black;
-        font-size: 16px;
-        text-decoration: underline;
-        text-underline-offset: 3px;
         justify-self: end;
-
-        &:hover {
-          font-weight: bold;
-        }
       }
 
       &.nav__element--logout {

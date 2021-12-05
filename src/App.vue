@@ -1,5 +1,5 @@
 <template>
-  <OwnHeader v-if="currentBoard === null" />
+  <OwnHeader v-if="$route.path !== `/${currentBoard?.name.toLowerCase()}`" />
   <BoardHeader
     :boardName="currentBoard.name"
     :boardLogo="currentBoard.logo"

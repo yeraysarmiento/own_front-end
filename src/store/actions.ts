@@ -77,6 +77,20 @@ const actions = {
     });
     commit("CREATE_BOARD", newBoard);
     commit("STOP_LOADING");
+    commit("STOP_LOADING");
+  },
+
+  async deleteBoardAction(
+    { commit }: ActionContext<State, State>,
+    id: string
+  ): Promise<void> {
+    commit("START_LOADING");
+    const token = JSON.parse(localStorage.getItem("user") || "");
+    await axios.delete(`${urlOWN}board/delete/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    commit("DELETE_BOARD", id);
+    commit("STOP_LOADING");
   },
 
   async loadCurrentBoardAction(

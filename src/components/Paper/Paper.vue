@@ -121,6 +121,10 @@ export default defineComponent({
     top: 30px;
     right: 30px;
     font-size: 20px;
+
+    &:hover {
+      color: darkred;
+    }
   }
 }
 

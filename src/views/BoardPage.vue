@@ -8,27 +8,29 @@
         :paper="paper"
       />
     </ul>
-    <div class="about">
-      <h2 class="about__title">{{ currentBoard?.name.toUpperCase() }}</h2>
-      <p class="about__description">{{ currentBoard?.about }}</p>
-      <p class="about__email">{{ currentBoard?.email }}</p>
-      <ul class="social">
-        <li class="social__icon" v-if="currentBoard?.social.instagram">
-          <a :href="currentBoard.social.instagram" target="_blank"
-            ><img src="../assets/icons/instagram.svg" height="30" width="30"
-          /></a>
-        </li>
-        <li class="social__icon" v-if="currentBoard?.social.facebook">
-          <a :href="currentBoard?.social.facebook" target="_blank"
-            ><img src="../assets/icons/facebook.svg" height="30" width="30"
-          /></a>
-        </li>
-        <li class="social__icon" v-if="currentBoard?.social.twitter">
-          <a :href="currentBoard?.social.twitter" target="_blank"
-            ><img src="../assets/icons/twitter.svg" height="30" width="30"
-          /></a>
-        </li>
-      </ul>
+    <div class="about-container">
+      <div class="about">
+        <h2 class="about__title">{{ currentBoard?.name.toUpperCase() }}</h2>
+        <p class="about__description">{{ currentBoard?.about }}</p>
+        <p class="about__email">{{ currentBoard?.email }}</p>
+        <ul class="social">
+          <li class="social__icon" v-if="currentBoard?.social.instagram">
+            <a :href="currentBoard.social.instagram" target="_blank"
+              ><img src="../assets/icons/instagram.svg" height="30" width="30"
+            /></a>
+          </li>
+          <li class="social__icon" v-if="currentBoard?.social.facebook">
+            <a :href="currentBoard?.social.facebook" target="_blank"
+              ><img src="../assets/icons/facebook.svg" height="30" width="30"
+            /></a>
+          </li>
+          <li class="social__icon" v-if="currentBoard?.social.twitter">
+            <a :href="currentBoard?.social.twitter" target="_blank"
+              ><img src="../assets/icons/twitter.svg" height="30" width="30"
+            /></a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -78,6 +80,12 @@ export default defineComponent({
   margin-top: 200px;
   padding-bottom: 250px;
   margin-bottom: 50px;
+}
+
+.about-container {
+  width: 100%;
+  @include flex-center;
+  justify-content: end;
 }
 
 .about {

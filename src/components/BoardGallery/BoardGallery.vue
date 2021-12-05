@@ -1,7 +1,11 @@
 <template>
   <ul class="board-gallery">
     <Board v-for="board in boards" v-bind:key="board.id" :board="board" />
-    <Board v-for="number in 5" v-bind:key="number.id" :isNew="number <= 5" />
+    <Board
+      v-for="number in 5 - boards.length"
+      v-bind:key="number.id"
+      :isNew="number < 6"
+    />
   </ul>
 </template>
 

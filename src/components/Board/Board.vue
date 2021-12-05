@@ -3,10 +3,14 @@
     <li class="board board--new" v-if="isNew">+</li>
   </router-link>
 
-  <li class="board" @click="loadBoard(board.id)" v-else>
+  <li class="board" v-else>
+    <p class="board__delete" @click="isDelete = !isDelete">
+      <font-awesome-icon icon="xmark" />
+    </p>
     <router-link :to="`/${board.name.toLowerCase()}`">
       <img
         class="board__image"
+        @click="loadBoard(board.id)"
         :src="board.logo"
         :alt="`Logo of ${board.name}`"
         width="125"
@@ -14,10 +18,20 @@
       />
       <h3 class="board__name">{{ board.name.toUpperCase() }}</h3>
     </router-link>
+    <div class="modal-delete" v-if="isDelete">
+      <p class="modal-delete__text">
+        Are you sure you want to delete {{ board.name.toUpperCase() }}?
+      </p>
+      <div class="modal-delete__container">
+        <button class="modal-delete__delete" @click="deleteBoard(board.id)">
+          Delete
+        </button>
+      </div>
+    </div>
   </li>
 </template>
 
-<script lang="ts">
+<script lang="ts" scoped>
 import { defineComponent } from "vue";
 import { mapActions } from "vuex";
 
@@ -27,10 +41,18 @@ export default defineComponent({
     board: Object,
     isNew: Boolean,
   },
+  data() {
+    return {
+      isDelete: false,
+    };
+  },
   methods: {
-    ...mapActions(["loadCurrentBoardAction"]),
+    ...mapActions(["loadCurrentBoardAction", "deleteBoardAction"]),
     loadBoard(id: string) {
       this.loadCurrentBoardAction(id);
+    },
+    deleteBoard(id: string) {
+      this.deleteBoardAction(id);
     },
   },
 });
@@ -49,6 +71,21 @@ export default defineComponent({
   cursor: pointer;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.25);
   position: relative;
+
+  &__delete {
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 20px;
+    z-index: 99;
+
+    &:hover {
+      color: darkred;
+    }
+  }
 
   &:hover {
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
@@ -80,6 +117,38 @@ export default defineComponent({
     font-size: 14px;
     font-weight: 500;
     color: black;
+  }
+}
+
+.modal-delete {
+  @include flex-center;
+  @include rufina-title;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  flex-direction: column;
+  text-align: center;
+  padding: 30px;
+  line-height: 25px;
+
+  &__container {
+    @include flex-center;
+    margin-top: 20px;
+  }
+
+  &__delete {
+    @include button;
+    background: $delete-color;
+
+    &:hover {
+      text-decoration: none;
+      border: 1px solid darkred;
+    }
   }
 }
 
