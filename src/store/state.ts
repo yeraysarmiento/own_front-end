@@ -4,6 +4,7 @@ const state = {
   boards: [],
   currentUser: {},
   currentBoard: null,
+  currentPaper: {},
   isAuthenticated: false,
   isLoading: false,
 };
