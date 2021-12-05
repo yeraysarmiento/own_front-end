@@ -9,22 +9,22 @@
       />
     </ul>
     <div class="about">
-      <h2 class="about__title">{{ currentBoard.name.toUpperCase() }}</h2>
-      <p class="about__description">{{ currentBoard.about }}</p>
-      <p class="about__email">{{ currentBoard.email }}</p>
+      <h2 class="about__title">{{ currentBoard?.name.toUpperCase() }}</h2>
+      <p class="about__description">{{ currentBoard?.about }}</p>
+      <p class="about__email">{{ currentBoard?.email }}</p>
       <ul class="social">
-        <li class="social__icon" v-if="currentBoard.social.instagram">
-          <a :href="currentBoard.social.instagram"
+        <li class="social__icon" v-if="currentBoard?.social.instagram">
+          <a :href="currentBoard.social.instagram" target="_blank"
             ><img src="../assets/icons/instagram.svg" height="30" width="30"
           /></a>
         </li>
-        <li class="social__icon" v-if="currentBoard.social.facebook">
-          <a :href="currentBoard.social.facebook"
+        <li class="social__icon" v-if="currentBoard?.social.facebook">
+          <a :href="currentBoard?.social.facebook" target="_blank"
             ><img src="../assets/icons/facebook.svg" height="30" width="30"
           /></a>
         </li>
-        <li class="social__icon" v-if="currentBoard.social.twitter">
-          <a :href="currentBoard.social.twitter"
+        <li class="social__icon" v-if="currentBoard?.social.twitter">
+          <a :href="currentBoard?.social.twitter" target="_blank"
             ><img src="../assets/icons/twitter.svg" height="30" width="30"
           /></a>
         </li>
@@ -78,26 +78,28 @@ export default defineComponent({
   margin-top: 200px;
   padding-bottom: 250px;
   margin-bottom: 50px;
-  border-bottom: 1px solid black;
 }
 
 .about {
   max-width: 500px;
-  margin-bottom: 300px;
+  margin: 0 15px 300px 15px;
+  padding-top: 50px;
+  border-top: 1px solid black;
 
   &__title {
     @include helvetica-title;
+    font-size: 30px;
   }
 
   &__description {
     @include lora-text;
-    margin-top: 20px;
+    margin: 30px 0;
     line-height: 30px;
   }
 
   &__email {
     @include lora-text;
-    margin: 30px 0;
+    margin: 50px 0;
     text-decoration: underline;
     text-underline-offset: 5px;
   }
@@ -133,6 +135,10 @@ export default defineComponent({
       border-radius: 40px;
     }
   }
+
+  .about__title {
+    @include helvetica-title;
+  }
 }
 
 @media (min-width: $desktop) {
@@ -144,6 +150,10 @@ export default defineComponent({
     width: 1080px;
     grid-template-columns: repeat(4, 1fr);
     column-gap: 10px;
+  }
+
+  .about__title {
+    @include helvetica-title;
   }
 }
 </style>
