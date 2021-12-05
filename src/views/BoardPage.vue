@@ -8,6 +8,28 @@
         :paper="paper"
       />
     </ul>
+    <div class="about">
+      <h2 class="about__title">{{ currentBoard.name.toUpperCase() }}</h2>
+      <p class="about__description">{{ currentBoard.about }}</p>
+      <p class="about__email">{{ currentBoard.email }}</p>
+      <ul class="social">
+        <li class="social__icon" v-if="currentBoard.social.instagram">
+          <a :href="currentBoard.social.instagram"
+            ><img src="../assets/icons/instagram.svg" height="30" width="30"
+          /></a>
+        </li>
+        <li class="social__icon" v-if="currentBoard.social.facebook">
+          <a :href="currentBoard.social.facebook"
+            ><img src="../assets/icons/facebook.svg" height="30" width="30"
+          /></a>
+        </li>
+        <li class="social__icon" v-if="currentBoard.social.twitter">
+          <a :href="currentBoard.social.twitter"
+            ><img src="../assets/icons/twitter.svg" height="30" width="30"
+          /></a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -46,6 +68,7 @@ export default defineComponent({
 .board-page {
   display: flex;
   justify-content: end;
+  flex-wrap: wrap;
 }
 
 .papers-container {
@@ -56,6 +79,42 @@ export default defineComponent({
   padding-bottom: 250px;
   margin-bottom: 50px;
   border-bottom: 1px solid black;
+}
+
+.about {
+  max-width: 500px;
+  margin-bottom: 300px;
+
+  &__title {
+    @include helvetica-title;
+  }
+
+  &__description {
+    @include lora-text;
+    margin-top: 20px;
+    line-height: 30px;
+  }
+
+  &__email {
+    @include lora-text;
+    margin: 30px 0;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+}
+
+.social {
+  @include flex-center;
+  justify-content: start;
+  list-style: none;
+  margin-top: 50px;
+
+  &__icon {
+    @include flex-center;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+  }
 }
 
 @media (min-width: $tablet) {

@@ -77,7 +77,7 @@ export default defineComponent({
   },
   data() {
     return {
-      isClicked: true,
+      isClicked: false,
       area: "All projects",
     };
   },
