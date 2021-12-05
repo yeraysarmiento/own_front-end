@@ -39,7 +39,4 @@ describe("Given an OwnMenu component", () => {
       expect(wrapper.html()).toContain(logoutText);
     });
   });
-  describe("When it", () => {
-    test("Then it should ");
-  });
 });
