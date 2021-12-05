@@ -38,4 +38,39 @@ describe("Given a Login Component", () => {
       expect(button).toHaveProperty("isDisabled");
     });
   });
+  describe("When the fields are filled and click on submit", () => {
+    test("Then it should call the ", async () => {
+      const $store = {
+        methods: {
+          checkForm: jest.fn(),
+          onSubmit: jest.fn(),
+        },
+      };
+
+      const wrapper = await mount(Login, {
+        global: {
+          plugins: [router],
+        },
+        stubs: ["router-link", "router-view"],
+        $store: {
+          methods: {
+            $store,
+          },
+        },
+      });
+
+      $store.methods.onSubmit = jest.fn();
+      $store.methods.onSubmit();
+
+      const username = wrapper.findAll("input")[0];
+      const password = wrapper.findAll("input")[1];
+
+      username.setValue("loling");
+      password.setValue("loling");
+
+      wrapper.find("form").trigger("submit");
+
+      expect($store.methods.onSubmit).toHaveBeenCalled();
+    });
+  });
 });
