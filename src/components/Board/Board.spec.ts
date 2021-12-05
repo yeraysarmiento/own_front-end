@@ -1,4 +1,6 @@
 import { mount } from "@vue/test-utils";
+import { fireEvent, render, screen } from "@testing-library/vue";
+import VueRouter from "vue-router";
 import router from "@/router";
 import Board from "./Board.vue";
 
@@ -47,4 +49,24 @@ describe("Given a Board Component", () => {
       expect(wrapper.text()).toContain(textExpected);
     });
   });
+  // describe("When the user clicks on the image", () => {
+  //   test("Then it should call the loadBoard function", async () => {
+  //     const board = {
+  //       name: "name",
+  //       logo: "logoURL",
+  //     };
+
+  //     render(Board, {
+  //       props: {
+  //         board,
+  //         isNew: true,
+  //       },
+  //       global: {
+  //         plugins: [router],
+  //       },
+  //     });
+
+  //     await fireEvent.click(screen.getByRole("listitem", { name: "" }));
+  //   });
+  // });
 });

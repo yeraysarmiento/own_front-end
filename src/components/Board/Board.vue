@@ -3,7 +3,7 @@
     <li class="board board--new" v-if="isNew">+</li>
   </router-link>
 
-  <li class="board" v-else>
+  <li class="board" @click="loadBoard(board.id)" v-else>
     <router-link :to="`/${board.name.toLowerCase()}`">
       <img
         class="board__image"
@@ -11,7 +11,6 @@
         :alt="`Logo of ${board.name}`"
         width="125"
         height="125"
-        @click="loadBoard(board.id)"
       />
       <h3 class="board__name">{{ board.name.toUpperCase() }}</h3>
     </router-link>

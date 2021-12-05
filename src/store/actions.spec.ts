@@ -7,7 +7,6 @@ import {
   configActionContextAndDispatch,
 } from "../../tests/test.utils";
 
-import state from "../../tests/mockedState";
 import { Board, User, UserLogin, UserRegister } from "@/types/interface";
 
 jest.mock("axios");

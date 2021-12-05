@@ -12,8 +12,8 @@
         :class="isAuthenticated ? 'editing' : ''"
         :src="paper.images[0]"
         :alt="`Image of ${paper.title}, by ${paper.author}`"
-        height="350"
         width="350"
+        height="350"
       />
       <div class="paper__text-container">
         <h2 class="paper__title">/ {{ paper.title }}</h2>

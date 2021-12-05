@@ -1,6 +1,6 @@
 <template>
   <div class="desk">
-    <h2 class="desk__title" @click="getUsername">
+    <h2 class="desk__title">
       Welcome <span class="desk__username">{{ currentUser.username }}</span>
     </h2>
     <p class="desk__count" v-if="boards?.length === 0">
@@ -22,11 +22,6 @@ import BoardGallery from "../components/BoardGallery/BoardGallery.vue";
 export default defineComponent({
   name: "Desk",
   components: { BoardGallery },
-  data() {
-    return {
-      username: "",
-    };
-  },
   computed: {
     ...mapState(["currentUser", "boards"]),
   },
