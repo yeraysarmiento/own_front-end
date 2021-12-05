@@ -117,7 +117,6 @@ export default defineComponent({
     height: 80px;
     background: none;
     margin: 0 30px;
-    justify-content: end;
 
     &__element {
       margin: 50px;

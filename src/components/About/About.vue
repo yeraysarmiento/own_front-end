@@ -9,17 +9,29 @@
       <ul class="social">
         <li class="social__icon" v-if="currentBoard?.social.instagram">
           <a :href="currentBoard.social.instagram" target="_blank"
-            ><img src="../../assets/icons/instagram.svg" height="30" width="30"
+            ><img
+              src="../../assets/icons/instagram.svg"
+              height="30"
+              width="30"
+              alt="Instagram icon"
           /></a>
         </li>
         <li class="social__icon" v-if="currentBoard?.social.facebook">
           <a :href="currentBoard?.social.facebook" target="_blank"
-            ><img src="../../assets/icons/facebook.svg" height="30" width="30"
+            ><img
+              src="../../assets/icons/facebook.svg"
+              height="30"
+              width="30"
+              alt="Facebook icon"
           /></a>
         </li>
         <li class="social__icon" v-if="currentBoard?.social.twitter">
           <a :href="currentBoard?.social.twitter" target="_blank"
-            ><img src="../../assets/icons/twitter.svg" height="30" width="30"
+            ><img
+              src="../../assets/icons/twitter.svg"
+              height="30"
+              width="30"
+              alt="Twitter icon"
           /></a>
         </li>
       </ul>

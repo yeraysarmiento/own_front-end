@@ -97,7 +97,7 @@ export default defineComponent({
   display: flex;
   padding: 5px 30px 5px 0;
   height: 80px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .custom-logo {
@@ -146,7 +146,8 @@ export default defineComponent({
     &__element {
       &.nav__element--filter {
         & select {
-          width: 300px;
+          width: 250px;
+          margin-left: 30px;
         }
       }
       &.nav__element--mydesk {
