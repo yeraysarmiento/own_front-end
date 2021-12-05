@@ -23,8 +23,6 @@ describe("Given an OwnMenu component", () => {
     test("Then it should render 2 li elements with 'Login' & 'Register", async () => {
       const registerText =
         '<li class="nav__element nav__element--register">Register</li>';
-      // const loginText =
-      //   '<li class="nav__element nav__element--login">Login</li>';
       const logoutText =
         '<li class="nav__element nav__element--logout"> Logout </li>';
       const wrapper = await mount(OwnHeader, {
@@ -39,7 +37,6 @@ describe("Given an OwnMenu component", () => {
       });
 
       expect(wrapper.html()).toContain(logoutText);
-      // expect(wrapper.html()).toContain(registerText);
     });
   });
 });

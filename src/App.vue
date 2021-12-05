@@ -15,9 +15,6 @@
 </template>
 
 <script>
-import "@fontsource/sintony";
-import "@fontsource/lora";
-
 import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import OwnHeader from "./components/OwnHeader/OwnHeader.vue";
@@ -27,7 +24,7 @@ import Spinner from "./components/Spinner.vue";
 export default defineComponent({
   name: "app",
   computed: {
-    ...mapState(["currentBoard", "isCustomHeader", "isLoading"]),
+    ...mapState(["currentBoard", "isLoading"]),
   },
   methods: {
     ...mapActions(["getTokenAction"]),

@@ -8,7 +8,7 @@ const urlOWN = process.env.VUE_APP_OWN_SERVER;
 const actions = {
   async getProfileAction(
     { commit }: ActionContext<State, State>,
-    token: UserLogin
+    token: string
   ): Promise<void> {
     commit("START_LOADING");
     const { data: allData } = await axios.get(`${urlOWN}user`, {
