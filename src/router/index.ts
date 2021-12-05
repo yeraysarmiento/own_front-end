@@ -6,6 +6,7 @@ import NotFound from "../views/NotFound.vue";
 import Desk from "../views/Desk.vue";
 import CreateBoard from "../views/CreateBoard.vue";
 import BoardPage from "../views/BoardPage.vue";
+import PaperPage from "../views/PaperPage.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -36,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/desk/new",
     name: "CreateBoard",
     component: CreateBoard,
+  },
+  {
+    path: "/:boardName/:idPaper",
+    name: "PaperPage",
+    component: PaperPage,
   },
   {
     path: "/:boardName",

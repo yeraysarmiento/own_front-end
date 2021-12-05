@@ -1,6 +1,12 @@
 import axios from "axios";
 import { ActionContext } from "vuex";
-import { Board, State, UserLogin, UserRegister } from "@/types/interface";
+import {
+  Board,
+  State,
+  UserLogin,
+  UserRegister,
+  Paper,
+} from "@/types/interface";
 import router from "@/router";
 
 const urlOWN = process.env.VUE_APP_OWN_SERVER;
@@ -119,6 +125,15 @@ const actions = {
     } catch {
       router.push("/notfound");
     }
+    commit("STOP_LOADING");
+  },
+
+  loadCurrentPaperAction(
+    { commit }: ActionContext<State, State>,
+    paper: Paper
+  ): void {
+    commit("START_LOADING");
+    commit("LOAD_CURRENT_PAPER", paper);
     commit("STOP_LOADING");
   },
 };

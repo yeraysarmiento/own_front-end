@@ -52,6 +52,7 @@ export interface State {
   currentBoard: Board | any;
   boards: Array<Board>;
   isLoading: boolean;
+  currentPaper: Paper;
 }
 export interface Logo extends File {
   srcElement: {

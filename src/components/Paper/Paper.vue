@@ -9,6 +9,7 @@
     <router-link :to="`${$route.path}/${paper.id}`">
       <img
         class="paper__image"
+        @click="loadPaper(paper)"
         :class="isAuthenticated ? 'editing' : ''"
         :src="paper.images[0]"
         :alt="`Image of ${paper.title}, by ${paper.author}`"
@@ -29,7 +30,8 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
+import { Paper } from "@/types/interface";
 
 export default defineComponent({
   name: "Paper",
@@ -40,7 +42,12 @@ export default defineComponent({
   computed: {
     ...mapState(["isAuthenticated"]),
   },
-  methods: {},
+  methods: {
+    ...mapActions(["loadCurrentPaperAction"]),
+    loadPaper(paper: Paper) {
+      this.loadCurrentPaperAction(paper);
+    },
+  },
 });
 </script>
 

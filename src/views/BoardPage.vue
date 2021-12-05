@@ -41,13 +41,8 @@ import { mapActions, mapState } from "vuex";
 import Paper from "../components/Paper/Paper.vue";
 
 export default defineComponent({
-  name: "CreateBoard",
+  name: "BoardPage",
   components: { Paper },
-  data() {
-    return {
-      isLoading: "",
-    };
-  },
   computed: {
     ...mapState(["currentBoard", "isAuthenticated"]),
   },

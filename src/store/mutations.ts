@@ -1,4 +1,4 @@
-import { Board, State, User } from "@/types/interface";
+import { Board, Paper, State, User } from "@/types/interface";
 
 const mutations = {
   START_LOADING(state: State): void {
@@ -30,6 +30,10 @@ const mutations = {
   },
   DELETE_BOARD(state: State, payload: string): void {
     state.boards = state.boards.filter((board) => board.id !== payload);
+  },
+
+  LOAD_CURRENT_PAPER(state: State, payload: Paper): void {
+    state.currentPaper = payload;
   },
 };
 
