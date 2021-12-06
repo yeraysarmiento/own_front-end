@@ -165,7 +165,7 @@ export default defineComponent({
           idBoard: this.currentBoard.id,
           paper: paperData,
         });
-        // this.$router.push(`/${this.currentBoard.name}`);
+        this.$router.push(`/${this.currentBoard.name}`);
       } catch (error) {
         console.log(error);
         this.STOP_LOADING();
