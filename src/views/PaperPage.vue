@@ -85,8 +85,10 @@ export default defineComponent({
   font-size: 20px;
   position: absolute;
   right: 20px;
+  top: -75px;
 
   & p {
+    display: none;
     color: darkgrey;
     @include lora-text;
     position: absolute;
@@ -219,6 +221,19 @@ export default defineComponent({
 
     &__author {
       margin-bottom: 150px;
+    }
+  }
+
+  .editing-icon {
+    right: 20px;
+    top: 0;
+
+    & p {
+      display: block;
+    }
+
+    &:hover {
+      color: darkred;
     }
   }
 }

@@ -1,12 +1,7 @@
 <template>
-  <OwnHeader v-if="$route.path !== `/${currentBoard?.name.toLowerCase()}`" />
-  <!-- <OwnHeader
-    v-if="
-      ['/login', '/register', '/desk', '/desk/new', '/home', '/'].includes(
-        $route.path
-      )
-    "
-  /> -->
+  <OwnHeader
+    v-if="!$route.path.includes(`/${currentBoard?.name.toLowerCase()}`)"
+  />
   <BoardHeader v-else />
   <div class="container">
     <router-view />
