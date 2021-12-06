@@ -41,6 +41,7 @@ const mutations = {
     );
   },
   FILTER_PAPERS(state: State, payload: Array<Paper>): void {
+    console.log("hola");
     state.currentBoard.papers = payload;
   },
 };

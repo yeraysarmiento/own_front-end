@@ -9,7 +9,8 @@ import {
 } from "@/types/interface";
 import router from "@/router";
 
-const urlOWN = process.env.VUE_APP_OWN_SERVER;
+// const urlOWN = process.env.VUE_APP_OWN_SERVER;
+const urlOWN = "http://localhost:5000/";
 
 const actions = {
   async getProfileAction(
@@ -156,12 +157,11 @@ const actions = {
     { idBoard, type }: any
   ): Promise<void> {
     commit("START_LOADING");
-    const token = JSON.parse(localStorage.getItem("user") || "");
+    console.log(
+      `${urlOWN}paper/${idBoard}?filterby=type&filter=${type}&page=1&limit=30`
+    );
     const { data: filteredPapers } = await axios.get(
-      `${urlOWN}paper/${idBoard}?filterby=type&filter=${type}&page=1&limit=30`,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
+      `${urlOWN}paper/${idBoard}?filterby=type&filter=${type}&page=1&limit=30`
     );
     commit("FILTER_PAPERS", filteredPapers);
     commit("STOP_LOADING");
