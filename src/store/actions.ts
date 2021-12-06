@@ -118,7 +118,6 @@ const actions = {
   ): Promise<void> {
     commit("START_LOADING");
     try {
-      console.log("llamando loardBoard");
       const { data: currentBoard } = await axios.get(
         `${urlOWN}board/name/${name}`
       );
@@ -149,6 +148,22 @@ const actions = {
       headers: { Authorization: `Bearer ${token}` },
     });
     commit("DELETE_PAPER", id);
+    commit("STOP_LOADING");
+  },
+
+  async filterPapersAction(
+    { commit }: ActionContext<State, State>,
+    { idBoard, type }: any
+  ): Promise<void> {
+    commit("START_LOADING");
+    const token = JSON.parse(localStorage.getItem("user") || "");
+    const { data: filteredPapers } = await axios.get(
+      `${urlOWN}paper/${idBoard}?filterby=type&filter=${type}&page=1&limit=30`,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    commit("FILTER_PAPERS", filteredPapers);
     commit("STOP_LOADING");
   },
 };

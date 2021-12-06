@@ -1,20 +1,32 @@
 <template>
   <div class="board-header">
-    <router-link :to="`/${boardName?.toLowerCase()}`">
+    <router-link :to="`/${currentBoard?.name.toLowerCase()}`">
       <h1 class="custom-logo" :class="isClicked ? 'custom-logo--open' : ''">
-        <img :src="boardLogo" :alt="boardName" width="70" height="70" />
+        <img
+          :src="currentBoard.logo"
+          :alt="currentBoard.name"
+          width="70"
+          height="70"
+        />
       </h1>
     </router-link>
-    <h2 class="custom-title">{{ boardName.toUpperCase() }}</h2>
+    <h2 class="custom-title">{{ currentBoard?.name.toUpperCase() }}</h2>
     <ul class="nav" :class="isClicked ? 'nav--open' : ''">
       <div class="nav__container">
         <li class="nav__element nav__element--filter">
-          <select id="area" name="area" v-model="area" required autofocus>
+          <select
+            id="area"
+            name="area"
+            v-model="area"
+            @change="onChange($event)"
+            required
+            autofocus
+          >
             <option disabled selected value>- Select an area -</option>
             <option value="All projects">All projects</option>
-            <option value="Design">Architecture</option>
-            <option value="Business">Interiors</option>
-            <option value="Architecture">Landscape</option>
+            <option value="Architecture">Architecture</option>
+            <option value="Interiors">Interiors</option>
+            <option value="Landscape">Landscape</option>
           </select>
         </li>
 
@@ -33,14 +45,14 @@
 
         <li
           class="nav__element nav__element--logout"
-          v-on:click="logoutUser(boardName?.toLowerCase())"
+          v-on:click="logoutUser(currentBoard?.name.toLowerCase())"
           v-else
         >
           Logout
         </li>
       </div>
       <li class="nav__element nav__element--heading">
-        <h1>{{ boardName?.toUpperCase() }}</h1>
+        <h1>{{ currentBoard?.name.toUpperCase() }}</h1>
       </li>
     </ul>
     <div
@@ -57,29 +69,44 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapMutations, mapState } from "vuex";
 
 export default defineComponent({
   name: "BoardHeader",
-  props: {
-    boardName: String,
-    boardLogo: String,
-  },
-  computed: {
-    ...mapState(["isAuthenticated", "currentUser"]),
-  },
-  methods: {
-    ...mapActions(["logoutUserAction"]),
-    logoutUser(path: string) {
-      this.logoutUserAction();
-      this.$router.push(`/${path}`);
-    },
-  },
   data() {
     return {
       isClicked: false,
       area: "All projects",
     };
+  },
+  computed: {
+    ...mapState(["isAuthenticated", "currentUser", "currentBoard"]),
+  },
+  methods: {
+    ...mapActions([
+      "logoutUserAction",
+      "filterPapersAction",
+      "loadCurrentBoardAction",
+    ]),
+    ...mapMutations(["STOP_LOADING"]),
+    logoutUser(path: string) {
+      this.logoutUserAction();
+      this.$router.push(`/${path}`);
+    },
+    onChange(event: any) {
+      try {
+        if (event.target.value === "All projects") {
+          this.loadCurrentBoardAction(this.currentBoard.id);
+        } else {
+          this.filterPapersAction({
+            idBoard: this.currentBoard.id,
+            type: event.target.value,
+          });
+        }
+      } catch (error) {
+        this.STOP_LOADING();
+      }
+    },
   },
 });
 </script>

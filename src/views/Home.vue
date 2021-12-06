@@ -19,10 +19,9 @@ export default defineComponent({
 .home {
   height: 100vh;
   overflow: hidden;
-  object-fit: cover;
   background: url("https://firebasestorage.googleapis.com/v0/b/own-api-2c648.appspot.com/o/assets%2Fbackground-own.svg?alt=media&token=f75fed37-7a6f-4617-be8d-bc2e4754186b");
   background-size: cover;
-  background-position-x: -550px;
+  width: 100vw;
   display: flex;
   align-items: end;
   background-repeat: no-repeat;
