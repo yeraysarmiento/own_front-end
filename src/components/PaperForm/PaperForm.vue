@@ -1,5 +1,10 @@
 <template>
   <div class="paperform-page">
+    <router-link :to="`/${currentBoard.name.toLowerCase()}`">
+      <div class="go-back">
+        <font-awesome-icon icon="chevron-left" /> Back to Home
+      </div>
+    </router-link>
     <form
       class="paper-form"
       @submit.prevent="onSubmit($event)"
@@ -133,6 +138,7 @@ export default defineComponent({
     async onSubmit(event: any) {
       console.log(6, event.srcElement[7].files);
       [this.images] = event.srcElement[7].files;
+      console.log(this.images);
 
       // const a = {
       //   title: this.title,
