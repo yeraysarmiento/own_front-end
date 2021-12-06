@@ -1,10 +1,12 @@
 <template>
   <div class="paperform-page">
-    <router-link :to="`/${currentBoard.name.toLowerCase()}`">
+    <router-link :to="`/${currentBoard?.name.toLowerCase()}`">
       <div class="go-back">
-        <font-awesome-icon icon="chevron-left" /> Back to Home
+        <font-awesome-icon icon="chevron-left" /> Back to
+        {{ currentBoard?.name.toUpperCase() }}
       </div>
     </router-link>
+    <h2 class="create-paper__title">NEW PAPER</h2>
     <form
       class="paper-form"
       @submit.prevent="onSubmit($event)"
@@ -186,6 +188,15 @@ export default defineComponent({
 
 .paper-form {
   @include form;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(1, 1fr);
+  padding-bottom: 100px;
+  border-bottom: none;
+
+  & select {
+    margin-top: 15px;
+  }
 
   & label {
     padding-bottom: 0;
@@ -194,6 +205,26 @@ export default defineComponent({
 
   &__images {
     background: red;
+  }
+}
+.button-container {
+  display: flex;
+  justify-content: end;
+}
+
+.create-paper__title {
+  @include own-title;
+}
+
+@media (min-width: $tablet) {
+  .paper-form {
+    width: 500px;
+  }
+}
+
+@media (min-width: $desktop) {
+  .paper-form {
+    width: 750px;
   }
 }
 </style>

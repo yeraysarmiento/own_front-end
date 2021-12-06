@@ -1,7 +1,7 @@
 <template>
   <div class="create-paper">
-    <h2 class="create-paper__title">NEW PAPER</h2>
     <PaperForm />
+    <About />
   </div>
 </template>
 
@@ -9,10 +9,11 @@
 import { defineComponent } from "vue";
 import { mapActions } from "vuex";
 import PaperForm from "../components/PaperForm/PaperForm.vue";
+import About from "../components/About/About.vue";
 
 export default defineComponent({
   name: "CreatePaper",
-  components: { PaperForm },
+  components: { PaperForm, About },
   methods: {
     ...mapActions(["loadBoardByNameAction", "getTokenAction"]),
   },
@@ -34,15 +35,16 @@ export default defineComponent({
 
 .create-paper {
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  padding: 0 30px;
+  justify-content: end;
+  flex-wrap: wrap;
+  width: 100vw;
+  padding-right: 30px;
+  margin-top: 120px;
 
   &__title {
     @include own-title;
+    width: 100%;
     margin: 150px 0 25px 0;
-    text-align: center;
   }
 }
 
