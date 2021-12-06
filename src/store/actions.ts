@@ -165,7 +165,7 @@ const actions = {
 
   async createPaperAction(
     { commit }: ActionContext<State, State>,
-    { idBoard, paper }: any
+    { idBoard, paper }: { idBoard: string; paper: Paper }
   ): Promise<void> {
     commit("START_LOADING");
     const token = JSON.parse(localStorage.getItem("user") || "");
@@ -182,7 +182,7 @@ const actions = {
 
   async editPaperAction(
     { commit }: ActionContext<State, State>,
-    { idPaper, paper }: any
+    { idPaper, paper }: { idPaper: string; paper: Paper }
   ): Promise<void> {
     commit("START_LOADING");
     const token = JSON.parse(localStorage.getItem("user") || "");
