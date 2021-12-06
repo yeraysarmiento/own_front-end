@@ -181,6 +181,10 @@ const actions = {
     commit("CREATE_PAPER", newPaper);
     commit("STOP_LOADING");
   },
+
+  editTrue({ commit }: ActionContext<State, State>): void {
+    commit("EDIT_TRUE");
+  },
 };
 
 export default actions;

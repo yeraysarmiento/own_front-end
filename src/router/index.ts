@@ -55,6 +55,11 @@ const routes: Array<RouteRecordRaw> = [
     component: BoardPage,
   },
   {
+    path: "/:boardName/edit/:paperId",
+    name: "CreatePaper",
+    component: CreatePaper,
+  },
+  {
     path: "/notfound",
     name: "NotFound",
     component: NotFound,

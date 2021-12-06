@@ -6,7 +6,9 @@
         {{ currentBoard?.name.toUpperCase() }}
       </div>
     </router-link>
-    <h2 class="create-paper__title">NEW PAPER</h2>
+    <h2 class="create-paper__title">
+      {{ isEditing ? "EDIT PAPER" : "NEW PAPER" }}
+    </h2>
     <form
       class="paper-form"
       @submit.prevent="onSubmit($event)"
@@ -63,7 +65,7 @@
           :disabled="isDisabled"
           :class="isDisabled ? 'disabled' : ''"
         >
-          Create board
+          Create paper
         </button>
       </div>
     </form>
@@ -90,10 +92,10 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapState(["currentBoard"]),
+    ...mapState(["currentBoard", "isEditing"]),
   },
   methods: {
-    ...mapActions(["getTokenAction", "createPaperAction"]),
+    ...mapActions(["getTokenAction", "createPaperAction", "editTrue"]),
     ...mapMutations(["STOP_LOADING"]),
     checkForm() {
       if (
@@ -177,6 +179,11 @@ export default defineComponent({
       this.getTokenAction();
     } else {
       this.$router.push("/login");
+    }
+
+    if (this.$route.params.paperId) {
+      console.log("hola");
+      this.editTrue();
     }
   },
 });
