@@ -7,6 +7,10 @@
         </div>
       </router-link>
       <div class="paper-container" :class="isAuthenticated ? 'editing' : ''">
+        <div class="editing-icon" v-if="isAuthenticated">
+          <p>Edit your Paper</p>
+          <font-awesome-icon icon="edit" />
+        </div>
         <h2 class="paper__title">{{ currentPaper.title.toUpperCase() }}</h2>
         <h3 class="paper__author">by {{ currentPaper.author }}</h3>
 
@@ -73,6 +77,31 @@ export default defineComponent({
 @import "../assets/styles/_mixins.scss";
 @import "../assets/styles/_variables.scss";
 
+.editing-icon {
+  cursor: pointer;
+  @include flex-center;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+
+  & p {
+    color: darkgrey;
+    @include lora-text;
+    position: absolute;
+    right: 50px;
+    width: 120px;
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &:hover {
+    color: darkred;
+  }
+}
+
 .go-back {
   @include lora-text;
   color: lightgray;
@@ -96,6 +125,8 @@ export default defineComponent({
   padding-bottom: 100px;
 
   &-container {
+    position: relative;
+
     &.editing {
       border: 1px dashed black;
       border-radius: 40px;
