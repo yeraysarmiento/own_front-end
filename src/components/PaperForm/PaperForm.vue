@@ -1,0 +1,230 @@
+<template>
+  <div class="paperform-page">
+    <router-link :to="`/${currentBoard?.name.toLowerCase()}`">
+      <div class="go-back">
+        <font-awesome-icon icon="chevron-left" /> Back to
+        {{ currentBoard?.name.toUpperCase() }}
+      </div>
+    </router-link>
+    <h2 class="create-paper__title">NEW PAPER</h2>
+    <form
+      class="paper-form"
+      @submit.prevent="onSubmit($event)"
+      autocomplete="off"
+      @change="checkForm"
+    >
+      <label for="title" type="text">Title:</label>
+      <input id="title" v-model="title" placeholder="Title" />
+
+      <label for="author" type="text">Author:</label>
+      <input id="author" v-model="author" placeholder="Author" />
+
+      <label for="year" type="text">Year:</label>
+      <input id="year" v-model="year" placeholder="Year" />
+
+      <label for="location" type="text">Location:</label>
+      <input id="location" v-model="location" placeholder="Location" />
+
+      <label for="photograph" type="text">Photography by:</label>
+      <input id="photograph" v-model="photograph" placeholder="Photograph" />
+
+      <label for="type">Type:</label>
+      <select id="type" name="type" v-model="type">
+        <option value="Choose an area">Choose a type</option>
+        <option value="Architecture">Architecture</option>
+        <option value="Interiors">Interiors</option>
+        <option value="Landscape">Landscape</option>
+      </select>
+
+      <label for="text" type="text">Description:</label>
+      <textarea
+        id="text"
+        v-model="text"
+        rows="20"
+        maxlength="2000"
+        placeholder="What do you want to write?"
+        required
+      />
+
+      <label for="images">Upload images (up to 3mb):</label>
+      <input
+        class="paper-form__images"
+        type="file"
+        id="images"
+        name="images"
+        multiple
+        accept="image/*"
+      />
+
+      <div class="button-container">
+        <button
+          class="button"
+          type="submit"
+          :disabled="isDisabled"
+          :class="isDisabled ? 'disabled' : ''"
+        >
+          Create board
+        </button>
+      </div>
+    </form>
+  </div>
+</template>
+
+<script lang="ts" scoped>
+import { defineComponent } from "vue";
+import { mapActions, mapMutations, mapState } from "vuex";
+
+export default defineComponent({
+  name: "PaperForm",
+  data() {
+    return {
+      title: "",
+      author: "",
+      year: "",
+      type: "",
+      location: "",
+      photograph: "",
+      text: "",
+      images: "" as any,
+      isDisabled: true,
+    };
+  },
+  computed: {
+    ...mapState(["currentBoard"]),
+  },
+  methods: {
+    ...mapActions(["getTokenAction", "createPaperAction"]),
+    ...mapMutations(["STOP_LOADING"]),
+    checkForm() {
+      if (
+        this.title !== "" &&
+        this.author !== "" &&
+        this.year !== "" &&
+        this.type !== "" &&
+        this.location !== "" &&
+        this.photograph !== "" &&
+        this.text !== ""
+      ) {
+        this.isDisabled = false;
+      }
+    },
+    uploadImages(event: any) {
+      //  @change="uploadImages($event)"
+      console.log(event.target.files);
+
+      const imagesArray = [...event.target.files];
+      console.log(2, imagesArray);
+
+      this.images = imagesArray;
+      console.log(3, this.images);
+
+      [this.images] = event.target.files;
+      console.log(4, this.images);
+
+      // ESTE FUNCIONA PARA UNO
+      // [this.images] = event.target.files;
+
+      // console.log(0, this.images);
+      // console.log(a);
+      // for (const i of Object.keys(this.imagesArray)) {
+      //   formData.append("imagesArray", this.imagesArray[i]);
+      // }
+      //     Object.keys(event.target.files).forEach(key => {
+      // Object.keys(env[1]).forEach(subkey => {
+      // Object.entries(event.target.files).map((item) => {
+      //   item.map((file: any) => this.images.push(file));
+      // });
+      // console.log(this.images);
+    },
+
+    async onSubmit(event: any) {
+      console.log(6, event.srcElement[7].files);
+      [this.images] = event.srcElement[7].files;
+      console.log(this.images);
+
+      // const a = {
+      //   title: this.title,
+      //   author: this.author,
+      //   year: this.year,
+      //   type: this.type,
+      //   location: this.location,
+      //   text: this.text,
+      // };
+
+      const paperData = new FormData();
+      paperData.append("title", this.title);
+      paperData.append("author", this.author);
+      paperData.append("year", this.year);
+      paperData.append("type", this.type);
+      paperData.append("location", this.location);
+      paperData.append("text", this.text);
+      paperData.append("images", this.images);
+
+      try {
+        await this.createPaperAction({
+          idBoard: this.currentBoard.id,
+          paper: paperData,
+        });
+        // this.$router.push(`/${this.currentBoard.name}`);
+      } catch (error) {
+        console.log(error);
+        this.STOP_LOADING();
+      }
+    },
+  },
+  mounted() {
+    if (localStorage.getItem("user")) {
+      this.getTokenAction();
+    } else {
+      this.$router.push("/login");
+    }
+  },
+});
+</script>
+
+<style lang="scss" scoped>
+@import "../../assets/styles/_variables.scss";
+@import "../../assets/styles/_mixins.scss";
+
+.paper-form {
+  @include form;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(1, 1fr);
+  padding-bottom: 100px;
+  border-bottom: none;
+
+  & select {
+    margin-top: 15px;
+  }
+
+  & label {
+    padding-bottom: 0;
+    padding-top: 30px;
+  }
+
+  &__images {
+    background: red;
+  }
+}
+.button-container {
+  display: flex;
+  justify-content: end;
+}
+
+.create-paper__title {
+  @include own-title;
+}
+
+@media (min-width: $tablet) {
+  .paper-form {
+    width: 500px;
+  }
+}
+
+@media (min-width: $desktop) {
+  .paper-form {
+    width: 750px;
+  }
+}
+</style>

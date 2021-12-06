@@ -44,6 +44,9 @@ const mutations = {
     console.log("hola");
     state.currentBoard.papers = payload;
   },
+  CREATE_PAPER(state: State, payload: Paper): void {
+    state.currentBoard.papers = [...state.currentBoard.papers, payload];
+  },
 };
 
 export default mutations;

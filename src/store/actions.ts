@@ -9,8 +9,7 @@ import {
 } from "@/types/interface";
 import router from "@/router";
 
-// const urlOWN = process.env.VUE_APP_OWN_SERVER;
-const urlOWN = "http://localhost:5000/";
+const urlOWN = process.env.VUE_APP_OWN_SERVER;
 
 const actions = {
   async getProfileAction(
@@ -83,7 +82,6 @@ const actions = {
       headers: { Authorization: `Bearer ${token}` },
     });
     commit("CREATE_BOARD", newBoard);
-    commit("STOP_LOADING");
     commit("STOP_LOADING");
   },
 
@@ -164,6 +162,23 @@ const actions = {
       `${urlOWN}paper/${idBoard}?filterby=type&filter=${type}&page=1&limit=30`
     );
     commit("FILTER_PAPERS", filteredPapers);
+    commit("STOP_LOADING");
+  },
+
+  async createPaperAction(
+    { commit }: ActionContext<State, State>,
+    { idBoard, paper }: any
+  ): Promise<void> {
+    commit("START_LOADING");
+    const token = JSON.parse(localStorage.getItem("user") || "");
+    const { data: newPaper } = await axios.post(
+      `${urlOWN}paper/new/${idBoard}`,
+      paper,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+    commit("CREATE_PAPER", newPaper);
     commit("STOP_LOADING");
   },
 };
