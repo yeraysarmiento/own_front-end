@@ -139,31 +139,37 @@ export default defineComponent({
       }
     },
     async onEdit(event: any) {
-      if (event.srcElement[7].files) {
+      let editedPaper;
+
+      if (event.srcElement[7].files.length > 0) {
         [this.images] = event.srcElement[7].files;
+        editedPaper = new FormData();
+        editedPaper.append("title", this.title);
+        editedPaper.append("author", this.author);
+        editedPaper.append("year", this.year);
+        editedPaper.append("type", this.type);
+        editedPaper.append("location", this.location);
+        editedPaper.append("text", this.text);
+        editedPaper.append("images", this.images);
       } else {
-        this.images = "";
+        console.log(this.currentPaper.images[0]);
+        editedPaper = {
+          title: this.title,
+          author: this.author,
+          year: this.year,
+          type: this.type,
+          location: this.location,
+          text: this.text,
+          images: this.currentPaper.images[0],
+        };
       }
-
-      console.log(this.title);
-      console.log(this.author);
-      console.log(this.year);
-
-      const paperData = new FormData();
-      paperData.append("title", this.title);
-      paperData.append("author", this.author);
-      paperData.append("year", this.year);
-      paperData.append("type", this.type);
-      paperData.append("location", this.location);
-      paperData.append("text", this.text);
-      paperData.append("images", this.images);
 
       try {
         await this.editPaperAction({
           idPaper: this.currentPaper.id,
-          paper: paperData,
+          paper: editedPaper,
         });
-        this.$router.push(`/${this.currentBoard.name}/${this.currentPaper.id}`);
+        this.$router.push(`/${this.currentBoard.name}`);
       } catch (error) {
         this.STOP_LOADING();
       }
@@ -176,6 +182,7 @@ export default defineComponent({
       this.photograph = this.currentPaper.photograph;
       this.type = this.currentPaper.type;
       this.text = this.currentPaper.text;
+      this.images = this.currentPaper.images;
     },
   },
   mounted() {
@@ -186,7 +193,6 @@ export default defineComponent({
     }
 
     if (this.$route.params.paperId) {
-      console.log("hola");
       this.editTrue();
       this.fulfillInputs();
     }

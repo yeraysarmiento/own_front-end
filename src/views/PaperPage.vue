@@ -1,14 +1,14 @@
 <template>
   <div class="paper-page">
     <section class="paper">
-      <router-link :to="`/${currentBoard.name.toLowerCase()}`">
+      <router-link :to="`/${currentBoard?.name.toLowerCase()}`">
         <div class="go-back">
           <font-awesome-icon icon="chevron-left" /> Back to Home
         </div>
       </router-link>
       <div class="paper-container" :class="isAuthenticated ? 'editing' : ''">
         <router-link
-          :to="`/${this.currentBoard.name.toLowerCase()}/edit/${
+          :to="`/${this.currentBoard?.name.toLowerCase()}/edit/${
             this.currentPaper.id
           }`"
         >
@@ -18,7 +18,7 @@
           </div>
         </router-link>
 
-        <h2 class="paper__title">{{ currentPaper?.title.toUpperCase() }}</h2>
+        <h2 class="paper__title">{{ currentPaper?.title?.toUpperCase() }}</h2>
         <h3 class="paper__author">by {{ currentPaper.author }}</h3>
 
         <div class="paper__year">
