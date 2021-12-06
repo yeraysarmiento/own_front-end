@@ -84,7 +84,6 @@ const actions = {
     });
     commit("CREATE_BOARD", newBoard);
     commit("STOP_LOADING");
-    commit("STOP_LOADING");
   },
 
   async deleteBoardAction(
@@ -164,6 +163,19 @@ const actions = {
       `${urlOWN}paper/${idBoard}?filterby=type&filter=${type}&page=1&limit=30`
     );
     commit("FILTER_PAPERS", filteredPapers);
+    commit("STOP_LOADING");
+  },
+
+  async createPaperAction(
+    { commit }: ActionContext<State, State>,
+    paper: Paper
+  ): Promise<void> {
+    commit("START_LOADING");
+    const token = JSON.parse(localStorage.getItem("user") || "");
+    const { data: newPaper } = await axios.post(`${urlOWN}paper/new/`, paper, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    commit("CREATE_PAPER", newPaper);
     commit("STOP_LOADING");
   },
 };
