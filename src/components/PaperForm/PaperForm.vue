@@ -204,7 +204,18 @@ export default defineComponent({
   }
 
   &__images {
-    background: red;
+    background: none;
+
+    &::-webkit-file-upload-button {
+      visibility: hidden;
+    }
+
+    &::before {
+      text-align: center;
+      color: lightgrey;
+      flex-direction: row;
+      content: "Click to add pictures                 ";
+    }
   }
 }
 .button-container {

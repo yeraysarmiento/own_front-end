@@ -40,6 +40,7 @@ export default defineComponent({
   width: 100vw;
   padding-right: 30px;
   margin-top: 120px;
+  padding-left: 30px;
 
   &__title {
     @include own-title;
