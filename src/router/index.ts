@@ -15,6 +15,11 @@ const routes: Array<RouteRecordRaw> = [
     redirect: "/home",
   },
   {
+    path: "/:boardName/new",
+    name: "CreatePaper",
+    component: CreatePaper,
+  },
+  {
     path: "/home",
     name: "Home",
     component: Home,
@@ -40,19 +45,19 @@ const routes: Array<RouteRecordRaw> = [
     component: CreateBoard,
   },
   {
+    path: "/:boardName",
+    name: "BoardPage",
+    component: BoardPage,
+  },
+  {
     path: "/:boardName/:idPaper",
     name: "PaperPage",
     component: PaperPage,
   },
   {
-    path: "/:boardName/new",
+    path: "/:boardName/edit/:paperId",
     name: "CreatePaper",
     component: CreatePaper,
-  },
-  {
-    path: "/:boardName",
-    name: "BoardPage",
-    component: BoardPage,
   },
   {
     path: "/notfound",

@@ -7,6 +7,7 @@ const state = {
   currentPaper: {},
   isAuthenticated: false,
   isLoading: false,
+  isEditing: false,
 };
 
 export default state as unknown as State;

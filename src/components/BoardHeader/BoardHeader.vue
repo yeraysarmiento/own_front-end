@@ -93,15 +93,16 @@ export default defineComponent({
       this.logoutUserAction();
       this.$router.push(`/${this.currentBoard.name.toLowerCase()}`);
     },
-    onChange(event: any) {
+    async onChange(event: any) {
       try {
         if (event.target.value === "All projects") {
-          this.loadCurrentBoardAction(this.currentBoard.id);
+          await this.loadCurrentBoardAction(this.currentBoard.id);
         } else {
-          this.filterPapersAction({
+          await this.filterPapersAction({
             idBoard: this.currentBoard.id,
             type: event.target.value,
           });
+          this.$router.push(`/${this.currentBoard.name.toLowerCase()}`);
         }
       } catch (error) {
         this.STOP_LOADING();

@@ -46,6 +46,21 @@ const mutations = {
   CREATE_PAPER(state: State, payload: Paper): void {
     state.currentBoard.papers = [...state.currentBoard.papers, payload];
   },
+  EDIT_PAPER(state: State, payload: Paper): void {
+    state.currentBoard.papers = state.currentBoard.papers.map((paper: Paper) =>
+      paper.id === payload.id
+        ? {
+            ...paper,
+            ...payload,
+          }
+        : paper
+    );
+    state.isEditing = false;
+  },
+
+  EDIT_TRUE(state: State): void {
+    state.isEditing = true;
+  },
 };
 
 export default mutations;

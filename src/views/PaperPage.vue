@@ -1,17 +1,24 @@
 <template>
   <div class="paper-page">
     <section class="paper">
-      <router-link :to="`/${currentBoard.name.toLowerCase()}`">
+      <router-link :to="`/${currentBoard?.name.toLowerCase()}`">
         <div class="go-back">
           <font-awesome-icon icon="chevron-left" /> Back to Home
         </div>
       </router-link>
       <div class="paper-container" :class="isAuthenticated ? 'editing' : ''">
-        <div class="editing-icon" v-if="isAuthenticated">
-          <p>Edit your Paper</p>
-          <font-awesome-icon icon="edit" />
-        </div>
-        <h2 class="paper__title">{{ currentPaper.title.toUpperCase() }}</h2>
+        <router-link
+          :to="`/${this.currentBoard?.name.toLowerCase()}/edit/${
+            this.currentPaper.id
+          }`"
+        >
+          <div class="editing-icon" v-if="isAuthenticated">
+            <p>Edit your Paper</p>
+            <font-awesome-icon icon="edit" />
+          </div>
+        </router-link>
+
+        <h2 class="paper__title">{{ currentPaper?.title?.toUpperCase() }}</h2>
         <h3 class="paper__author">by {{ currentPaper.author }}</h3>
 
         <div class="paper__year">
@@ -61,7 +68,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapState } from "vuex";
+import { mapActions, mapState } from "vuex";
 import About from "../components/About/About.vue";
 
 export default defineComponent({
@@ -69,6 +76,9 @@ export default defineComponent({
   components: { About },
   computed: {
     ...mapState(["currentPaper", "currentBoard", "isAuthenticated"]),
+  },
+  methods: {
+    ...mapActions(["editTrue"]),
   },
 });
 </script>
@@ -226,7 +236,7 @@ export default defineComponent({
 
   .editing-icon {
     right: 20px;
-    top: 0;
+    top: -75px;
 
     & p {
       display: block;

@@ -1,6 +1,6 @@
 <template>
   <li class="paper" v-if="isEditing">
-    <router-link :to="`/${currentBoard?.name.toLowerCase()}/new`">
+    <router-link :to="`${$route.path}/new`">
       <p class="paper__create">+</p>
     </router-link>
   </li>
