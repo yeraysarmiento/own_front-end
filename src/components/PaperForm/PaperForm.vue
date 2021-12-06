@@ -2,7 +2,7 @@
   <div class="paperform-page">
     <form
       class="paper-form"
-      @submit.prevent="onSubmit"
+      @submit.prevent="onSubmit($event)"
       autocomplete="off"
       @change="checkForm"
     >
@@ -39,12 +39,12 @@
         required
       />
 
-      <label for="file">Upload images (up to 3mb):</label>
+      <label for="images">Upload images (up to 3mb):</label>
       <input
         class="paper-form__images"
         type="file"
-        id="file"
-        name="file"
+        id="images"
+        name="images"
         multiple
         accept="image/*"
       />
@@ -65,8 +65,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
-import { Logo } from "@/types/interface";
+import { mapActions, mapMutations, mapState } from "vuex";
 
 export default defineComponent({
   name: "PaperForm",
@@ -79,16 +78,16 @@ export default defineComponent({
       location: "",
       photograph: "",
       text: "",
-      images: "",
+      images: "" as any,
       isDisabled: true,
-      logo: {} as Logo,
     };
   },
   computed: {
-    ...mapState(['currentBoard'])
+    ...mapState(["currentBoard"]),
   },
   methods: {
-    ...mapActions(["createBoardAction", "getTokenAction", "createPaperAction"]),
+    ...mapActions(["getTokenAction", "createPaperAction"]),
+    ...mapMutations(["STOP_LOADING"]),
     checkForm() {
       if (
         this.title !== "" &&
@@ -102,7 +101,48 @@ export default defineComponent({
         this.isDisabled = false;
       }
     },
-        async onSubmit() {
+    uploadImages(event: any) {
+      //  @change="uploadImages($event)"
+      console.log(event.target.files);
+
+      const imagesArray = [...event.target.files];
+      console.log(2, imagesArray);
+
+      this.images = imagesArray;
+      console.log(3, this.images);
+
+      [this.images] = event.target.files;
+      console.log(4, this.images);
+
+      // ESTE FUNCIONA PARA UNO
+      // [this.images] = event.target.files;
+
+      // console.log(0, this.images);
+      // console.log(a);
+      // for (const i of Object.keys(this.imagesArray)) {
+      //   formData.append("imagesArray", this.imagesArray[i]);
+      // }
+      //     Object.keys(event.target.files).forEach(key => {
+      // Object.keys(env[1]).forEach(subkey => {
+      // Object.entries(event.target.files).map((item) => {
+      //   item.map((file: any) => this.images.push(file));
+      // });
+      // console.log(this.images);
+    },
+
+    async onSubmit(event: any) {
+      console.log(6, event.srcElement[7].files);
+      [this.images] = event.srcElement[7].files;
+
+      // const a = {
+      //   title: this.title,
+      //   author: this.author,
+      //   year: this.year,
+      //   type: this.type,
+      //   location: this.location,
+      //   text: this.text,
+      // };
+
       const paperData = new FormData();
       paperData.append("title", this.title);
       paperData.append("author", this.author);
@@ -113,10 +153,14 @@ export default defineComponent({
       paperData.append("images", this.images);
 
       try {
-        await this.createPaperAction(paperData);
-        this.$router.push(`/${this.currentBoard.name}`);
+        await this.createPaperAction({
+          idBoard: this.currentBoard.id,
+          paper: paperData,
+        });
+        // this.$router.push(`/${this.currentBoard.name}`);
       } catch (error) {
-
+        console.log(error);
+        this.STOP_LOADING();
       }
     },
   },
@@ -126,7 +170,6 @@ export default defineComponent({
     } else {
       this.$router.push("/login");
     }
-  },
   },
 });
 </script>

@@ -7,11 +7,24 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
+import { mapActions } from "vuex";
 import PaperForm from "../components/PaperForm/PaperForm.vue";
 
 export default defineComponent({
   name: "CreatePaper",
   components: { PaperForm },
+  methods: {
+    ...mapActions(["loadBoardByNameAction", "getTokenAction"]),
+  },
+  mounted() {
+    if (this.$route.params.boardName) {
+      this.loadBoardByNameAction(this.$route.params.boardName);
+    }
+
+    if (localStorage.getItem("user")) {
+      this.getTokenAction();
+    }
+  },
 });
 </script>
 

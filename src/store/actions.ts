@@ -168,13 +168,17 @@ const actions = {
 
   async createPaperAction(
     { commit }: ActionContext<State, State>,
-    paper: Paper
+    { idBoard, paper }: any
   ): Promise<void> {
     commit("START_LOADING");
     const token = JSON.parse(localStorage.getItem("user") || "");
-    const { data: newPaper } = await axios.post(`${urlOWN}paper/new/`, paper, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const { data: newPaper } = await axios.post(
+      `${urlOWN}paper/new/${idBoard}`,
+      paper,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     commit("CREATE_PAPER", newPaper);
     commit("STOP_LOADING");
   },

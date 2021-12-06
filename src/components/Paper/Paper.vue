@@ -1,6 +1,6 @@
 <template>
   <li class="paper" v-if="isEditing">
-    <router-link to="">
+    <router-link :to="`/${currentBoard?.name.toLowerCase()}/new`">
       <p class="paper__create">+</p>
     </router-link>
   </li>
@@ -59,7 +59,7 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapState(["isAuthenticated"]),
+    ...mapState(["isAuthenticated", "currentBoard"]),
   },
   methods: {
     ...mapActions(["loadCurrentPaperAction", "deletePaperAction"]),
