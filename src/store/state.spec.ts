@@ -7,6 +7,7 @@ describe("Given a state object", () => {
         boards: [],
         currentUser: {},
         currentBoard: null,
+        currentPaper: {},
         isAuthenticated: false,
         isLoading: false,
       });

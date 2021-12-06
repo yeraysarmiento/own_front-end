@@ -40,6 +40,9 @@ const mutations = {
       (paper: Paper) => paper.id !== payload
     );
   },
+  FILTER_PAPERS(state: State, payload: Array<Paper>): void {
+    state.currentBoard.papers = payload;
+  },
 };
 
 export default mutations;
