@@ -40,14 +40,14 @@ const routes: Array<RouteRecordRaw> = [
     component: CreateBoard,
   },
   {
-    path: "/:boardName/:idPaper",
-    name: "PaperPage",
-    component: PaperPage,
-  },
-  {
     path: "/:boardName/new",
     name: "CreatePaper",
     component: CreatePaper,
+  },
+  {
+    path: "/:boardName/:idPaper",
+    name: "PaperPage",
+    component: PaperPage,
   },
   {
     path: "/:boardName",

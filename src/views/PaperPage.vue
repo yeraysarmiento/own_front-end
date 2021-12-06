@@ -18,7 +18,7 @@
           </div>
         </router-link>
 
-        <h2 class="paper__title">{{ currentPaper.title.toUpperCase() }}</h2>
+        <h2 class="paper__title">{{ currentPaper?.title.toUpperCase() }}</h2>
         <h3 class="paper__author">by {{ currentPaper.author }}</h3>
 
         <div class="paper__year">
@@ -236,7 +236,7 @@ export default defineComponent({
 
   .editing-icon {
     right: 20px;
-    top: 0;
+    top: -75px;
 
     & p {
       display: block;

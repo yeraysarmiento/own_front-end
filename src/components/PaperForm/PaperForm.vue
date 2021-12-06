@@ -9,9 +9,10 @@
     <h2 class="create-paper__title">
       {{ isEditing ? "EDIT PAPER" : "NEW PAPER" }}
     </h2>
+
     <form
       class="paper-form"
-      @submit.prevent="onSubmit($event)"
+      @submit.prevent="isEditing ? onEdit($event) : onSubmit($event)"
       autocomplete="off"
       @change="checkForm"
     >
@@ -62,10 +63,10 @@
         <button
           class="button"
           type="submit"
-          :disabled="isDisabled"
+          :disabled="isEditing ? (isDisabled = false) : (isDisabled = true)"
           :class="isDisabled ? 'disabled' : ''"
         >
-          Create paper
+          {{ isEditing ? "Edit Paper" : "Create Paper" }}
         </button>
       </div>
     </form>
@@ -92,10 +93,15 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapState(["currentBoard", "isEditing"]),
+    ...mapState(["currentBoard", "isEditing", "currentPaper"]),
   },
   methods: {
-    ...mapActions(["getTokenAction", "createPaperAction", "editTrue"]),
+    ...mapActions([
+      "getTokenAction",
+      "createPaperAction",
+      "editTrue",
+      "editPaperAction",
+    ]),
     ...mapMutations(["STOP_LOADING"]),
     checkForm() {
       if (
@@ -110,48 +116,8 @@ export default defineComponent({
         this.isDisabled = false;
       }
     },
-    uploadImages(event: any) {
-      //  @change="uploadImages($event)"
-      console.log(event.target.files);
-
-      const imagesArray = [...event.target.files];
-      console.log(2, imagesArray);
-
-      this.images = imagesArray;
-      console.log(3, this.images);
-
-      [this.images] = event.target.files;
-      console.log(4, this.images);
-
-      // ESTE FUNCIONA PARA UNO
-      // [this.images] = event.target.files;
-
-      // console.log(0, this.images);
-      // console.log(a);
-      // for (const i of Object.keys(this.imagesArray)) {
-      //   formData.append("imagesArray", this.imagesArray[i]);
-      // }
-      //     Object.keys(event.target.files).forEach(key => {
-      // Object.keys(env[1]).forEach(subkey => {
-      // Object.entries(event.target.files).map((item) => {
-      //   item.map((file: any) => this.images.push(file));
-      // });
-      // console.log(this.images);
-    },
-
     async onSubmit(event: any) {
-      console.log(6, event.srcElement[7].files);
       [this.images] = event.srcElement[7].files;
-      console.log(this.images);
-
-      // const a = {
-      //   title: this.title,
-      //   author: this.author,
-      //   year: this.year,
-      //   type: this.type,
-      //   location: this.location,
-      //   text: this.text,
-      // };
 
       const paperData = new FormData();
       paperData.append("title", this.title);
@@ -169,9 +135,47 @@ export default defineComponent({
         });
         this.$router.push(`/${this.currentBoard.name}`);
       } catch (error) {
-        console.log(error);
         this.STOP_LOADING();
       }
+    },
+    async onEdit(event: any) {
+      if (event.srcElement[7].files) {
+        [this.images] = event.srcElement[7].files;
+      } else {
+        this.images = "";
+      }
+
+      console.log(this.title);
+      console.log(this.author);
+      console.log(this.year);
+
+      const paperData = new FormData();
+      paperData.append("title", this.title);
+      paperData.append("author", this.author);
+      paperData.append("year", this.year);
+      paperData.append("type", this.type);
+      paperData.append("location", this.location);
+      paperData.append("text", this.text);
+      paperData.append("images", this.images);
+
+      try {
+        await this.editPaperAction({
+          idPaper: this.currentPaper.id,
+          paper: paperData,
+        });
+        this.$router.push(`/${this.currentBoard.name}/${this.currentPaper.id}`);
+      } catch (error) {
+        this.STOP_LOADING();
+      }
+    },
+    fulfillInputs() {
+      this.title = this.currentPaper.title;
+      this.author = this.currentPaper.author;
+      this.year = this.currentPaper.year;
+      this.location = this.currentPaper.location;
+      this.photograph = this.currentPaper.photograph;
+      this.type = this.currentPaper.type;
+      this.text = this.currentPaper.text;
     },
   },
   mounted() {
@@ -184,6 +188,7 @@ export default defineComponent({
     if (this.$route.params.paperId) {
       console.log("hola");
       this.editTrue();
+      this.fulfillInputs();
     }
   },
 });
