@@ -45,7 +45,7 @@
 
         <li
           class="nav__element nav__element--logout"
-          v-on:click="logoutUser(currentBoard?.name.toLowerCase())"
+          v-on:click="logoutUser"
           v-else
         >
           Logout
@@ -89,9 +89,9 @@ export default defineComponent({
       "loadCurrentBoardAction",
     ]),
     ...mapMutations(["STOP_LOADING"]),
-    logoutUser(path: string) {
+    logoutUser() {
       this.logoutUserAction();
-      this.$router.push(`/${path}`);
+      this.$router.push(`/${this.currentBoard.name.toLowerCase()}`);
     },
     onChange(event: any) {
       try {

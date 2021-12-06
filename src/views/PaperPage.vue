@@ -6,48 +6,54 @@
           <font-awesome-icon icon="chevron-left" /> Back to Home
         </div>
       </router-link>
-      <h2 class="paper__title">{{ currentPaper.title.toUpperCase() }}</h2>
-      <h3 class="paper__author">by {{ currentPaper.author }}</h3>
+      <div class="paper-container" :class="isAuthenticated ? 'editing' : ''">
+        <div class="editing-icon" v-if="isAuthenticated">
+          <p>Edit your Paper</p>
+          <font-awesome-icon icon="edit" />
+        </div>
+        <h2 class="paper__title">{{ currentPaper.title.toUpperCase() }}</h2>
+        <h3 class="paper__author">by {{ currentPaper.author }}</h3>
 
-      <div class="paper__year">
-        <p class="paper__year paper__year--title">_Year:</p>
-        <p class="paper__year paper__year--data">{{ currentPaper.year }}</p>
+        <div class="paper__year">
+          <p class="paper__year paper__year--title">_Year:</p>
+          <p class="paper__year paper__year--data">{{ currentPaper.year }}</p>
+        </div>
+
+        <div class="paper__type">
+          <p class="paper__type paper__type--title">_Type:</p>
+          <p class="paper__type paper__type--data">{{ currentPaper.type }}</p>
+        </div>
+
+        <div class="paper__location">
+          <p class="paper__location paper__location--title">_Location:</p>
+          <p class="paper__location paper__location--data">
+            {{ currentPaper.location }}
+          </p>
+        </div>
+
+        <div class="paper__photograph">
+          <p class="paper__photograph paper__photograph--title">_Photograph:</p>
+          <p class="paper__photograph paper__photograph--data">
+            {{ currentPaper.photograph }}
+          </p>
+        </div>
+
+        <p class="paper__text">{{ currentPaper.text }}</p>
+
+        <ul class="paper__gallery">
+          <li
+            class="paper__picture"
+            v-for="image in currentPaper.images"
+            v-bind:key="image.id"
+          >
+            <img
+              class="paper__picture paper__picture--image"
+              :src="image"
+              :alt="`Image of ${currentPaper.title}, by ${currentPaper.author}`"
+            />
+          </li>
+        </ul>
       </div>
-
-      <div class="paper__type">
-        <p class="paper__type paper__type--title">_Type:</p>
-        <p class="paper__type paper__type--data">{{ currentPaper.type }}</p>
-      </div>
-
-      <div class="paper__location">
-        <p class="paper__location paper__location--title">_Location:</p>
-        <p class="paper__location paper__location--data">
-          {{ currentPaper.location }}
-        </p>
-      </div>
-
-      <div class="paper__photograph">
-        <p class="paper__photograph paper__photograph--title">_Photograph:</p>
-        <p class="paper__photograph paper__photograph--data">
-          {{ currentPaper.photograph }}
-        </p>
-      </div>
-
-      <p class="paper__text">{{ currentPaper.text }}</p>
-
-      <ul class="paper__gallery">
-        <li
-          class="paper__picture"
-          v-for="image in currentPaper.images"
-          v-bind:key="image.id"
-        >
-          <img
-            class="paper__picture paper__picture--image"
-            :src="image"
-            :alt="`Image of ${currentPaper.title}, by ${currentPaper.author}`"
-          />
-        </li>
-      </ul>
       <About />
     </section>
   </div>
@@ -71,6 +77,33 @@ export default defineComponent({
 @import "../assets/styles/_mixins.scss";
 @import "../assets/styles/_variables.scss";
 
+.editing-icon {
+  cursor: pointer;
+  @include flex-center;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  top: -75px;
+
+  & p {
+    display: none;
+    color: darkgrey;
+    @include lora-text;
+    position: absolute;
+    right: 50px;
+    width: 120px;
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  &:hover {
+    color: darkred;
+  }
+}
+
 .go-back {
   @include lora-text;
   color: lightgray;
@@ -92,6 +125,17 @@ export default defineComponent({
   width: 100%;
   grid-template-columns: repeat(1, 1fr);
   padding-bottom: 100px;
+
+  &-container {
+    position: relative;
+
+    &.editing {
+      border: 1px dashed black;
+      border-radius: 40px;
+      padding: 20px;
+      margin-bottom: 50px;
+    }
+  }
 
   &__title {
     @include rufina-title;
@@ -177,6 +221,19 @@ export default defineComponent({
 
     &__author {
       margin-bottom: 150px;
+    }
+  }
+
+  .editing-icon {
+    right: 20px;
+    top: 0;
+
+    & p {
+      display: block;
+    }
+
+    &:hover {
+      color: darkred;
     }
   }
 }

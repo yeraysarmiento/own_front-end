@@ -5,12 +5,14 @@ import {
   faPhone,
   faXmark,
   faChevronLeft,
+  faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
 library.add(faPhone);
+library.add(faEdit);
 library.add(faXmark);
 library.add(faChevronLeft);
 
