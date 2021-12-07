@@ -78,7 +78,36 @@ export default defineComponent({
     ...mapState(["currentPaper", "currentBoard", "isAuthenticated"]),
   },
   methods: {
-    ...mapActions(["editTrue"]),
+    ...mapActions([
+      "editTrue",
+      "getSinglePaperAction",
+      "getTokenAction",
+      "loadBoardByNameAction",
+    ]),
+
+    async getBoardId() {
+      await this.loadBoardByNameAction(this.$route.params.boardName);
+
+      if (!this.currentPaper.id) {
+        if (this.$route.params.boardName && this.$route.params.idPaper) {
+          const idBoard = this.currentBoard?.id;
+          const paperId = this.$route.params.idPaper;
+          this.getSinglePaperAction({ idBoard, idPaper: paperId });
+        }
+      }
+    },
+  },
+
+  mounted() {
+    if (this.$route.params.boardName) {
+      this.getBoardId();
+    }
+
+    if (localStorage.getItem("user")) {
+      this.getTokenAction();
+    } else {
+      this.$router.push("/notfound");
+    }
   },
 });
 </script>

@@ -99,20 +99,25 @@ const actions = {
   },
 
   async loadCurrentBoardAction(
-    { commit }: ActionContext<State, State>,
+    { commit, dispatch }: ActionContext<State, State>,
     id: string
   ): Promise<void> {
     commit("START_LOADING");
-    const token = JSON.parse(localStorage.getItem("user") || "");
-    const { data: currentBoard } = await axios.get(`${urlOWN}board/${id}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    });
-    commit("LOAD_CURRENT_BOARD", currentBoard);
-    commit("STOP_LOADING");
+    try {
+      const token = JSON.parse(localStorage.getItem("user") || "");
+      const { data: currentBoard } = await axios.get(`${urlOWN}board/${id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      commit("LOAD_CURRENT_BOARD", currentBoard);
+      commit("STOP_LOADING");
+    } catch (error) {
+      dispatch("showNotFoundPageAction");
+      commit("STOP_LOADING");
+    }
   },
 
   async loadBoardByNameAction(
-    { commit }: ActionContext<State, State>,
+    { commit, dispatch }: ActionContext<State, State>,
     name: string
   ): Promise<void> {
     commit("START_LOADING");
@@ -121,11 +126,11 @@ const actions = {
         `${urlOWN}board/name/${name}`
       );
       commit("LOAD_CURRENT_BOARD", currentBoard);
+      commit("STOP_LOADING");
     } catch {
-      router.push("/notfound");
+      dispatch("showNotFoundPageAction");
       commit("STOP_LOADING");
     }
-    commit("STOP_LOADING");
   },
 
   loadCurrentPaperAction(
@@ -193,6 +198,28 @@ const actions = {
     });
     commit("EDIT_PAPER", editedPaper);
     commit("STOP_LOADING");
+  },
+
+  async getSinglePaperAction(
+    { commit, dispatch }: ActionContext<State, State>,
+    { idBoard, idPaper }: { idBoard: string; idPaper: string }
+  ): Promise<void> {
+    commit("START_LOADING");
+    try {
+      const { data: singlePaper } = await axios.get(
+        `${urlOWN}paper/${idBoard}?filterby=id&filter=${idPaper}&page=1&limit=1`
+      );
+      dispatch("loadCurrentPaperAction", singlePaper[0]);
+      commit("STOP_LOADING");
+    } catch (error) {
+      dispatch("showNotFoundPageAction");
+      commit("STOP_LOADING");
+    }
+  },
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  showNotFoundPageAction({ commit }: ActionContext<State, State>): void {
+    router.push("/notfound");
   },
 
   editTrue({ commit }: ActionContext<State, State>): void {
