@@ -23,7 +23,7 @@ describe("Given a Login Component", () => {
         global: {
           plugins: [router],
         },
-        stubs: ["router-link"],
+        stubs: ["router-link", "router-view"],
       });
 
       expect(wrapper.html()).toContain(password);
@@ -37,14 +37,12 @@ describe("Given a Login Component", () => {
         global: {
           plugins: [router],
         },
-        mocks: {
-          components: {
-            "font-awesome-icon": FontAwesomeIcon,
-          },
-          methods: {
-            onSubmit: jest.fn(),
-            checkForm: jest.fn(),
-          },
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+        },
+        methods: {
+          onSubmit: jest.fn(),
+          checkForm: jest.fn(),
         },
         stubs: ["router-link", "router-view", "FontAwesomeIcon"],
       });
@@ -62,18 +60,19 @@ describe("Given a Login Component", () => {
         },
         actions: { loginUserAction: jest.fn() },
       });
+
+      await router.isReady();
+
       const wrapper = mount(Login, {
         global: {
           plugins: [router, store],
         },
-        mocks: {
-          components: {
-            "font-awesome-icon": FontAwesomeIcon,
-          },
-          methods: {
-            onSubmit: jest.fn(),
-            checkForm: jest.fn(),
-          },
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+        },
+        methods: {
+          onSubmit: jest.fn(),
+          checkForm: jest.fn(),
         },
         stubs: ["router-link", "router-view", "FontAwesomeIcon"],
       });
@@ -83,6 +82,8 @@ describe("Given a Login Component", () => {
 
       const usernameInput = wrapper.get("input[id='username'");
       const passwordInput = wrapper.get("input[id='password'");
+
+      console.log(wrapper);
       const form = wrapper.get("form");
       await usernameInput.setValue("loling");
       await passwordInput.setValue("loling");
