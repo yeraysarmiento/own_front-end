@@ -17,7 +17,7 @@ import { defineComponent } from "vue";
 import { mapActions, mapState } from "vuex";
 import OwnHeader from "./components/OwnHeader/OwnHeader.vue";
 import BoardHeader from "./components/BoardHeader/BoardHeader.vue";
-import Spinner from "./components/Spinner.vue";
+import Spinner from "./components/Spinner/Spinner.vue";
 
 export default defineComponent({
   name: "app",
