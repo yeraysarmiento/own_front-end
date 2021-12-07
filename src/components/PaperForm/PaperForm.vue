@@ -9,7 +9,6 @@
     <h2 class="create-paper__title">
       {{ isEditing ? "EDIT PAPER" : "NEW PAPER" }}
     </h2>
-
     <form
       class="paper-form"
       @submit.prevent="isEditing ? onEdit($event) : onSubmit($event)"
@@ -49,6 +48,8 @@
         required
       />
 
+      <editor v-model="text" id="text" />
+
       <label for="images">Upload images (up to 3mb):</label>
       <input
         class="paper-form__images"
@@ -76,9 +77,13 @@
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
 import { mapActions, mapMutations, mapState } from "vuex";
+import Editor from "../Editor.vue";
 
 export default defineComponent({
   name: "PaperForm",
+  components: {
+    Editor,
+  },
   data() {
     return {
       title: "",
@@ -102,7 +107,9 @@ export default defineComponent({
       "editTrue",
       "editPaperAction",
     ]),
+
     ...mapMutations(["STOP_LOADING"]),
+
     checkForm() {
       if (
         this.title !== "" &&
@@ -116,8 +123,11 @@ export default defineComponent({
         this.isDisabled = false;
       }
     },
+
     async onSubmit(event: any) {
       [this.images] = event.srcElement[7].files;
+
+      console.log(this.text);
 
       const paperData = new FormData();
       paperData.append("title", this.title);
@@ -140,6 +150,8 @@ export default defineComponent({
     },
     async onEdit(event: any) {
       let editedPaper;
+
+      console.log(this.text);
 
       if (event.srcElement[7].files.length > 0) {
         [this.images] = event.srcElement[7].files;
@@ -193,6 +205,7 @@ export default defineComponent({
     }
 
     if (this.$route.params.paperId) {
+      console.log(this.$route.params.paperId);
       this.editTrue();
       this.fulfillInputs();
     }
