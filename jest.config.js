@@ -5,6 +5,10 @@ module.exports = {
   },
   testMatch: ["**/src/**/*.spec.[jt]s?(x)", "**/tests/App.spec.ts"],
   collectCoverage: true,
-  collectCoverageFrom: ["src/**/*.{js,vue,ts}", "!src/main.js"],
+  collectCoverageFrom: [
+    "src/**/*.{js,vue,ts}",
+    "!src/main.js",
+    "!src/components/Editor/*",
+  ],
   modulePathIgnorePatterns: ["src/main.ts", "src/store/index.ts"],
 };

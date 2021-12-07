@@ -125,7 +125,6 @@ describe("Given a PaperForm component", () => {
       await router.isReady();
 
       expect(localStorage.getItem).toHaveBeenCalled();
-      // expect(getTokenAction).toHaveBeenCalled();
     });
   });
   describe("When the localStorage has a not valid token", () => {

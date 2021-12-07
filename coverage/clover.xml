@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1638918722921" clover="3.2.0">
-  <project timestamp="1638918722921" name="All files">
-    <metrics statements="357" coveredstatements="213" conditionals="109" coveredconditionals="18" methods="80" coveredmethods="47" elements="546" coveredelements="278" complexity="0" loc="357" ncloc="357" packages="17" files="28" classes="28"/>
+<coverage generated="1638919641109" clover="3.2.0">
+  <project timestamp="1638919641109" name="All files">
+    <metrics statements="346" coveredstatements="208" conditionals="107" coveredconditionals="19" methods="75" coveredmethods="45" elements="528" coveredelements="272" complexity="0" loc="346" ncloc="346" packages="16" files="27" classes="27"/>
     <package name="src">
-      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="App.vue" path="/Users/yeray/Desktop/own/src/App.vue">
-        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
         <line num="19" count="1" type="stmt"/>
         <line num="20" count="1" type="stmt"/>
         <line num="22" count="1" type="stmt"/>
-        <line num="36" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="37" count="1" type="stmt"/>
       </file>
     </package>
@@ -93,23 +93,6 @@
         <line num="108" count="0" type="stmt"/>
       </file>
     </package>
-    <package name="src.components.Editor">
-      <metrics statements="11" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="2"/>
-      <file name="Editor.vue" path="/Users/yeray/Desktop/own/src/components/Editor/Editor.vue">
-        <metrics statements="11" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="5" coveredmethods="2"/>
-        <line num="38" count="12" type="stmt"/>
-        <line num="39" count="12" type="stmt"/>
-        <line num="41" count="12" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="51" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="67" count="5" type="stmt"/>
-        <line num="77" count="5" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="87" count="0" type="stmt"/>
-      </file>
-    </package>
     <package name="src.components.ImagePreview">
       <metrics statements="12" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="1"/>
       <file name="ImagePreview.vue" path="/Users/yeray/Desktop/own/src/components/ImagePreview/ImagePreview.vue">
@@ -155,7 +138,7 @@
         <line num="45" count="2" type="stmt"/>
         <line num="46" count="2" type="stmt"/>
         <line num="48" count="2" type="stmt"/>
-        <line num="52" count="3" type="stmt"/>
+        <line num="52" count="4" type="stmt"/>
         <line num="62" count="0" type="stmt"/>
         <line num="63" count="0" type="stmt"/>
       </file>

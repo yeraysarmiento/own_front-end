@@ -33,4 +33,41 @@ describe("Given the App", () => {
       expect(getTokenAction).toHaveBeenCalled();
     });
   });
+  describe("When the localStorage has a valid token", () => {
+    test("Then it should call the getTokenAction", async () => {
+      const getTokenAction = jest.fn();
+      Storage.prototype.setItem = jest.fn();
+      Storage.prototype.getItem = jest.fn();
+
+      const store = createStore({
+        state() {
+          return state;
+        },
+        actions: {
+          getTokenAction,
+        },
+      });
+
+      const mockRouter = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(App, {
+        global: {
+          plugins: [router, store],
+          mocks: {
+            $router: mockRouter,
+          },
+        },
+        stubs: ["router-view", "router-link"],
+        actions: {
+          getTokenAction,
+        },
+      });
+
+      await router.isReady();
+
+      expect(localStorage.getItem).toHaveBeenCalled();
+    });
+  });
 });
