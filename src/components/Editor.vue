@@ -10,7 +10,7 @@
       </button>
       <button
         class="editor__element"
-        @click="editor.chain().focus().toggleItalic().run()"
+        @click="editor.chain().focusm().toggleItalic().run()"
         :class="{ 'is-active': editor.isActive('italic') }"
       >
         <i>I</i>
@@ -21,6 +21,13 @@
         :class="{ 'is-active': editor.isActive('strike') }"
       >
         <del>U</del>
+      </button>
+      <button
+        class="editor__element editor__element--heading"
+        @click="editor.chain().focus().toggleHeading({ level: 1 }).run()"
+        :class="{ 'is-active': editor.isActive('heading', { level: 1 }) }"
+      >
+        H1
       </button>
     </bubble-menu>
     <editor-content :editor="editor" />
@@ -86,6 +93,7 @@ export default {
 @import "@/assets/styles/_mixins.scss";
 
 .editor {
+  @include flex-center;
   border: 1px solid black;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
@@ -105,6 +113,11 @@ export default {
     &:hover {
       background: black;
       color: white;
+    }
+
+    &.editor__element--heading {
+      font-size: 13px;
+      border-left: 1px solid black;
     }
   }
 }

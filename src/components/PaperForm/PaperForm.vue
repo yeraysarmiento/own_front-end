@@ -61,6 +61,7 @@
       />
 
       <div class="button-container">
+        <div class="button button--reset" @click="resetForm">Reset fields</div>
         <button
           class="button"
           type="submit"
@@ -110,6 +111,20 @@ export default defineComponent({
 
     ...mapMutations(["STOP_LOADING"]),
 
+    resetForm() {
+      if (this.isEditing) {
+        this.fulfillInputs();
+      } else {
+        this.title = "";
+        this.author = "";
+        this.year = "";
+        this.type = "";
+        this.location = "";
+        this.photograph = "";
+        this.text = "";
+      }
+    },
+
     checkForm() {
       if (
         this.title !== "" &&
@@ -126,8 +141,6 @@ export default defineComponent({
 
     async onSubmit(event: any) {
       [this.images] = event.srcElement[7].files;
-
-      console.log(this.text);
 
       const paperData = new FormData();
       paperData.append("title", this.title);
@@ -151,8 +164,6 @@ export default defineComponent({
     async onEdit(event: any) {
       let editedPaper;
 
-      console.log(this.text);
-
       if (event.srcElement[7].files.length > 0) {
         [this.images] = event.srcElement[7].files;
         editedPaper = new FormData();
@@ -164,7 +175,6 @@ export default defineComponent({
         editedPaper.append("text", this.text);
         editedPaper.append("images", this.images);
       } else {
-        console.log(this.currentPaper.images[0]);
         editedPaper = {
           title: this.title,
           author: this.author,
@@ -225,6 +235,10 @@ export default defineComponent({
   padding-bottom: 100px;
   border-bottom: none;
 
+  & textarea {
+    margin-bottom: 20px;
+  }
+
   & select {
     margin-top: 15px;
   }
@@ -249,6 +263,7 @@ export default defineComponent({
     }
   }
 }
+
 .button-container {
   display: flex;
   justify-content: end;
