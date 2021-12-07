@@ -6,7 +6,7 @@ import state from "../../../tests/mockedState";
 describe("Given an BoardHeader component", () => {
   describe("When it is rendered", () => {
     test("Then it should render a heading with the title text uppercased", async () => {
-      const title = "Title";
+      const title = "AMALLECTIVE";
       const wrapper = await mount(BoardHeader, {
         props: {
           boardName: title,
