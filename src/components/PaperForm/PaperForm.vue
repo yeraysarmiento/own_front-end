@@ -141,7 +141,6 @@ export default defineComponent({
 
     async onSubmit(event: any) {
       [this.images] = event.srcElement[7].files;
-      console.log("dentro");
 
       const paperData = new FormData();
       paperData.append("title", this.title);
@@ -217,7 +216,6 @@ export default defineComponent({
     }
 
     if (this.$route.params.paperId) {
-      console.log(this.$route.params.paperId);
       this.editTrue();
       this.fulfillInputs();
     }
