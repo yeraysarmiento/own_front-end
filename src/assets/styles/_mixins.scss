@@ -61,6 +61,7 @@
 }
 
 @mixin button {
+  @include flex-center;
   padding: 0;
   text-align: center;
   font-family: $nav-font;
@@ -92,6 +93,11 @@
     box-shadow: none;
     text-decoration: none;
     cursor: inherit;
+  }
+
+  &.button--reset {
+    background-color: $delete-color;
+    margin-right: 50px;
   }
 }
 
