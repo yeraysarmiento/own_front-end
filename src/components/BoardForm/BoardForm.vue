@@ -109,7 +109,7 @@ export default defineComponent({
   methods: {
     ...mapActions(["createBoardAction", "getTokenAction"]),
     onImage(image: Logo) {
-      [this.logo] = image.srcElement.files;
+      [this.logo] = image.srcElement?.files;
     },
     checkForm() {
       if (

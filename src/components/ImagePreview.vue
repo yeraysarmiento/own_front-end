@@ -31,8 +31,8 @@ export default defineComponent({
       this.$refs.fileInput.click();
     },
     pickFile() {
-      const input = this.$refs.fileInput;
-      const file = input.files;
+      const input = this.$refs?.fileInput;
+      const file = input?.files;
       if (file && file[0]) {
         const reader = new FileReader();
         reader.onload = (event) => {
