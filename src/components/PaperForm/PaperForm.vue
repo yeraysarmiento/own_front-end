@@ -48,7 +48,7 @@
         required
       />
 
-      <editor v-model="text" id="text" />
+      <editor />
 
       <label for="images">Upload images (up to 3mb):</label>
       <input
@@ -65,7 +65,7 @@
         <button
           class="button"
           type="submit"
-          :disabled="isEditing ? (isDisabled = false) : (isDisabled = true)"
+          :disabled="isDisabled"
           :class="isDisabled ? 'disabled' : ''"
         >
           {{ isEditing ? "Edit Paper" : "Create Paper" }}
@@ -141,6 +141,7 @@ export default defineComponent({
 
     async onSubmit(event: any) {
       [this.images] = event.srcElement[7].files;
+      console.log("dentro");
 
       const paperData = new FormData();
       paperData.append("title", this.title);
@@ -156,6 +157,7 @@ export default defineComponent({
           idBoard: this.currentBoard.id,
           paper: paperData,
         });
+
         this.$router.push(`/${this.currentBoard.name}`);
       } catch (error) {
         this.STOP_LOADING();
