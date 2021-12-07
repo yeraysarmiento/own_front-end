@@ -56,37 +56,39 @@ describe("Given a Login Component", () => {
   });
   describe("When the fields are filled and click on submit", () => {
     test("Then it should call the ", async () => {
-      // const store = createStore({
-      //   state() {
-      //     return state;
-      //   },
-      //   actions: { loginUserAction: jest.fn() },
-      // });
-      // const wrapper = mount(Login, {
-      //   global: {
-      //     plugins: [router, store],
-      //   },
-      //   mocks: {
-      //     components: {
-      //       "font-awesome-icon": FontAwesomeIcon,
-      //     },
-      //     methods: {
-      //       onSubmit: jest.fn(),
-      //       checkForm: jest.fn(),
-      //     },
-      //   },
-      //   stubs: ["router-link", "router-view", "FontAwesomeIcon"],
-      // });
-      // const onSubmit = jest.fn();
-      // onSubmit();
-      // const usernameInput = wrapper.get("input[id='username'");
-      // const passwordInput = wrapper.get("input[id='password'");
-      // const form = wrapper.get("form");
-      // await usernameInput.setValue("loling");
-      // await passwordInput.setValue("loling");
-      // form.trigger("submit");
-      // expect(onSubmit).toHaveBeenCalled();
-      // expect(store.state.currentUser).toBeDefined();
+      const store = createStore({
+        state() {
+          return state;
+        },
+        actions: { loginUserAction: jest.fn() },
+      });
+      const wrapper = mount(Login, {
+        global: {
+          plugins: [router, store],
+        },
+        mocks: {
+          components: {
+            "font-awesome-icon": FontAwesomeIcon,
+          },
+          methods: {
+            onSubmit: jest.fn(),
+            checkForm: jest.fn(),
+          },
+        },
+        stubs: ["router-link", "router-view", "FontAwesomeIcon"],
+      });
+
+      const onSubmit = jest.fn();
+      onSubmit();
+
+      const usernameInput = wrapper.get("input[id='username'");
+      const passwordInput = wrapper.get("input[id='password'");
+      const form = wrapper.get("form");
+      await usernameInput.setValue("loling");
+      await passwordInput.setValue("loling");
+      form.trigger("submit");
+      expect(onSubmit).toHaveBeenCalled();
+      expect(store.state.currentUser).toBeDefined();
     });
   });
 });
