@@ -3,6 +3,7 @@ export interface User {
   email: string;
   password: string;
   boards: Array<string>;
+  id?: string;
 }
 
 export interface UserRegister {
@@ -17,7 +18,7 @@ export interface UserLogin {
 }
 
 export interface Paper {
-  id: string;
+  id?: string;
   title: string;
   author: string;
   year: number;
@@ -37,7 +38,7 @@ export interface Social {
 }
 
 export interface Board {
-  id: string;
+  id?: string;
   name: string;
   about: string;
   email: string;

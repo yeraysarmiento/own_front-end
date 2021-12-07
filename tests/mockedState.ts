@@ -1,4 +1,4 @@
-import { State } from "@/types/interface";
+import { Paper, State } from "@/types/interface";
 
 const mockedState: State = {
   currentUser: {
@@ -36,7 +36,7 @@ const mockedState: State = {
     },
   ],
   currentBoard: {
-    _id: 3,
+    id: 3,
     name: "Amallective",
     about: "About me",
     email: "amallective@gmail.com",
@@ -49,7 +49,7 @@ const mockedState: State = {
     },
     papers: [
       {
-        _id: "61a28e71454f1d8b8fc54b64",
+        id: "61a28e71454f1d8b8fc54b64",
         title: "Multi-Family building",
         author: "datAE",
         year: 2021,
@@ -66,10 +66,9 @@ const mockedState: State = {
           "https://storage.googleapis.com/own-api-2c648.appspot.com/paper-Multi-Familybuilding-1638043241837.png",
         ],
         deleted: false,
-        __v: 0,
       },
       {
-        _id: "61a371ffe0abb2828c0bd395",
+        id: "61a371ffe0abb2828c0bd395",
         title: "Casa Ter",
         author: "MESURA",
         year: 2021,
@@ -86,12 +85,13 @@ const mockedState: State = {
           "https://storage.googleapis.com/own-api-2c648.appspot.com/paper-CasaTer-1638101502882.png",
         ],
         deleted: false,
-        __v: 0,
       },
     ],
   },
   isAuthenticated: true,
   isLoading: false,
+  isEditing: false,
+  currentPaper: {} as Paper,
 };
 
 export default mockedState;

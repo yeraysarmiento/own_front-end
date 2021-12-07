@@ -108,9 +108,11 @@ export default defineComponent({
   computed: {},
   methods: {
     ...mapActions(["createBoardAction", "getTokenAction"]),
+
     onImage(image: Logo) {
       [this.logo] = image.srcElement?.files;
     },
+
     checkForm() {
       if (
         this.name.length > 3 &&

@@ -190,12 +190,13 @@ const actions = {
   ): Promise<void> {
     commit("START_LOADING");
     const token = JSON.parse(localStorage.getItem("user") || "");
-    const { data: editedPaper } = await axios({
-      method: "PUT",
-      url: `${urlOWN}paper/update/${idPaper}`,
-      headers: { Authorization: `Bearer ${token}` },
-      data: paper,
-    });
+    const { data: editedPaper } = await axios.put(
+      `${urlOWN}paper/update/${idPaper}`,
+      paper,
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     commit("EDIT_PAPER", editedPaper);
     commit("STOP_LOADING");
   },
