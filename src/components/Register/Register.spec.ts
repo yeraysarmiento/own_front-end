@@ -1,3 +1,4 @@
+import { createStore } from "vuex";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
@@ -11,6 +12,9 @@ import "@testing-library/jest-dom";
 import { mount } from "@vue/test-utils";
 import Register from "@/components/Register/Register.vue";
 import router from "@/router";
+import state from "../../../tests/mockedState";
+
+library.add(faChevronLeft);
 
 describe("Given a Register component", () => {
   describe("When it is rendered", () => {
@@ -40,72 +44,233 @@ describe("Given a Register component", () => {
   });
   describe("When the fields are correctly filled and submit is clicked", () => {
     test("Then it should call the method onSubmit", async () => {
-      const $store = {
-        methods: {
-          checkForm: jest.fn(),
-          onSubmit: jest.fn(),
+      const loginUserAction = jest.fn();
+
+      const store = createStore({
+        state() {
+          return state;
         },
+        actions: {
+          loginUserAction,
+        },
+        getters: {
+          redirectDesk: jest.fn(),
+        },
+        mutations: {
+          STOP_LOADING: jest.fn(),
+        },
+      });
+
+      const $router = {
+        push: jest.fn(),
       };
-      const wrapper = await mount(Register, {
+      const $route = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(Register, {
         global: {
-          plugins: [router],
+          plugins: [router, store],
+          mocks: {
+            $route,
+            $router,
+          },
         },
         components: {
           "font-awesome-icon": FontAwesomeIcon,
         },
         stubs: ["router-link", "router-view", "FontAwesomeIcon"],
-        $store: {
-          $store,
-        },
       });
 
       await router.isReady();
 
-      $store.methods.onSubmit = jest.fn();
-      $store.methods.onSubmit();
+      const [username, email, password, repeatPassword] =
+        wrapper.findAll("input");
 
-      const username = wrapper.findAll("input")[0];
-      const email = wrapper.findAll("input")[1];
-      const password = wrapper.findAll("input")[2];
-      const repeatPassword = wrapper.findAll("input")[3];
+      username.setValue("name");
+      email.setValue("email@gmail.com");
+      password.setValue("password");
+      repeatPassword.setValue("password");
 
-      username.setValue("loling");
-      email.setValue("loling@gmail.com");
-      password.setValue("loling");
-      repeatPassword.setValue("loling");
+      await wrapper.find("form").trigger("submit.prevent");
 
-      wrapper.find("form").trigger("submit");
-      expect($store.methods.onSubmit).toHaveBeenCalled();
+      expect(wrapper.vm.$data.username).toBe("name");
+      expect(wrapper.vm.$data.email).toBe("email@gmail.com");
+      expect(wrapper.vm.$data.password).toBe("password");
+      expect(wrapper.vm.$data.repeatPassword).toBe("password");
     });
   });
-  // describe("When the email has not correctly format", () => {
-  //   test("Then it should show a disabled button", async () => {
-  //     const $store = {
-  //       methods: {
-  //         checkForm: jest.fn(),
-  //         onSubmit: jest.fn(),
-  //       },
-  //     };
-  //     $store.methods.onSubmit = jest.fn();
-  //     $store.methods.onSubmit();
+  describe("When the password are different filled and submit is clicked", () => {
+    test("Then it should set isWrong to true", async () => {
+      const loginUserAction = jest.fn();
+      const registerUserAction = jest.fn();
 
-  //     const wrapper = await mount(Register, {
-  //       global: {
-  //         plugins: [router],
-  //       },
-  //       stubs: ["router-link", "router-view"],
-  //       $store: {
-  //         $store,
-  //       },
-  //     });
+      const store = createStore({
+        state() {
+          return state;
+        },
+        actions: {
+          loginUserAction,
+          registerUserAction,
+        },
+        getters: {
+          redirectDesk: jest.fn(),
+        },
+        mutations: {
+          STOP_LOADING: jest.fn(),
+        },
+      });
 
-  //     const email = wrapper.findAll("input")[1];
+      const $router = {
+        push: jest.fn(),
+      };
+      const $route = {
+        push: jest.fn(),
+      };
 
-  //     console.log(email);
+      const wrapper = mount(Register, {
+        global: {
+          plugins: [router, store],
+          mocks: {
+            $route,
+            $router,
+          },
+        },
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+        },
+        stubs: ["router-link", "router-view", "FontAwesomeIcon"],
+      });
 
-  //     email.setValue("ef");
+      await router.isReady();
 
-  //     expect(wrapper.vm.isWrongEmail).toBe(true);
-  //   });
-  // });
+      const [username, email, password, repeatPassword] =
+        wrapper.findAll("input");
+
+      username.setValue("name");
+      email.setValue("email");
+      password.setValue("wrongpassword");
+      repeatPassword.setValue("password");
+
+      await wrapper.find("form").trigger("submit.prevent");
+
+      expect(wrapper.vm.$data.isWrong).toBe(true);
+    });
+  });
+  describe("When the email has not email format and submit is clicked", () => {
+    test("Then it set isWrongEmail to true", async () => {
+      const loginUserAction = jest.fn();
+      const registerUserAction = jest.fn();
+
+      const store = createStore({
+        state() {
+          return state;
+        },
+        actions: {
+          loginUserAction,
+          registerUserAction,
+        },
+        getters: {
+          redirectDesk: jest.fn(),
+        },
+        mutations: {
+          STOP_LOADING: jest.fn(),
+        },
+      });
+
+      const $router = {
+        push: jest.fn(),
+      };
+      const $route = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(Register, {
+        global: {
+          plugins: [router, store],
+          mocks: {
+            $route,
+            $router,
+          },
+        },
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+        },
+        stubs: ["router-link", "router-view", "FontAwesomeIcon"],
+      });
+
+      await router.isReady();
+
+      const [username, email, password, repeatPassword] =
+        wrapper.findAll("input");
+
+      username.setValue("name");
+      email.setValue("email");
+      password.setValue("password");
+      repeatPassword.setValue("password");
+
+      await wrapper.find("form").trigger("submit.prevent");
+
+      expect(wrapper.vm.$data.isWrongEmail).toBe(true);
+    });
+  });
+  describe("When the request register send an error", () => {
+    test("Then should set isWrong to true and call STOP_LOADING", async () => {
+      const loginUserAction = jest.fn();
+      const registerUserAction = jest.fn().mockRejectedValue({});
+      const STOP_LOADING = jest.fn();
+
+      const store = createStore({
+        state() {
+          return state;
+        },
+        actions: {
+          loginUserAction,
+          registerUserAction,
+        },
+        getters: {
+          redirectDesk: jest.fn(),
+        },
+        mutations: {
+          STOP_LOADING,
+        },
+      });
+
+      const $router = {
+        push: jest.fn(),
+      };
+      const $route = {
+        push: jest.fn(),
+      };
+
+      const wrapper = mount(Register, {
+        global: {
+          plugins: [router, store],
+          mocks: {
+            $route,
+            $router,
+          },
+        },
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+        },
+        stubs: ["router-link", "router-view", "FontAwesomeIcon"],
+      });
+
+      await router.isReady();
+
+      const [username, email, password, repeatPassword] =
+        wrapper.findAll("input");
+
+      username.setValue("name");
+      email.setValue("email");
+      password.setValue("password");
+      repeatPassword.setValue("password");
+
+      await wrapper.find("form").trigger("submit.prevent");
+
+      expect(wrapper.vm.$data.isWrong).toBe(true);
+      expect(STOP_LOADING).toHaveBeenCalled();
+    });
+  });
 });
