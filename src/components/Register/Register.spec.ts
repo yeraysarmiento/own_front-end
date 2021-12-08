@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import {
   fireEvent,
   getByPlaceholderText,
@@ -37,33 +40,42 @@ describe("Given a Register component", () => {
   });
   describe("When the fields are correctly filled and submit is clicked", () => {
     test("Then it should call the method onSubmit", async () => {
-      // const $store = {
-      //   methods: {
-      //     checkForm: jest.fn(),
-      //     onSubmit: jest.fn(),
-      //   },
-      // };
-      // const wrapper = await mount(Register, {
-      //   global: {
-      //     plugins: [router],
-      //   },
-      //   stubs: ["router-link", "router-view"],
-      //   $store: {
-      //     $store,
-      //   },
-      // });
-      // $store.methods.onSubmit = jest.fn();
-      // $store.methods.onSubmit();
-      // const username = wrapper.findAll("input")[0];
-      // const email = wrapper.findAll("input")[1];
-      // const password = wrapper.findAll("input")[2];
-      // const repeatPassword = wrapper.findAll("input")[3];
-      // username.setValue("loling");
-      // email.setValue("loling@gmail.com");
-      // password.setValue("loling");
-      // repeatPassword.setValue("loling");
-      // wrapper.find("form").trigger("submit");
-      // expect($store.methods.onSubmit).toHaveBeenCalled();
+      const $store = {
+        methods: {
+          checkForm: jest.fn(),
+          onSubmit: jest.fn(),
+        },
+      };
+      const wrapper = await mount(Register, {
+        global: {
+          plugins: [router],
+        },
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+        },
+        stubs: ["router-link", "router-view", "FontAwesomeIcon"],
+        $store: {
+          $store,
+        },
+      });
+
+      await router.isReady();
+
+      $store.methods.onSubmit = jest.fn();
+      $store.methods.onSubmit();
+
+      const username = wrapper.findAll("input")[0];
+      const email = wrapper.findAll("input")[1];
+      const password = wrapper.findAll("input")[2];
+      const repeatPassword = wrapper.findAll("input")[3];
+
+      username.setValue("loling");
+      email.setValue("loling@gmail.com");
+      password.setValue("loling");
+      repeatPassword.setValue("loling");
+
+      wrapper.find("form").trigger("submit");
+      expect($store.methods.onSubmit).toHaveBeenCalled();
     });
   });
   // describe("When the email has not correctly format", () => {
