@@ -20,8 +20,6 @@ describe("Given the ImagePreview component", () => {
         stubs: ["router-view"],
       });
 
-      console.log(wrapper);
-
       expect(wrapper.html()).toContain(
         '<div class="image-preview__container">'
       );

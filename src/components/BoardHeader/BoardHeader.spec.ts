@@ -26,4 +26,26 @@ describe("Given an BoardHeader component", () => {
       expect(wrapper.text()).toContain(title.toUpperCase());
     });
   });
+  describe("When the user clicks in Logout", () => {
+    test("Then it should call the logout method", async () => {
+      router.isReady();
+
+      // const wrapper = await mount(BoardHeader, {
+      //   global: {
+      //     plugins: [router],
+      //     mocks: {
+      //       $store: {
+      //         state,
+      //       },
+      //     },
+      //   },
+      //   stubs: ["router-link", "router-view"],
+      // });
+
+      // const select = await wrapper.find("select");
+      // select.setValue("All projects");
+
+      // expect(select.element.value).toBe("All projects");
+    });
+  });
 });

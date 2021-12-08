@@ -83,7 +83,6 @@ describe("Given a Login Component", () => {
       const usernameInput = wrapper.get("input[id='username'");
       const passwordInput = wrapper.get("input[id='password'");
 
-      console.log(wrapper);
       const form = wrapper.get("form");
       await usernameInput.setValue("loling");
       await passwordInput.setValue("loling");
