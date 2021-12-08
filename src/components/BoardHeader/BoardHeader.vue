@@ -12,7 +12,7 @@
     </router-link>
     <h2 class="custom-title">{{ currentBoard?.name.toUpperCase() }}</h2>
     <ul class="nav" :class="isClicked ? 'nav--open' : ''">
-      <div class="nav__container">
+      <ul class="nav__container">
         <li class="nav__element nav__element--filter">
           <select
             id="area"
@@ -33,8 +33,8 @@
         <li v-if="isAuthenticated" class="nav__element nav__element--greeting">
           <p>Welcome back, {{ currentUser.username }}</p>
         </li>
-      </div>
-      <div class="nav__container">
+      </ul>
+      <ul class="nav__container">
         <li class="nav__element nav__element--mydesk" v-if="isAuthenticated">
           <router-link to="/desk">My Desk</router-link>
         </li>
@@ -50,7 +50,7 @@
         >
           Logout
         </li>
-      </div>
+      </ul>
       <li class="nav__element nav__element--heading">
         <h1>{{ currentBoard?.name.toUpperCase() }}</h1>
       </li>
