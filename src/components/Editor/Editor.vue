@@ -13,7 +13,7 @@
         @click="editor.chain().focusm().toggleItalic().run()"
         :class="{ 'is-active': editor.isActive('italic') }"
       >
-        <i>I</i>
+        <em>I</em>
       </button>
       <button
         class="editor__element"
