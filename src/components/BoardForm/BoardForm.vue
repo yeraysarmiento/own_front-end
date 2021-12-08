@@ -175,8 +175,8 @@ export default defineComponent({
 .button-container {
   width: 100%;
   display: flex;
-  align-items: end;
-  justify-content: end;
+  align-items: flex-end;
+  justify-content: flex-end;
   flex-direction: column;
 }
 
@@ -218,7 +218,7 @@ export default defineComponent({
 
   & label {
     text-align: left;
-    align-self: start;
+    align-self: flex-start;
   }
 
   &__limit {
@@ -230,7 +230,7 @@ export default defineComponent({
 .required {
   margin-bottom: 5px;
   color: darkgrey;
-  align-self: start;
+  align-self: flex-start;
 }
 
 @media (min-width: $tablet) {

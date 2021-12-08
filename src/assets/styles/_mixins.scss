@@ -165,7 +165,7 @@
   .button {
     @include button;
     border: none;
-    align-self: end;
+    align-self: flex-end;
     margin-top: 50px;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 2px;
@@ -435,13 +435,13 @@
     &__container {
       display: flex;
       flex-direction: row;
-      align-items: end;
+      align-items: flex-end;
       width: 530px;
       padding: 0;
 
       &:nth-of-type(1) {
         @include flex-center;
-        justify-content: start;
+        justify-content: flex-start;
       }
 
       &:nth-of-type(2) {
@@ -450,7 +450,7 @@
         margin-right: 40px;
         width: 265px;
         margin-left: 10px;
-        justify-content: end;
+        justify-content: flex-end;
       }
     }
 
@@ -470,7 +470,7 @@
       }
 
       &.nav__element--login {
-        justify-self: end;
+        justify-self: flex-end;
         margin: 0;
       }
 

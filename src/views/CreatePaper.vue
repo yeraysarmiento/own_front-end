@@ -35,7 +35,7 @@ export default defineComponent({
 
 .create-paper {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-wrap: wrap;
   width: 100vw;
   padding-right: 30px;

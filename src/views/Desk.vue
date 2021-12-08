@@ -72,7 +72,7 @@ export default defineComponent({
     text-underline-offset: 3px;
     margin: 10px 0 100px 0;
     text-align: center;
-    justify-self: end;
+    justify-self: flex-end;
     cursor: pointer;
   }
 }

@@ -151,7 +151,7 @@ export default defineComponent({
 
 .paper-page {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-wrap: wrap;
   width: 100vw;
   padding: 0 15px;

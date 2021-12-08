@@ -266,7 +266,7 @@ export default defineComponent({
 
 .button-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .create-paper__title {

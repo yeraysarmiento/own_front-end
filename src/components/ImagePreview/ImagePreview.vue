@@ -47,7 +47,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import "../assets/styles/_mixins.scss";
+@import "../../assets/styles/_mixins.scss";
 
 .image-preview {
   width: 100%;

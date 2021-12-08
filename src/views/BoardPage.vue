@@ -45,7 +45,7 @@ export default defineComponent({
 
 .board-page {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-wrap: wrap;
 }
 
