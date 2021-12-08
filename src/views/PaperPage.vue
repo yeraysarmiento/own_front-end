@@ -104,12 +104,6 @@ export default defineComponent({
     if (this.$route.params.boardName) {
       this.getBoardId();
     }
-
-    if (localStorage.getItem("user")) {
-      this.getTokenAction();
-    } else {
-      this.redirectNotFound();
-    }
   },
 });
 </script>

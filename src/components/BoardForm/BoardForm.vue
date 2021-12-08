@@ -156,11 +156,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    if (localStorage.getItem("user")) {
-      this.getTokenAction();
-    } else {
-      this.redirectLogin();
-    }
+    this.getTokenAction();
   },
 });
 </script>
