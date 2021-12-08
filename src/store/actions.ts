@@ -34,8 +34,12 @@ const actions = {
   },
 
   getTokenAction({ dispatch }: ActionContext<State, State>): void {
-    const token = JSON.parse(localStorage.getItem("user") || "");
-    dispatch("getProfileAction", token);
+    try {
+      const token = JSON.parse(localStorage.getItem("user") || "");
+      dispatch("getProfileAction", token);
+    } catch (error) {
+      router.push("/login");
+    }
   },
 
   async loginUserAction(

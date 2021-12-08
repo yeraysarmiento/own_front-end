@@ -31,10 +31,6 @@ export default defineComponent({
     if (this.$route.params.boardName) {
       this.loadBoardByNameAction(this.$route.params.boardName);
     }
-
-    if (localStorage.getItem("user")) {
-      this.getTokenAction();
-    }
   },
 });
 </script>

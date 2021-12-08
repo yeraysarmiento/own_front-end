@@ -18,12 +18,10 @@ export default defineComponent({
     ...mapActions(["loadBoardByNameAction", "getTokenAction"]),
   },
   mounted() {
+    this.getTokenAction();
+
     if (this.$route.params.boardName) {
       this.loadBoardByNameAction(this.$route.params.boardName);
-    }
-
-    if (localStorage.getItem("user")) {
-      this.getTokenAction();
     }
   },
 });

@@ -93,6 +93,7 @@ export default defineComponent({
     logoutUser() {
       this.logoutUserAction();
       this.redirectBoard();
+      this.isClicked = false;
     },
     async onChange(event: any) {
       try {
@@ -103,7 +104,8 @@ export default defineComponent({
             idBoard: this.currentBoard.id,
             type: event.target.value,
           });
-          this.redirectBoard();
+          this.isClicked = false;
+          // this.redirectBoard();
         }
       } catch (error) {
         this.STOP_LOADING();
