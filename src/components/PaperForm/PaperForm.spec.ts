@@ -169,11 +169,16 @@ describe("Given a PaperForm component", () => {
       expect(button.element.getAttributeNames()).toContain("disabled");
     });
   });
-  describe("When the localStorage has a valid token", () => {
-    test("Then it should call the getTokenAction", async () => {
+  describe("When all the inputs are correctly filled", () => {
+    test("Then it should call createPaperAction", async () => {
       const getTokenAction = jest.fn();
-      Storage.prototype.setItem = jest.fn();
-      Storage.prototype.getItem = jest.fn();
+      const createPaperAction = jest.fn();
+      const editTrue = jest.fn();
+      const editPaperAction = jest.fn();
+
+      const event = {
+        srcElement: [{}, {}, {}, {}, {}, {}, {}, { files: {} }],
+      };
 
       const store = createStore({
         state() {
@@ -181,82 +186,65 @@ describe("Given a PaperForm component", () => {
         },
         actions: {
           getTokenAction,
+          createPaperAction,
+          editTrue,
+          editPaperAction,
+        },
+      });
+
+      const mockRouter = {
+        push: jest.fn(),
+      };
+
+      const mockRoute = {
+        push: jest.fn(),
+        params: { paperId: "1" },
+      };
+
+      const wrapper = mount(PaperForm, {
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+          editor: Editor,
         },
         getters: {
           redirectLogin: jest.fn(),
         },
-      });
-
-      const $router = {
-        push: jest.fn(),
-      };
-      const $route = {
-        push: jest.fn(),
-        params: "paperId",
-      };
-
-      const wrapper = mount(PaperForm, {
-        components: {
-          "font-awesome-icon": FontAwesomeIcon,
-          editor: Editor,
-        },
         global: {
           plugins: [router, store],
-          mocks: {
-            $route,
-            $router,
-          },
         },
         stubs: ["router-view", "router-link", "FontAwesomeIcon", "Editor"],
-        actions: {
-          getTokenAction,
+        mocks: {
+          $router: mockRouter,
+          $route: mockRoute,
         },
       });
 
       await router.isReady();
 
-      expect(localStorage.getItem).toHaveBeenCalled();
-    });
-  });
-  describe("When the localStorage is empty", () => {
-    test("Then it should call push with '/login", async () => {
-      const redirectLogin = jest.fn();
+      const [title, author, year, location, photograph, image] =
+        wrapper.findAll("input");
 
-      const store = createStore({
-        state() {
-          return state;
-        },
-        getters: {
-          redirectLogin,
-        },
-      });
+      const type = wrapper.find("select");
+      const text = wrapper.find("textarea");
 
-      const $router = {
-        push: jest.fn(),
-      };
-      const $route = {
-        push: jest.fn(),
-        params: "paperId",
-      };
+      title.setValue("Title");
+      author.setValue("Author");
+      year.setValue("2021");
+      location.setValue("Location");
+      photograph.setValue("Photograph");
+      image.setValue("");
+      type.setValue("Architecture");
+      text.setValue("Text");
 
-      const wrapper = mount(PaperForm, {
-        components: {
-          "font-awesome-icon": FontAwesomeIcon,
-          editor: Editor,
-        },
-        global: {
-          plugins: [router, store],
-          mocks: {
-            $route,
-            $router,
-          },
-        },
-        stubs: ["router-view", "router-link", "FontAwesomeIcon", "Editor"],
-      });
+      expect(wrapper.vm.$data.title).toBe("Title");
+      expect(wrapper.vm.$data.author).toBe("Author");
+      expect(wrapper.vm.$data.year).toBe("2021");
+      expect(wrapper.vm.$data.location).toBe("Location");
+      expect(wrapper.vm.$data.photograph).toBe("Photograph");
+      expect(wrapper.vm.$data.type).toBe("Architecture");
+      expect(wrapper.vm.$data.text).toBe("Text");
 
-      await router.isReady();
-
-      expect(redirectLogin).toHaveBeenCalled();
+      expect(wrapper.vm.$data.isDisabled).toBe(false);
     });
   });
 });
