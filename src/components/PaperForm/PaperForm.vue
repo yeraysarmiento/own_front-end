@@ -48,7 +48,7 @@
         required
       />
 
-      <editor />
+      <editor v-model="textEditor" />
 
       <label for="images">Upload images (up to 3mb):</label>
       <input
@@ -68,7 +68,7 @@
           :disabled="isDisabled"
           :class="isDisabled ? 'disabled' : ''"
         >
-          {{ isEditing ? "Edit Paper" : "Create Paper" }}
+          {{ isEditing ? "Save changes" : "Create" }}
         </button>
       </div>
     </form>
@@ -77,7 +77,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapMutations, mapState } from "vuex";
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 import Editor from "../Editor/Editor.vue";
 
 export default defineComponent({
@@ -96,6 +96,7 @@ export default defineComponent({
       text: "",
       images: "" as any,
       isDisabled: true,
+      textEditor: "",
     };
   },
   computed: {
@@ -110,6 +111,8 @@ export default defineComponent({
     ]),
 
     ...mapMutations(["STOP_LOADING"]),
+
+    ...mapGetters(["redirectLogin", "redirectBoard"]),
 
     resetForm() {
       if (this.isEditing) {
@@ -157,7 +160,7 @@ export default defineComponent({
           paper: paperData,
         });
 
-        this.$router.push(`/${this.currentBoard.name}`);
+        this.redirectBoard();
       } catch (error) {
         this.STOP_LOADING();
       }
@@ -192,7 +195,7 @@ export default defineComponent({
           idPaper: this.currentPaper.id,
           paper: editedPaper,
         });
-        this.$router.push(`/${this.currentBoard.name}`);
+        this.redirectBoard();
       } catch (error) {
         this.STOP_LOADING();
       }
@@ -212,7 +215,7 @@ export default defineComponent({
     if (localStorage.getItem("user")) {
       this.getTokenAction();
     } else {
-      this.$router.push("/login");
+      this.redirectLogin();
     }
 
     if (this.$route.params.paperId) {

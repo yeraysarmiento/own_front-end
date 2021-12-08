@@ -82,7 +82,7 @@ export default defineComponent({
   computed: {},
   methods: {
     ...mapActions(["registerUserAction"]),
-    ...mapGetters(["validEmail"]),
+    ...mapGetters(["redirectDesk"]),
     ...mapMutations(["STOP_LOADING"]),
     checkForm() {
       if (
@@ -119,7 +119,7 @@ export default defineComponent({
         };
         try {
           await this.registerUserAction(userData);
-          this.$router.push("/desk");
+          this.redirectDesk();
         } catch (error) {
           this.isWrong = true;
           this.STOP_LOADING();

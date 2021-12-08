@@ -84,7 +84,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import ImagePreview from "../ImagePreview/ImagePreview.vue";
 import { Logo } from "@/types/interface";
 
@@ -108,6 +108,7 @@ export default defineComponent({
   computed: {},
   methods: {
     ...mapActions(["createBoardAction", "getTokenAction"]),
+    ...mapGetters(["redirectLogin", "redirectDesk"]),
 
     onImage(image: Logo) {
       [this.logo] = image.srcElement?.files;
@@ -148,7 +149,7 @@ export default defineComponent({
       try {
         await this.createBoardAction(boardData);
         this.isWrong = false;
-        this.$router.push("/desk");
+        this.redirectDesk();
       } catch (error) {
         this.isWrong = true;
       }
@@ -158,7 +159,7 @@ export default defineComponent({
     if (localStorage.getItem("user")) {
       this.getTokenAction();
     } else {
-      this.$router.push("/login");
+      this.redirectLogin();
     }
   },
 });

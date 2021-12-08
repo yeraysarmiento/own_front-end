@@ -68,7 +68,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import About from "../components/About/About.vue";
 
 export default defineComponent({
@@ -84,6 +84,8 @@ export default defineComponent({
       "getTokenAction",
       "loadBoardByNameAction",
     ]),
+
+    ...mapGetters(["redirectNotFound"]),
 
     async getBoardId() {
       await this.loadBoardByNameAction(this.$route.params.boardName);
@@ -106,7 +108,7 @@ export default defineComponent({
     if (localStorage.getItem("user")) {
       this.getTokenAction();
     } else {
-      this.$router.push("/notfound");
+      this.redirectNotFound();
     }
   },
 });

@@ -43,7 +43,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default defineComponent({
   name: "OwnHeader",
@@ -58,9 +58,10 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["logoutUserAction"]),
+    ...mapGetters(["redirectHome"]),
     logoutUser(path: string) {
       this.logoutUserAction();
-      this.$router.push(`/${path}`);
+      this.redirectHome();
     },
   },
 });

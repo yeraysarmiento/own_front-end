@@ -46,7 +46,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapMutations } from "vuex";
+import { mapActions, mapGetters, mapMutations } from "vuex";
 import { UserLogin } from "@/types/interface";
 
 export default defineComponent({
@@ -63,6 +63,7 @@ export default defineComponent({
   methods: {
     ...mapActions(["loginUserAction"]),
     ...mapMutations(["STOP_LOADING"]),
+    ...mapGetters(["redirectDesk"]),
     checkForm() {
       if (this.username.length > 3 && this.password.length > 3) {
         this.isDisabled = false;
@@ -78,7 +79,7 @@ export default defineComponent({
         };
         try {
           await this.loginUserAction(userData);
-          this.$router.push("/desk");
+          this.redirectDesk();
           this.isWrong = false;
         } catch (error) {
           this.isWrong = true;

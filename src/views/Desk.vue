@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import BoardGallery from "../components/BoardGallery/BoardGallery.vue";
 
 export default defineComponent({
@@ -27,12 +27,13 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["getTokenAction"]),
+    ...mapGetters(["redirectLogin"]),
   },
   mounted() {
     if (localStorage.getItem("user")) {
       this.getTokenAction();
     } else {
-      this.$router.push("/login");
+      this.redirectLogin();
     }
   },
 });

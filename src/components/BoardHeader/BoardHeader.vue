@@ -69,7 +69,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapMutations, mapState } from "vuex";
+import { mapActions, mapGetters, mapMutations, mapState } from "vuex";
 
 export default defineComponent({
   name: "BoardHeader",
@@ -89,9 +89,10 @@ export default defineComponent({
       "loadCurrentBoardAction",
     ]),
     ...mapMutations(["STOP_LOADING"]),
+    ...mapGetters(["redirectBoard"]),
     logoutUser() {
       this.logoutUserAction();
-      this.$router.push(`/${this.currentBoard.name.toLowerCase()}`);
+      this.redirectBoard();
     },
     async onChange(event: any) {
       try {
@@ -102,7 +103,7 @@ export default defineComponent({
             idBoard: this.currentBoard.id,
             type: event.target.value,
           });
-          this.$router.push(`/${this.currentBoard.name.toLowerCase()}`);
+          this.redirectBoard();
         }
       } catch (error) {
         this.STOP_LOADING();
