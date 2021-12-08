@@ -11,5 +11,9 @@ module.exports = {
     "!src/components/Editor/*",
     "!src/components/ImagePreview/*",
   ],
-  modulePathIgnorePatterns: ["src/main.ts", "src/store/index.ts"],
+  modulePathIgnorePatterns: [
+    "src/main.ts",
+    "src/store/index.ts",
+    "src/store/getters.ts",
+  ],
 };

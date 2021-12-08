@@ -86,7 +86,7 @@ export default defineComponent({
     ...mapActions([
       "logoutUserAction",
       "filterPapersAction",
-      "loadCurrentBoardAction",
+      "loadBoardByNameAction",
     ]),
     ...mapMutations(["STOP_LOADING"]),
     ...mapGetters(["redirectBoard"]),
@@ -98,7 +98,7 @@ export default defineComponent({
     async onChange(event: any) {
       try {
         if (event.target.value === "All projects") {
-          await this.loadCurrentBoardAction(this.currentBoard.id);
+          await this.loadBoardByNameAction(this.$route.params.boardName);
         } else {
           await this.filterPapersAction({
             idBoard: this.currentBoard.id,
