@@ -79,7 +79,6 @@ export default defineComponent({
       isWrongEmail: false,
     };
   },
-  computed: {},
   methods: {
     ...mapActions(["registerUserAction"]),
     ...mapGetters(["redirectDesk"]),

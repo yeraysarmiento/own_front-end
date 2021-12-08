@@ -250,6 +250,7 @@ describe("Given a mutations object", () => {
       mutations.EDIT_PAPER(state, payload);
 
       expect(state.currentBoard.papers).toContainEqual(payload);
+      expect(state.isEditing).toBe(false);
     });
   });
 });
