@@ -85,7 +85,7 @@
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
 import { mapActions } from "vuex";
-import ImagePreview from "../ImagePreview.vue";
+import ImagePreview from "../ImagePreview/ImagePreview.vue";
 import { Logo } from "@/types/interface";
 
 export default defineComponent({

@@ -6,7 +6,7 @@ import state from "../../../tests/mockedState";
 describe("Given an BoardHeader component", () => {
   describe("When it is rendered", () => {
     test("Then it should render a heading with the title text uppercased", async () => {
-      const title = "Title";
+      const title = "AMALLECTIVE";
       const wrapper = await mount(BoardHeader, {
         props: {
           boardName: title,
@@ -25,42 +25,27 @@ describe("Given an BoardHeader component", () => {
 
       expect(wrapper.text()).toContain(title.toUpperCase());
     });
-    // describe("When the li element is clicked", () => {
-    //   test("Then it should call the loadBoard function with an id", async () => {
-    //     const title = "Title";
-    //     const $store = {
-    //       state: {
-    //         ...state,
-    //         isAuthenticated: true,
-    //       },
-    //       methods: {
-    //         loadBoard: jest.fn(),
-    //       },
-    //     };
+  });
+  describe("When the user clicks in Logout", () => {
+    test("Then it should call the logout method", async () => {
+      router.isReady();
 
-    //     const wrapper = await mount(BoardHeader, {
-    //       props: {
-    //         boardName: title,
-    //         boardLogo: "logoURL",
-    //       },
-    //       global: {
-    //         plugins: [router],
-    //         mocks: {
-    //           $store: {
-    //             $store,
-    //           },
-    //         },
-    //         stubs: ["router-link", "router-view"],
-    //       },
-    //     });
+      // const wrapper = await mount(BoardHeader, {
+      //   global: {
+      //     plugins: [router],
+      //     mocks: {
+      //       $store: {
+      //         state,
+      //       },
+      //     },
+      //   },
+      //   stubs: ["router-link", "router-view"],
+      // });
 
-    //     $store.methods.loadBoard = jest.fn();
-    //     $store.methods.loadBoard();
+      // const select = await wrapper.find("select");
+      // select.setValue("All projects");
 
-    //     wrapper.find("input").trigger("click");
-
-    //     expect($store.methods.loadBoard).toHaveBeenCalled();
-    //   });
-    // });
+      // expect(select.element.value).toBe("All projects");
+    });
   });
 });

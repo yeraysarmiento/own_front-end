@@ -1,6 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { mount } from "@vue/test-utils";
+import { createStore } from "vuex";
 import router from "@/router";
 import Login from "./Login.vue";
+import state from "../../../tests/mockedState";
+
+library.add(faChevronLeft);
 
 describe("Given a Login Component", () => {
   describe("When it is rendered", () => {
@@ -16,7 +23,7 @@ describe("Given a Login Component", () => {
         global: {
           plugins: [router],
         },
-        stubs: ["router-link"],
+        stubs: ["router-link", "router-view"],
       });
 
       expect(wrapper.html()).toContain(password);
@@ -30,7 +37,14 @@ describe("Given a Login Component", () => {
         global: {
           plugins: [router],
         },
-        stubs: ["router-link", "router-view"],
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+        },
+        methods: {
+          onSubmit: jest.fn(),
+          checkForm: jest.fn(),
+        },
+        stubs: ["router-link", "router-view", "FontAwesomeIcon"],
       });
 
       const button = wrapper.find("button");
@@ -40,35 +54,41 @@ describe("Given a Login Component", () => {
   });
   describe("When the fields are filled and click on submit", () => {
     test("Then it should call the ", async () => {
-      const $store = {
-        methods: {
-          checkForm: jest.fn(),
-          onSubmit: jest.fn(),
+      const store = createStore({
+        state() {
+          return state;
         },
-      };
-
-      const wrapper = await mount(Login, {
-        global: {
-          plugins: [router],
-        },
-        stubs: ["router-link", "router-view"],
-        $store: {
-          $store,
-        },
+        actions: { loginUserAction: jest.fn() },
       });
 
-      $store.methods.onSubmit = jest.fn();
-      $store.methods.onSubmit();
+      await router.isReady();
 
-      const username = wrapper.findAll("input")[0];
-      const password = wrapper.findAll("input")[1];
+      const wrapper = mount(Login, {
+        global: {
+          plugins: [router, store],
+        },
+        components: {
+          "font-awesome-icon": FontAwesomeIcon,
+        },
+        methods: {
+          onSubmit: jest.fn(),
+          checkForm: jest.fn(),
+        },
+        stubs: ["router-link", "router-view", "FontAwesomeIcon"],
+      });
 
-      username.setValue("loling");
-      password.setValue("loling");
+      const onSubmit = jest.fn();
+      onSubmit();
 
-      wrapper.find("form").trigger("submit");
+      const usernameInput = wrapper.get("input[id='username'");
+      const passwordInput = wrapper.get("input[id='password'");
 
-      expect($store.methods.onSubmit).toHaveBeenCalled();
+      const form = wrapper.get("form");
+      await usernameInput.setValue("loling");
+      await passwordInput.setValue("loling");
+      form.trigger("submit");
+      expect(onSubmit).toHaveBeenCalled();
+      expect(store.state.currentUser).toBeDefined();
     });
   });
 });

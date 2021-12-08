@@ -78,7 +78,7 @@
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
 import { mapActions, mapMutations, mapState } from "vuex";
-import Editor from "../Editor.vue";
+import Editor from "../Editor/Editor.vue";
 
 export default defineComponent({
   name: "PaperForm",
