@@ -54,41 +54,59 @@ describe("Given a Login Component", () => {
   });
   describe("When the fields are filled and click on submit", () => {
     test("Then it should call the ", async () => {
+      const loginUserAction = jest.fn();
+
       const store = createStore({
         state() {
           return state;
         },
-        actions: { loginUserAction: jest.fn() },
+        actions: {
+          loginUserAction,
+        },
+        getters: {
+          redirectDesk: jest.fn(),
+        },
+        mutations: {
+          STOP_LOADING: jest.fn(),
+        },
       });
+
+      const $router = {
+        push: jest.fn(),
+      };
+      const $route = {
+        push: jest.fn(),
+      };
 
       await router.isReady();
 
       const wrapper = mount(Login, {
         global: {
           plugins: [router, store],
+          mocks: {
+            $route,
+            $router,
+          },
         },
         components: {
           "font-awesome-icon": FontAwesomeIcon,
         },
-        methods: {
-          onSubmit: jest.fn(),
-          checkForm: jest.fn(),
-        },
         stubs: ["router-link", "router-view", "FontAwesomeIcon"],
       });
 
-      const onSubmit = jest.fn();
-      onSubmit();
+      const [inputName, inputPassword] = wrapper.findAll("input");
 
-      const usernameInput = wrapper.get("input[id='username'");
-      const passwordInput = wrapper.get("input[id='password'");
+      inputName.setValue("name");
+      inputPassword.setValue("password");
+      await wrapper.find("form").trigger("submit.prevent");
 
-      const form = wrapper.get("form");
-      await usernameInput.setValue("loling");
-      await passwordInput.setValue("loling");
-      form.trigger("submit");
-      expect(onSubmit).toHaveBeenCalled();
+      expect(wrapper.vm.$data.username).toBe("name");
+      expect(wrapper.vm.$data.password).toBe("password");
+
+      expect(wrapper.vm.$data.isWrong).toBe(false);
+      expect(wrapper.vm.$data.isDisabled).toBe(false);
       expect(store.state.currentUser).toBeDefined();
+      expect(loginUserAction).toHaveBeenCalled();
     });
   });
 });
