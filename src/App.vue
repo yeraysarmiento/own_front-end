@@ -37,6 +37,12 @@ export default defineComponent({
       this.getTokenAction();
     }
   },
+
+  updated() {
+    this.$nextTick(() => {
+      window.scrollTo(0, 0);
+    });
+  },
 });
 </script>
 

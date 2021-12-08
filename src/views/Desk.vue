@@ -16,7 +16,7 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import BoardGallery from "../components/BoardGallery/BoardGallery.vue";
 
 export default defineComponent({
@@ -27,12 +27,13 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["getTokenAction"]),
+    ...mapGetters(["redirectLogin"]),
   },
   mounted() {
     if (localStorage.getItem("user")) {
       this.getTokenAction();
     } else {
-      this.$router.push("/login");
+      this.redirectLogin();
     }
   },
 });
@@ -72,7 +73,7 @@ export default defineComponent({
     text-underline-offset: 3px;
     margin: 10px 0 100px 0;
     text-align: center;
-    justify-self: end;
+    justify-self: flex-end;
     cursor: pointer;
   }
 }

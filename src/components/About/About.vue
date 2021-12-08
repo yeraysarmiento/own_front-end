@@ -58,7 +58,7 @@ export default defineComponent({
 .about-container {
   width: 100%;
   @include flex-center;
-  justify-content: end;
+  justify-content: flex-end;
   margin-bottom: 150px;
 }
 
@@ -89,7 +89,7 @@ export default defineComponent({
 
 .social {
   @include flex-center;
-  justify-content: start;
+  justify-content: flex-start;
   list-style: none;
   margin-top: 50px;
 

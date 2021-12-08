@@ -29,7 +29,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
-@import "../assets/styles/_mixins.scss";
+@import "../../assets/styles/_mixins.scss";
 
 .own-spinner {
   @include spinner;

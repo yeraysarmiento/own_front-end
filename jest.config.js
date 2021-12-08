@@ -9,6 +9,7 @@ module.exports = {
     "src/**/*.{js,vue,ts}",
     "!src/main.js",
     "!src/components/Editor/*",
+    "!src/components/ImagePreview/*",
   ],
   modulePathIgnorePatterns: ["src/main.ts", "src/store/index.ts"],
 };

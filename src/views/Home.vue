@@ -23,7 +23,7 @@ export default defineComponent({
   background-size: cover;
   width: 100vw;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   background-repeat: no-repeat;
   opacity: 0.8;
   background-color: $button-color;

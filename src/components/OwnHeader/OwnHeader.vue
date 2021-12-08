@@ -43,7 +43,7 @@
 
 <script lang="ts" scoped>
 import { defineComponent } from "vue";
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default defineComponent({
   name: "OwnHeader",
@@ -58,9 +58,10 @@ export default defineComponent({
   },
   methods: {
     ...mapActions(["logoutUserAction"]),
+    ...mapGetters(["redirectHome"]),
     logoutUser(path: string) {
       this.logoutUserAction();
-      this.$router.push(`/${path}`);
+      this.redirectHome();
     },
   },
 });
@@ -111,7 +112,7 @@ export default defineComponent({
   .nav {
     padding: 0;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     left: 0;
     right: 0;
     height: 80px;
@@ -166,7 +167,7 @@ export default defineComponent({
   .nav {
     padding: 0;
     flex-direction: row;
-    justify-content: end;
+    justify-content: flex-end;
     left: 0;
     right: 0;
     height: 80px;
@@ -184,7 +185,7 @@ export default defineComponent({
       &.nav__element--mydesk {
         width: 125px;
         color: black;
-        justify-self: end;
+        justify-self: flex-end;
       }
 
       &.nav__element--logout {
