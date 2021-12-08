@@ -15,6 +15,8 @@
     "@fortawesome/free-regular-svg-icons": "^6.0.0-beta3",
     "@fortawesome/free-solid-svg-icons": "^6.0.0-beta3",
     "@fortawesome/vue-fontawesome": "^3.0.0-5",
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/vue": "^6.4.2",
     "@tiptap/extension-bubble-menu": "^2.0.0-beta.51",
     "@tiptap/starter-kit": "^2.0.0-beta.153",
     "@tiptap/vue-3": "^2.0.0-beta.82",
@@ -24,10 +26,9 @@
     "core-js": "^3.6.5",
     "husky": "^7.0.4",
     "tiptap-extensions": "^1.35.2",
+    "update": "^0.7.4",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
-    "@testing-library/vue": "^6.4.2",
-    "@testing-library/jest-dom": "^5.16.1",
     "vuex": "^4.0.0-0"
   },
   "devDependencies": {
