@@ -30,7 +30,11 @@ export default defineComponent({
     ...mapGetters(["redirectLogin"]),
   },
   mounted() {
-    this.getTokenAction();
+    if (localStorage.getItem("user")) {
+      this.getTokenAction();
+    } else {
+      this.redirectLogin();
+    }
   },
 });
 </script>

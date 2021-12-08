@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 import { ActionContext } from "vuex";
 import {
   Board,
@@ -20,6 +21,7 @@ const actions = {
     const { data: allData } = await axios.get(`${urlOWN}user`, {
       headers: { Authorization: `Bearer ${token}` },
     });
+
     const userData = {
       id: allData.id,
       username: allData.username,
@@ -33,7 +35,7 @@ const actions = {
     commit("STOP_LOADING");
   },
 
-  getTokenAction({ dispatch }: ActionContext<State, State>): void {
+  getTokenAction({ commit, dispatch }: ActionContext<State, State>): void {
     try {
       const token = JSON.parse(localStorage.getItem("user") || "");
       dispatch("getProfileAction", token);
