@@ -1,49 +1,62 @@
-# OWN
+# OWN: your website creator
 
 Make your own websites, without a code line.
 
 This is my application for those who want to manage their own website, as a blog or portfolio format, to share their passion with everyone!
-It has an authentication system that allows the user to Register/Login and update their content and how it is openly shown.
+It has an authentication system that allows the user to Register/Login and update how their content is displayed.
 
-OWN has been developed in the last 2.5weeks of my ISDI Coders full-stack development bootcamp.
+Own has been developed in the last 2.5weeks of my ISDI Coders full-stack development bootcamp.
 
 
 ## Technologies
 
-The front-end has been built with Vue 3 & Typescript, deployed in Netlify.
+The front-end has been built with Vue 3, Typescript & SASS, deployed in Netlify.
+
 The back-end has been built with ExpressJS, Typescript, Multer, MongoDB, Mongoose, jwt & firebase, deployed in Heroku.
 
 All the app has been tested with Jest, with more than the 85% covered lines.
 
+## Screenshots
+
+<div style="display: flex;">
+    <img alt="Mobile" src="https://user-images.githubusercontent.com/26439964/146812968-c4174f8a-0462-4a20-8776-5f25c336b7ee.png" width="154"/>
+    <img alt="Tablet" src="https://user-images.githubusercontent.com/26439964/146812925-a14637ca-0ebf-48c0-a768-9b62a85efb88.png" width="247"/>
+    <img alt="Desktop" src="https://user-images.githubusercontent.com/26439964/146812977-4b4d8fa9-087c-49ce-98f8-449b572d4d22.png" width="555"/>
+</div>
 
 ## Installation
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+## Usage
+Front-end
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
+Back-end
 ```
-npm run build
+npm run compile
+```
+```
+npm run dev
 ```
 
-### Run your unit tests
+## Testing
 ```
 npm run test:unit
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
 
 ## Contributing
 
-Since it is
+Pull requests are welcome, but always make sure the appropiate test is updated! 
+
+For major changes, please open an issue first to discuss what you would like to change.
+
+Always open to any suggestion :)
+
 
 ## License
 
@@ -57,9 +70,6 @@ in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
